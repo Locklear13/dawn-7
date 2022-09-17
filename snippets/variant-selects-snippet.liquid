@@ -1,22 +1,14 @@
-{% liquid
-    assign associatedProduct0 = product.id.value
-	assign associatedProduct1 = product.metafields.associated_products.associated-1.value
-	assign associatedProduct2 = product.metafields.associated_products.associated-2.value
-	assign associatedProduct3 = product.metafields.associated_products.associated-3.value
-	assign associatedAccentPanels = product.metafields.associated_products.accents.value
-	assign associatedChecklist = product.metafields.associated_products.checklist.value
-    assign associatedChecklistList = product.metafields.associated_products.checklist_list.value  
+{%   assign associates = "product.metafields.associated_products.associated-1.value,
+                          product.metafields.associated_products.associated-2.value,
+                          product.metafields.associated_products.associated-3.value,
+                          product.metafields.associated_products.accents.value,
+                          product.metafields.associated_products.checklist.value" | split: ','
 %}
-{% assign product_group = "associatedProduct0, associatedProduct1, associatedProduct2, associatedProduct3, associatedAccentPanels, associatedChecklist, associatedChecklistList" %}
+{% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
 
-{{ product_group }}
-
-{% assign product = product_group | split: ',' %}
-<br><br>
-{{ product }}
-
-{% for product in product_group %}
-{%- unless product.has_only_default_variant -%}
+ {% for associate in associates  %}
+    {% assign associate =  associates | split:',' %}
+{%- unless multi-product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
                   <variant-radios
                     class="no-js-hidden"
@@ -24,7 +16,7 @@
                     data-url="{{ product.url }}"
                     {{ block.shopify_attributes }}
                   >
-                    {%- for option in product.options_with_values -%}
+                    {%- for option in multi-product.options_with_values -%}
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
@@ -45,7 +37,7 @@
                       </fieldset>
                     {%- endfor -%}
                     <script type="application/json">
-                      {{ product.variants | json }}
+                      {{ multi-product.variants | json }}
                     </script>
                   </variant-radios>
                 {%- else -%}
@@ -55,7 +47,7 @@
                     data-url="{{ product.url }}"
                     {{ block.shopify_attributes }}
                   >
-                    {%- for option in product.options_with_values -%}
+                    {%- for option in multi-product.options_with_values -%}
                       <div class="product-form__input product-form__input--dropdown">
                         <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
                           {{ option.name }}
@@ -84,7 +76,7 @@
                     {%- endfor -%}
 
                     <script type="application/json">
-                      {{ product.variants | json }}
+                      {{ multi-product.variants | json }}
                     </script>
                   </variant-selects>
                 {%- endif -%}
@@ -102,7 +94,7 @@
                       class="select__select"
                       form="{{ product_form_id }}"
                     >
-                      {%- for variant in product.variants -%}
+                      {%- for variant in multi-product.variants -%}
                         <option
                           {% if variant == product.selected_or_first_available_variant %}
                             selected="selected"
