@@ -2,11 +2,11 @@
                           product.metafields.associated_products.associated-2.value,
                           product.metafields.associated_products.associated-3.value,
                           product.metafields.associated_products.accents.value,
-                          product.metafields.associated_products.checklist.value" | split: ','
+                          product.metafields.associated_products.checklist.value"
 %}
 {% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
 
-{% for associate in associates  %}
+{% for associate in associates | split: ',' %}
 {%- unless associate.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
                   <variant-radios
