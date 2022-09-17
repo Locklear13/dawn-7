@@ -12,7 +12,7 @@
 {% assign product_group2 = product.metafields.associated_products %}
 group1:{{ product_group }}
 group2:{{ product_group2 }}
-{% assign product = product_group | split: ',' %}
+{% assign product = product_group | split: '"' %}
 
 
 {% for product in product_group %}
