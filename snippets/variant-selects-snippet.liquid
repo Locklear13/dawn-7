@@ -11,7 +11,7 @@
 {% assign product = product_group | split: ',' %}
 
 
-
+{% for product in product_group %}
 {%- unless product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
                   <variant-radios
@@ -118,3 +118,4 @@
                   </div>
                 </div>
               </noscript>
+  {% endfor %}
