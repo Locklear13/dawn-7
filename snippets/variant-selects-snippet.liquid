@@ -7,7 +7,7 @@
 {% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
 
 {% for associate in associates  %}
-{%- unless associate.has_only_default_variant -%}
+{%- unless product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
                   <variant-radios
                     class="no-js-hidden"
@@ -36,7 +36,7 @@
                       </fieldset>
                     {%- endfor -%}
                     <script type="application/json">
-                      {{ associate.variants | json }}
+                      {{ product.variants | json }}
                     </script>
                   </variant-radios>
                 {%- else -%}
@@ -46,7 +46,7 @@
                     data-url="{{ product.url }}"
                     {{ block.shopify_attributes }}
                   >
-                    {%- for option in associate.options_with_values -%}
+                    {%- for option in product.options_with_values -%}
                       <div class="product-form__input product-form__input--dropdown">
                         <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
                           {{ option.name }}
@@ -75,7 +75,7 @@
                     {%- endfor -%}
 
                     <script type="application/json">
-                      {{ associate.variants | json }}
+                      {{ product.variants | json }}
                     </script>
                   </variant-selects>
                 {%- endif -%}
@@ -85,7 +85,7 @@
               <noscript class="product-form__noscript-wrapper-{{ section.id }}">
                 <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
                   <label class="form__label" for="Variants-{{ section.id }}">
-                    {{- 'products.associate.product_variants' | t -}}
+                    {{- 'products.product.product_variants' | t -}}
                   </label>
                   <div class="select">
                     <select
@@ -94,7 +94,7 @@
                       class="select__select"
                       form="{{ product_form_id }}"
                     >
-                      {%- for variant in associate.variants -%}
+                      {%- for variant in product.variants -%}
                         <option
                           {% if variant == product.selected_or_first_available_variant %}
                             selected="selected"
@@ -105,7 +105,7 @@
                           value="{{ variant.id }}"
                         >
                           {{ variant.title }}
-                          {%- if variant.available == false %} - {{ 'products.associate.sold_out' | t }}{% endif %}
+                          {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
                           - {{ variant.price | money | strip_html }}
                         </option>
                       {%- endfor -%}
