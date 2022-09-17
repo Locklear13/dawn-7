@@ -9,7 +9,7 @@
 %}
 {% assign product_group = "associatedProduct0, associatedProduct1, associatedProduct2, associatedProduct3, associatedAccentPanels, associatedChecklist, associatedChecklistList" %}
 
-{% assign product_group2 = product.metafields.associated_products.key.value %}
+{% assign product_group2 = product.metafields.associated_products.key %}
 group1:{{ product_group }}
 group2:{{ product_group2 }}
 {% assign product = product_group | split: ',' %}
