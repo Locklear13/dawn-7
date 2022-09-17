@@ -1,5 +1,5 @@
 {% liquid
-    assign associatedProduct0 = product.id
+    assign associatedProduct0 = product.id.value
 	assign associatedProduct1 = product.metafields.associated_products.associated-1.value
 	assign associatedProduct2 = product.metafields.associated_products.associated-2.value
 	assign associatedProduct3 = product.metafields.associated_products.associated-3.value
@@ -7,7 +7,7 @@
 	assign associatedChecklist = product.metafields.associated_products.checklist.value
     assign associatedChecklistList = product.metafields.associated_products.checklist_list.value  
 %}
-{% assign product_group = associatedProduct0, associatedProduct1, associatedProduct2, associatedProduct3, associatedAccentPanels, associatedChecklist, associatedChecklistList %}
+{% assign product_group = "associatedProduct0, associatedProduct1, associatedProduct2, associatedProduct3, associatedAccentPanels, associatedChecklist, associatedChecklistList" %}
 
 {% assign product_group2 = product.metafields.associated_products.value %}
 {{ product_group }}
