@@ -9,10 +9,10 @@
 %}
 {% assign product_group = "associatedProduct0, associatedProduct1, associatedProduct2, associatedProduct3, associatedAccentPanels, associatedChecklist, associatedChecklistList" %}
 
-group1:{{ product_group }}
+{{ product_group }}
 
-{% assign product = product_group | split: '"' %}
-
+{% assign product = product_group | split: ',' %}
+{{ product }}
 
 {% for product in product_group %}
 {%- unless product.has_only_default_variant -%}
