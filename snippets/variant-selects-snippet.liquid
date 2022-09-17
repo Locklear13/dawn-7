@@ -5,7 +5,7 @@
                           product.metafields.associated_products.checklist.value" | split: ','
 %}
 {% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
-{% assign associate =  associates | split:',' %}
+
 {% for associate in associates  %}
 {%- unless associate.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
