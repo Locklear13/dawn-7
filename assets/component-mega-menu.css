@@ -36,7 +36,7 @@
 }
 
 .mega-menu__list {
-  display: flex;
+  display: inline-flex;
   align-content: space-evenly;
   gap: 2.4rem 4rem;
   grid-template-columns: repeat(6, minmax(0, 1fr));
