@@ -1,3 +1,17 @@
+{% liquid
+    assign associatedProduct0 = product.id
+	assign associatedProduct1 = product.metafields.associated_products.associated-1.value
+	assign associatedProduct2 = product.metafields.associated_products.associated-2.value
+	assign associatedProduct3 = product.metafields.associated_products.associated-3.value
+	assign associatedAccentPanels = product.metafields.associated_products.accents.value
+	assign associatedChecklist = product.metafields.associated_products.checklist.value
+    assign associatedChecklistList = product.metafields.associated_products.checklist_list.value  
+%}
+{% assign product_group = associatedProduct0, associatedProduct1, associatedProduct2, associatedProduct3, associatedAccentPanels, associatedChecklist, associatedChecklistList %}
+{% assign product = product_group | split: ',' %}
+
+
+
 {%- unless product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
                   <variant-radios
