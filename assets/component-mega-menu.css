@@ -87,6 +87,7 @@
 
 .mega-menu .mega-menu__list--condensed {
   display: inline-flex;
+  align-content: space-evenly;
 }
 
 .mega-menu__list--condensed .mega-menu__link {
