@@ -470,7 +470,7 @@
               <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
             {%- when 'variant_picker' -%}
               {% render 'variant-selects-snippet' %}
-              {% render 'linked-options' %}
+              {% render 'linked-options-snippet' %}
             {%- when 'buy_buttons' -%}
               <div {{ block.shopify_attributes }}>
                 <product-form class="product-form">
