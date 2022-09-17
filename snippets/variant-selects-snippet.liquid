@@ -8,6 +8,10 @@
     assign associatedChecklistList = product.metafields.associated_products.checklist_list.value  
 %}
 {% assign product_group = [associatedProduct0, associatedProduct1, associatedProduct2, associatedProduct3, associatedAccentPanels, associatedChecklist, associatedChecklistList] %}
+
+{% assign product_group2 = product.metafields.associated_products.value %}
+{{ product_group }}
+{{ product_group2 }}
 {% assign product = product_group | split: ',' %}
 
 
