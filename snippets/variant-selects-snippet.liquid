@@ -4,6 +4,7 @@
                           product.metafields.associated_products.accents.value,
                           product.metafields.associated_products.checklist.value" | split: ','
 %}
+{% assign associate = associates | split: ',' %}
 {% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
 
 {% for associate in associates  %}
@@ -13,7 +14,7 @@
                     class="no-js-hidden"
                     data-section="{{ section.id }}"
                     data-url="{{ associate.url }}"
-                    {{ block.shopify_attributes }}
+                   
                   >
                     {%- for option in associate.options_with_values -%}
                       <fieldset class="js product-form__input">
