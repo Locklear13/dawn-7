@@ -9,7 +9,7 @@
 
 {% for associatedProduct1 in associates %}
 
- {% case associate %}
+ {% case associatedProduct1  %}
 <!-- ASSOCIATED PRODUCT 1 DROPDOWN -->
         	{% when 'DROPDOWN' %}          
             <div class="select-container flex">
@@ -21,7 +21,7 @@
               </div>
               <!--name="webmenu" is="ms-dropdown"-->
               <select  id="associatedProduct1-select" name="webmenu" is="ms-dropdown" placeholder="{{ associatedProduct1.title }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto" onChange="tfAssociatedChange();">
-                 {% if product.metafields.associated_products.associated-1-req != true %}
+                 {% if associatedProduct1-req != true %}
                   <option value="" data-price="0" data-vid="" data-image="">
                  
                   <span style="text-2xl">{% if associatedVariant.title contains "Warn" %}ADD A WINCH{% else %}SELECT AN OPTION{% endif %}</span> ▾{% render 'icon-caret' %}
