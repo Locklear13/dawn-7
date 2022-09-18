@@ -8,7 +8,56 @@
 {% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
 
 {% for associatedProduct1 in associates %}
-
+<div id="tfAssociatedProductsWrapper" class="associated-product-variants">
+  <div class="pl-4 w-full">
+    <form id="associatedProductForm" class="product-form">  
+<!-- ORIGINAL PRODUCT 1 DROPDOWN -->
+       <div class="no-js-hidden assoc-wrap" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+              <!-- <div class="option-label ass-tit text-3xl bold">{{ product.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }} Options</div> 
+               -->
+               <div class="options-container flex">
+                  {%- for option in product.options_with_values -%}
+                      <div class=" text-left">
+                        <label class="text-left block ass-tit text-3xl bold" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                          {{ option.name }}
+                        </label>
+                        <div class="select ">
+                          <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                            class="dropdown w-full form-control-lg text-2xl gap-5" 
+                            name="options[{{ option.name | escape }}]"
+                            form="{{ product_form_id }}"
+                            onClick="tfAssociatedChange();" 
+                            {% if value contains "Custom" %}modal-open{% endif %}
+                          >
+                            { {%- for value in option.values -%}
+                           <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %} {% if value contains "custom" %}class="customDraxx"{% endif %} >
+                             {% if value contains "Color" %}{{ product.type | split: '' | remove_last }}{% endif %} {{ value }}
+                            </option>
+                          {%- endfor -%}
+                          </select>
+                          {% render 'icon-caret' %}
+                        </div>
+                      </div>
+                    {%- endfor -%} 
+                </div>
+                <script type="application/json">
+                  {{ product.variants | json }}
+                </script>
+            </div>
+      <!--******************************************************************/-->
+      <!--*                      ASSOCIATED PRODUCT 1                      */-->
+      <!--******************************************************************/-->                          
+      {% if associatedProduct1 != blank %}
+      <div id="tfAssociatedProduct1-wrapper" class="assoc-wrap">
+        <div id="associatedProduct1Title" class="ass-tit text-3xl bold">
+          {%- if associatedProduct1.metafields.global.display_name != blank -%}
+          	{{ associatedProduct1.metafields.global.display_name | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+          {%- else -%}
+          	{{ associatedProduct1.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+          {%- endif -%}
+        </div>
+        
+          
  {% case associatedProduct1  %}
 <!-- ASSOCIATED PRODUCT 1 DROPDOWN -->
         	{% when 'DROPDOWN' %}          
@@ -137,5 +186,9 @@
                         {%- endfor -%}
                       </fieldset>
         {% endcase %}
-      </div>
+      </div>{% endif %}
       {% endfor %}
+    </form>
+  </div>
+</div>
+  
