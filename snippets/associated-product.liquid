@@ -1,0 +1,404 @@
+{% liquid
+	assign associatedProduct1 = product.metafields.associated_products.associated-1.value
+	assign associatedProduct2 = product.metafields.associated_products.associated-2.value
+	assign associatedProduct3 = product.metafields.associated_products.associated-3.value
+	assign associatedAccentPanels = product.metafields.associated_products.accents.value
+	assign associatedChecklist = product.metafields.associated_products.checklist.value
+    assign associatedChecklistList = product.metafields.associated_products.checklist_list.value
+%}
+
+<style>
+  .assoc-img {
+    margin: 10px 5px 10px 5px; 
+    display: inline-flex;
+    border-radius: 10px; 
+    border: 2px solid #ccc;
+    /*box-shadow: 1px 1px 3px #999;*/
+  }
+
+  .assoc-wrap {
+    padding-bottom: 2rem;  
+  }
+  .associatedOption { 
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+
+</style>
+
+<div id="tfAssociatedProductsWrapper" class="associated-product-variants">
+  <div class="pl-4 w-full">
+    <form id="associatedProductForm" class="product-form">  
+<!-- ORIGINAL PRODUCT 1 DROPDOWN -->
+       <div class="no-js-hidden assoc-wrap" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+              <!-- <div class="option-label ass-tit text-3xl bold">{{ product.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }} Options</div> 
+               -->
+               <div class="options-container flex">
+                  {%- for option in product.options_with_values -%}
+                      <div class=" text-left">
+                        <label class="text-left block ass-tit text-3xl bold" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                          {{ option.name }}
+                        </label>
+                        <div class="select ">
+                          <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                            class="dropdown w-full form-control-lg text-2xl gap-5" 
+                            name="options[{{ option.name | escape }}]"
+                            form="{{ product_form_id }}"
+                            onClick="tfAssociatedChange();" 
+                            {% if value contains "Custom" %}modal-open{% endif %}
+                          >
+                            { {%- for value in option.values -%}
+                           <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %} {% if value contains "custom" %}class="customDraxx"{% endif %} >
+                             {% if value contains "Color" %}{{ product.type | split: '' | remove_last }}{% endif %} {{ value }}
+                            </option>
+                          {%- endfor -%}
+                          </select>
+                          {% render 'icon-caret' %}
+                        </div>
+                      </div>
+                    {%- endfor -%} 
+                </div>
+                <script type="application/json">
+                  {{ product.variants | json }}
+                </script>
+            </div>
+      <!--******************************************************************/-->
+      <!--*                      ASSOCIATED PRODUCT 1                      */-->
+      <!--******************************************************************/-->                          
+      {% if associatedProduct1 != blank %}
+      <div id="tfAssociatedProduct1-wrapper" class="assoc-wrap">
+        <div id="associatedProduct1Title" class="ass-tit text-3xl bold">
+          {%- if associatedProduct1.metafields.global.display_name != blank -%}
+          	{{ associatedProduct1.metafields.global.display_name | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+          {%- else -%}
+          	{{ associatedProduct1.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+          {%- endif -%}
+        </div>
+        
+          
+        {% case product.metafields.associated_products.associated-prod-1-type.value %}
+<!-- ASSOCIATED PRODUCT 1 DROPDOWN -->
+        	{% when 'DROPDOWN' %}
+            {%- for associatedVariant in associatedProduct1.variants -%}
+        	<img height="100" width="100" src="{{ associatedVariant.image | img_url: "100x100" }}" class="assoc-img" />
+            {%- endfor -%}
+            <select id="associatedProduct1-select" placeholder="Select {{ associatedProduct1.title }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto" onChange="tfAssociatedChange();">
+               {% if product.metafields.associated_products.associated-1-req != true %}
+                <option value="false" data-price="0" data-vid="" data-image="">
+                SELECT AN OPTION
+                </option>
+                {% endif %}
+              {% if associatedProduct1.has_only_default_variant %}
+              <option
+                      value="{{ associatedProduct1.id }}" 
+                      class="associatedOption associatedProduct1Option" 
+                      data-price="{{ associatedProduct1.price }}" 
+                      data-sku="{{ associatedProduct1.sku }}" 
+                      data-variantId="{{ associatedProduct1.id }}" 
+                      data-image="{{ associatedProduct1.image | img_url }}" 
+                      data-product-title="{{ associatedProduct1.title }}" 
+                      data-variant_title=""	
+                      onClick="tfAssociatedChange();" 
+                      >{{ associatedProduct1.title }} {{ associatedProduct1.price | money | strip_html }}</option>
+              {% else %}
+              {%- for associatedVariant in associatedProduct1.variants -%}
+              <option class="associatedOption associatedProduct1Option" 
+                      value="{{ associatedVariant.id }}" 
+                      data-variant_title="{{ associatedVariant.title | escape }}" 
+                      data-product_title="{{ associatedProduct1.title | escape }}" 
+                      data-variant_id="{{ associatedVariant.id }}" 
+                      data-sku="{{ associatedVariant.sku }}" 
+                      data-price="{{ associatedVariant.price }}" 
+                      data-image="{{ associatedVariant.image | img_url: "1024x1024" }}"
+                      onClick="tfAssociatedChange();">
+                ▸ {{ associatedVariant.title }} +{{ associatedVariant.price | money }}
+              </option>
+              {%- endfor -%}
+              {% endif %}
+            </select>
+<!-- ASSOCIATED PRODUCT 1 CHECKBOX -->
+        	{% when 'CHECKBOX' %}
+           <div id="checkbox" class="w-full flex p-2 pr-5">
+                  	<!--<img height="100" width="100" src="{{ associatedProduct1.featured_image | img_url: "100x" }}" />-->
+					{%- for associatedVariant in associatedProduct1.variants -%}
+                      <input type="checkbox" id="associatedChecklist-{{ associatedProduct1.id }}-{{ forloop.index0 }}" 
+                             name="{{ associatedVariant.id }}" 
+                             value="{{ associatedVariant.title | escape }}" 
+                             onChange="tfAssociatedChange();" 
+                             onClick="tfAssociatedChange();" 
+                             form="{{ product_form_id }}" 
+                             data-product_title="{{ associatedProduct1.title | escape }}" 
+                             data-variant_title="{{ associatedVariant.title | escape }}" 
+                             data-sku="{{ associatedVariant.sku }}" 
+                             data-price="{{ associatedVariant.price }}" 
+                             data-variant_id="{{ associatedVariant.id }}" 
+                             data-image="{{ associatedVariant.image | img_url: "1024x1024" }}" 
+                             class="associatedChecklist-INPUT associatedOption associatedChecklistOption variant-radios-input"                      
+                             />
+                      <label class="associatedChecklist-LABEL variant-radios-label align-center justify-center" for="associatedChecklist-{{ associatedVariant.id }}-{{ forloop.index0 }}">                                                   
+                        <div id="optionCard" class="stuffNthangs flex flex-wrap items-center justify-center">
+                          <div class="w-full h-full align-center p-2 flex items-center justify-center" style="flex-direction:column">
+                            <div>
+                              <img src="{{ associatedVariant.image | img_url: "96x" | format: 'pjpg' }}" width="96" height="96" class="optionCardImage" style="max-width:unset;" />
+                              <br />
+                            </div>
+                             <div class="checkboxes">
+                              {{ associatedVariant.title }}
+                            </div>
+                          </div>
+                        </div>
+                      </label>
+                  {% endfor %}
+                </div>
+<!-- ASSOCIATED PRODUCT 1 RADIO -->
+        	{% when 'RADIO' %}
+        		<fieldset class="fieldset js product-form__input radio-wrapper variant-radios-fieldset">
+                  <img height="100" width="100" src="{{ associatedProduct1.featured_image | img_url: "100x" }}" />
+                	<legend class="form__label variant-radio-legend w-full p-1">{{ associatedProduct1.title }}</legend>
+                  		<input type="radio" id="none-radio"
+                                 name="{{ associatedProduct1.id }}"
+                                 value="false"
+								 data-product_title="" 
+                             	 data-variant_title="" 
+                                 data-sku="" 
+                                 data-price="0" 
+                                 data-variant_id="" 
+                                 data-image="" 
+                                 onClick="tfAssociatedChange();" 
+                                onChange="tfAssociatedChange();" 
+                                 class="associatedChecklist-INPUT associatedChecklistOption variant-radios-input"
+                         >
+                            <label class="variant-radios-label" for="none-radio">
+                              None
+                            </label>
+          			{%- for associatedVariant in associatedProduct1.variants -%} 			                  
+                          <input type="radio" id="{{ associatedVariant.id }}-radio"
+                                 name="{{ associatedProduct1.id }}"
+                                 value="{{ associatedVariant.id | escape }}"
+								 data-product_title="{{ associatedProduct1.title | escape }}" 
+                             	 data-variant_title="{{ associatedVariant.title | escape }}" 
+                                 data-sku="{{ associatedVariant.sku }}" 
+                                 data-price="{{ associatedVariant.price }}" 
+                                 data-variant_id="{{ associatedVariant.id }}" 
+                                 data-image="{{ associatedVariant.image | img_url: "1024x1024" }}" 
+                                 onClick="tfAssociatedChange();" 
+                                 onChange="tfAssociatedChange();" 
+                                 class="associatedChecklist-INPUT associatedOption associatedChecklistOption variant-radios-input"
+                                 >
+                            <label class="variant-radios-label" for="{{ associatedVariant.id }}-radio">
+                              {{ associatedVariant.title }} {{ associatedVariant.price | money | strip_html }}
+                            </label>
+                        {%- endfor -%}
+                      </fieldset>
+        {% endcase %}
+      </div>
+      {% endif %}
+      <!--/******************************************************************/-->
+      <!--/*                      ASSOCIATED PRODUCT 2                      */-->
+      <!--/******************************************************************/-->
+      {% unless associatedProduct2 == blank %}
+      <div id="tfAssociatedProduct2-wrapper" class="assoc-wrap">
+        <div id="associatedProduct2Title" class="ass-tit text-3xl bold">
+          {%- if associatedProduct1.metafields.global.display_name != blank -%}
+          	{{ associatedProduct2.metafields.global.display_name | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+          {%- else -%}
+          	{{ associatedProduct2.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+          {%- endif -%}
+        </div>
+         {%- for associatedVariant in associatedProduct2.variants -%}
+        	<img height="100" width="100" src="{{ associatedVariant.image | img_url: "100x100" }}" class="assoc-img" />
+        {%- endfor -%}
+        <select id="associatedProduct2-select" placeholder="Select {{ associatedProduct2.title }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto" onClick="tfAssociatedChange();" onChange="tfAssociatedChange();">
+          {% if product.metafields.associated_products.associated-1-req != true %}
+          <option value="false" data-price="0" data-vid="" data-image="" selected="selected">
+            SELECT AN OPTION
+          </option>
+          {% endif %}
+          {% if associatedProduct2.has_only_default_variant %}
+          <option
+                  value="{{ associatedProduct2.id }}"
+                  class="associatedOption associatedProduct2Option" 
+                  data-price="{{ associatedProduct2.price }}" 
+                  data-sku="{{ associatedProduct2.sku }}" 
+                  data-variantId="{{ associatedProduct2.id }}" 
+                  data-image="{{ associatedProduct2.image | img_url }}" 
+                  data-product-title="{{ associatedProduct2.title }}" 
+                  data-variant_title="" 
+                  onClick="tfAssociatedChange();" 
+                  > 
+                  {{ associatedProduct2.title }} {{ associatedProduct2.price | money | strip_html }}</option>
+          {% else %}
+          {%- for associatedVariant in associatedProduct2.variants -%}
+          <option class="associatedOption associatedProduct2Option" 
+                  value="{{ associatedVariant.id }}" 
+                  data-variant_title="{{ associatedVariant.title | escape }}" 
+                  data-product_title="{{ associatedProduct2.title | escape }}" 
+                  data-variant_id="{{ associatedVariant.id }}" 
+                  data-sku="{{ associatedVariant.sku }}" 
+                  data-price="{{ associatedVariant.price }}" 
+                  data-image="{{ associatedVariant.image | img_url: "1024x1024" }}" 
+            >
+                  ▸ {{ associatedVariant.title | escape }} +{{ associatedVariant.price | money }}
+          </option>
+          {%- endfor -%}
+          {% endif %}
+        </select>
+      </div>
+      {% endunless %}
+      <!--/******************************************************************/-->
+      <!--/*                      ASSOCIATED PRODUCT 3                      */-->
+      <!--/******************************************************************/-->
+      {% unless associatedProduct3 == blank %}
+      <div id="tfAssociatedProduct3-wrapper" class="assoc-wrap">
+        <div id="associatedProduct3Title" class="ass-tit text-3xl bold">
+          {%- if associatedProduct1.metafields.global.display_name != blank -%}
+          	{{ associatedProduct3.metafields.global.display_name | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+          {%- else -%}
+          	{{ associatedProduct3.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+          {%- endif -%}
+        </div>
+         {%- for associatedVariant in associatedProduct3.variants -%}
+        	<img height="100" width="100" src="{{ associatedVariant.image | img_url: "100x100" }}" class="assoc-img" />
+       {%- endfor -%}
+            <select id="associatedProduct3-select" 
+                placeholder="Select {{ associatedProduct3.title }}:" 
+                class="dropdown w-full form-control-lg text-2xl gap-5" 
+                style="overflow-y: auto" 
+                onClick="tfAssociatedChange();" 
+                onChange="tfAssociatedChange();"
+            >
+          {% if product.metafields.associated_products.associated-1-req != true %}
+          <option value="false" data-price="0" data-vid="" data-image="" selected="selected">
+          SELECT AN OPTION
+          </option>
+          {% endif %}
+          {% if associatedProduct3.has_only_default_variant %}
+          <option
+                  value="{{ associatedProduct3.id }}"
+                  class="associatedOption associatedProduct3Option" 
+                  data-price="{{ associatedProduct3.price }}" 
+                  data-sku="{{ associatedProduct3.sku }}" 
+                  data-variantId="{{ associatedProduct3.id }}" 
+                  data-image="{{ associatedProduct3.image | img_url }}" 
+                  data-product-title="{{ associatedProduct3.title }}" 
+                  data-variant_title="" 
+                  onClick="tfAssociatedChange();" 
+                  >
+                  {{ associatedProduct3.title }} {{ associatedProduct3.price | money | strip_html }}</option>
+          {% else %}
+          {%- for associatedVariant in associatedProduct3.variants -%}
+          <option class="associatedOption associatedProduct3Option" 
+                  value="{{ associatedVariant.id }}" 
+                  data-variant_title="{{ associatedVariant.title | escape }}" 
+                  data-product_title="{{ associatedProduct3.title | escape }}" 
+                  data-variant_id="{{ associatedVariant.id }}" 
+                  data-sku="{{ associatedVariant.sku }}" 
+                  data-price="{{ associatedVariant.price }}" 
+                  data-image="{{ associatedVariant.image | img_url: "1024x1024" }}" 
+                  >
+                  ▸ {{ associatedVariant.title | escape }} +{{ associatedVariant.price | money }}
+          </option>
+          {%- endfor -%}
+          {% endif %}
+        </select>
+      </div>
+      {% endunless %}
+      <!--/******************************************************************/-->
+      <!--/*                    ASSOCIATED ACCENT PANELS                    */-->
+      <!--/******************************************************************/-->
+      {% unless associatedAccentPanels == blank %}
+      <div id="tfAssociatedAccentPanels-wrapper" class="assoc-wrap">
+        <div id="associatedAccentPanelsTitle" class="ass-tit text-3xl bold">{{ associatedAccentPanels.title | escape }}</div>
+        <img height="100" width="100" src="{{ associatedAccentPanels.featured_image | img_url: "100x100" }}" class="assoc-img"  />
+        <select id="associatedAccentPanels-select" placeholder="Select {{ associatedAccentPanels.title | escape }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto;" onClick="tfAssociatedChange();" onChange="tfAssociatedChange();">
+          <option value="false" data-price="0" data-vid="" data-image="">
+          SELECT AN OPTION
+          </option>
+          {%- for associatedVariant in associatedAccentPanels.variants -%}
+          <option class="associatedOption associatedAccentPanelsOption" value="{{ associatedVariant.id }}" data-variant_title="{{ associatedVariant.title | escape }}" data-product_title="{{ associatedAccentPanels.title | escape }}" data-variant_id="{{ associatedVariant.id }}" data-sku="{{ associatedVariant.sku }}" data-price="{{ associatedVariant.price }}" data-image="{{ associatedVariant.image | img_url: "1024x1024" }}">
+            ▸ {{ associatedVariant.title }} +{{ associatedVariant.price | money }}
+          </option>
+          {%- endfor -%}
+        </select>
+      </div>
+      {% endunless %}
+      <!--/******************************************************************/-->
+      <!--/*                      ASSOCIATED CHECKLIST                      */-->
+      <!--/******************************************************************/-->
+      {% if associatedChecklist != blank %}
+      <div id="tfAssociatedChecklist-wrapper">
+        <div id="associatedChecklistTitle" class="text-3xl bold">
+          ADD ON's
+        </div>
+      {% for associatedProduct in associatedChecklist %}
+        <fieldset class="associatedChecklist-FIELDSET js product-form__input variant-radios-fieldset radio-wrapper">
+          <legend class="associatedChecklist-LEGEND form__label variant-radio-legend hidden">
+            {{ associatedProduct.title }}
+          </legend>
+          <div class="grid grid-cols-2">
+            {%- for associatedVariant in associatedProduct.variants -%}
+            <div class="w-full align-center flex items-center justify-center">
+              <input type="checkbox" id="associatedChecklist-{{ associatedVariant.id }}-{{ forloop.index0 }}" 
+                     name="{{ associatedVariant.id }}" 
+                     value="{{ associatedVariant.title | escape }}" 
+                     onChange="tfAssociatedChange();" 
+                    onClick="tfAssociatedChange();" 
+                     form="{{ product_form_id }}" 
+                     data-product_title="{{ associatedProduct.title | escape }}" 
+                     data-variant_title="{{ associatedVariant.title | escape }}" 
+                     data-sku="{{ associatedVariant.sku }}" 
+                     data-price="{{ associatedVariant.price }}" 
+                     data-variant_id="{{ associatedVariant.id }}" 
+                     data-image="{{ associatedVariant.image | img_url: "1024x1024" }}" 
+                     class="associatedChecklist-INPUT associatedOption associatedChecklistOption variant-radios-input"
+              checked
+                     />
+              <label class="associatedChecklist-LABEL variant-radios-label w-5/6 align-center justify-center" for="associatedChecklist-{{ associatedVariant.id }}-{{ forloop.index0 }}">                                                   
+                <div id="optionCard" class="stuffNthangs flex flex-wrap items-center justify-center">
+                  <div class="w-full align-center flex items-center justify-center">
+                    <div>
+                      <img src="{{ associatedVariant.image | img_url: "200x200" | format: 'pjpg' }}" width="200" height="200" loading="lazy" class="optionCardImage" />
+                      <br />
+                    </div>
+                    <div>
+                      {{ associatedVariant.title }}
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </form> <!-- end associatedProductForm -->
+  </div>
+</div> <!-- end tfAssociatedProductsWrapper -->
+
+
+<style>
+  .affirm-as-low-as {
+    display: none!important;
+  }
+  #checkbox .variant-radios-label {
+    max-height:unset;
+    padding: 1rem;
+    max-width:100px;
+    max-height:150px;
+  }
+  .checkboxes {
+    position: absolute;
+    margin: 80px 0 0 0;
+    word-wrap: wrap;
+    width: 85px;
+    font-weight: 600;
+  }
+  #checkbox input {
+    width: 20px;
+    height: 20px;
+    margin:50px 5px 0 30px;
+  }
+ 
+</style>
