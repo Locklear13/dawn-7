@@ -2,12 +2,12 @@
                           product.metafields.associated_products.associated-2.value,
                           product.metafields.associated_products.associated-3.value,
                           product.metafields.associated_products.accents.value,
-                          product.metafields.associated_products.checklist.value" | split: ','
+                          product.metafields.associated_products.checklist.value" | json
 %}
 
 {% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
-
-{% for associatedProduct1 in associates %}
+{{ associates }}
+{% for associatedProduct in associates %}
 <div id="tfAssociatedProductsWrapper" class="associated-product-variants">
   <div class="pl-4 w-full">
     <form id="associatedProductForm" class="product-form">  
