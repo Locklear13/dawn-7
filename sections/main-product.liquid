@@ -469,8 +469,7 @@
               </share-button>
               <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
             {%- when 'variant_picker' -%}
-              {% render 'variant-selects-snippet' %}
-              {% render 'linked-options-snippet' %}
+              {% render 'associated-product' %}
             {%- when 'buy_buttons' -%}
               <div {{ block.shopify_attributes }}>
                 <product-form class="product-form">
