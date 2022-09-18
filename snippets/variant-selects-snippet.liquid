@@ -2,7 +2,7 @@
                           product.metafields.associated_products.associated-2.value,
                           product.metafields.associated_products.associated-3.value,
                           product.metafields.associated_products.accents.value,
-                          product.metafields.associated_products.checklist.value" | json
+                          product.metafields.associated_products.checklist.value" | split:','| json
 %}
 
 {% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
