@@ -2,7 +2,7 @@
 
 {% assign associatedChecklistList = product.metafields.associated_products.checklist_list.value   %}
 {% assign associatedProduct1 = associates.forloop.index1 %}
-{% for associatedProduct in associates %}
+
 
 <div id="tfAssociatedProductsWrapper" class="associated-product-variants">
   <div class="pl-4 w-full">
@@ -40,6 +40,7 @@
                   {{ product.variants | json }}
                 </script>
             </div>
+      {% for associatedProduct in associates %}
       <!--******************************************************************/-->
       <!--*                      ASSOCIATED PRODUCT 1                      */-->
       <!--******************************************************************/-->                          
