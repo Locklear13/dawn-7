@@ -469,6 +469,9 @@
               </share-button>
               <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
             {%- when 'variant_picker' -%}
+              {% if product.metafields.multi_product.array %}
+                {% render 'product-variants' %}
+              {% else %}
               {%- unless product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
                   <variant-radios
@@ -542,7 +545,7 @@
                   </variant-selects>
                 {%- endif -%}
               {%- endunless -%}
-            
+              {% endif %}
               
               <noscript class="product-form__noscript-wrapper-{{ section.id }}">
                 <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
@@ -637,9 +640,6 @@
                     </div>
                   {%- endform -%}
                 </product-form>
-
-                {% render 'product-variants' %}
-          
 
                 {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
