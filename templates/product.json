@@ -144,6 +144,7 @@
         "image-with-text-1"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/3.01-Embertribe-_Client-Services_-1600x600-72205_1.jpg",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
