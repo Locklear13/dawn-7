@@ -6,7 +6,7 @@
         "vendor": {
           "type": "text",
           "settings": {
-            "text": "{{ product.vendor }}",
+            "text": "{{ product.metafields.global.make.value }}\/{{ product.metafields.global.product_model.value }}",
             "text_style": "uppercase"
           }
         },
