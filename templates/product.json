@@ -35,13 +35,14 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {
           }
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true
+            "show_dynamic_checkout": false
           }
         },
         "description": {
@@ -52,9 +53,9 @@
         "collapsible-row-0": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Materials",
+            "heading": "Features",
             "icon": "leather",
-            "content": "",
+            "content": "<p>{{ product.metafields.global.features | metafield_tag }}<\/p>",
             "page": ""
           }
         },
