@@ -501,10 +501,6 @@
                       {{ product.variants | json }}
                     </script>
                   </variant-radios>
-                  {% if product.metafields.multi-product.array %}
-                {% render 'product-variants' %}
-              {% endif %}
-
                 {%- else -%}
                   <variant-selects
                     class="no-js-hidden"
@@ -641,6 +637,9 @@
                     </div>
                   {%- endform -%}
                 </product-form>
+{% if product.metafields.multi-product.array %}
+                {% render 'product-variants' %}
+              {% endif %}
 
                 {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
