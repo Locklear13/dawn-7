@@ -54,7 +54,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Features",
-            "icon": "leather",
+            "icon": "clipboard",
             "content": "<p>{{ product.metafields.global.features | metafield_tag }}<\/p>",
             "page": ""
           }
@@ -71,9 +71,9 @@
         "collapsible-row-2": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Dimensions",
+            "heading": "Specs",
             "icon": "ruler",
-            "content": "",
+            "content": "<p>{{ product.metafields.global.specs | metafield_tag }}<\/p>",
             "page": ""
           }
         },
