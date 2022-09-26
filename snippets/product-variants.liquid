@@ -6,7 +6,7 @@
 
 <div class="multi-product-container all-variants-container w-full">   
     <div class="info-column">
-        <form action="/cart/add" method="post" class="product-form__inputter">
+        <form action="/cart/add" method="post" id="product_form_id" class="product-form__inputter">
             <div id="product-variants">
                   <div class="option-container flex justify-around block bg-gray-200" style="margin-top:0px;">
                       <div class="no-js-hidden " data-section="{{ section.id }}-{{ forloop.index0 }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
