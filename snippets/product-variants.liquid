@@ -55,6 +55,7 @@
                             {% if variant.available == false %}disabled{% endif %}
                             value="{{ variant.id }}"
                             data-image="{{ variant.image }}" 
+                            form="{{ product_form_id }}"
                             data-sku="{{ variant.sku }}" 
                             data-price="{{ variant.price | money | strip_html }}" 
                             {% if variant.title contains "Custom" %}class="customDraxx"{% endif %} 
