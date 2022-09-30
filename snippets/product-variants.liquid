@@ -17,13 +17,14 @@
                            <div class="options-container">
                               {%- for option in product.options_with_values -%}
                                   <div class="product-form__input--dropdown selector-wrapper variant-selects-option-container">
-                                    <label class="form__label variant-selects-label text-center" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                                    <label class="form__label variant-selects-label text-center" for="tf-option-{{ forloop.index0 }}"">
                                       {{ option.name }}
                                     </label>
                                     <div class="select variant-selects-input-container">
-                                      <select is="ms-dropdown" id="tf-option-{{ forloop.index0 }}"
-                                        class="select__select variant-selects-select"
+                                      <select is="ms-dropdown"                                         
                                         name="options[{{ option.name | escape }}]"
+                                        id="tf-option-{{ forloop.index0 }}"
+                                        class="select__select variant-selects-select"
                                         data-image="{{ variant.image }}"
                                         form="product-variants-form"
                                       >                              
@@ -78,7 +79,7 @@
             <div {{ block.shopify_attributes }}>
                 {%- form 'product', product, id: 'product-variants-form', class: 'product-form__input' -%}
                     {% for product in product_group %}
-                      <input type="hidden" name="Option-{{ section.id }}-{{ forloop.index }}" value="{{ product.selected_or_first_available_variant.id }}">
+                      <input type="hidden" name="tf-option-{{ forloop.index0 }}" value="{{ product.selected_or_first_available_variant.id }}">
                     {% endfor %}
                     <input id="draxx" type="hidden" name="properties[Custom Color]" value="">
                     {{ form | payment_terms }}
