@@ -10,7 +10,8 @@
             <div id="product-variants">
                   <div class="option-container flex justify-around block bg-gray-200" style="margin-top:0px;">
                       <div class="no-js-hidden " data-section="{{ section.id }}-{{ forloop.index0 }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-                        {% for product in product.metafields.multi_product.array.value %}
+                        {% assign product-array = product.metafields.multi_product.array.value  %}
+                        {% for product in product-array %}
                            <div class="option-label-">
                             {% comment %}{{ forloop.index }}{% endcomment %}  {{ product.title   | remove: "Compatible" | remove: "Ranger"  | remove: "Rockford Fosgate" | remove: "aluminum" | remove: "Polaris" | remove: "Can-Am" | remove: "-" | remove: "Maverick X3" | remove: "MAX" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }} Options
                            </div>                                                
@@ -30,13 +31,13 @@
                                       >                              
                                         {%- for value in option.values -%}
                                           <option 
-                                            id="cc-dd" 
+                                            id="cc-dd-{{ forloop.index0 }}" 
                                             value="{{ value | escape }}" 
                                             {% if option.selected_value == value %}selected="selected"{% endif %} 
                                             {% if value contains "Custom" %}class="customDraxx"{% endif %} 
                                           >
                                             {{ value }}
-                                          </option>
+                                          </option>                                       
                                         {%- endfor -%}
                                       </select>
                                       {% render 'icon-caret' %}
@@ -45,23 +46,25 @@
                                 {%- endfor -%} 
                             </div>
                         {% endfor %}
+                        {% for variants in product-array | split: ''  %}                                      
                         <script type="application/json">
-                          {{ product.variants | json }}
+                          {{ product.variants | json }}                        
                         </script>
+                        {% endfor %}
                       </div>
                    </div>
                   <noscript class="product-form__noscript-wrapper-{{ section.id }}">
                       <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-                        <label class="form__label text-center" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
+                        <label class="form__label text-center" for="Variants-{{ forloop.index0 }}">{{ 'products.product.product_variants' | t }}</label>
                         <div class="select">
-                          <select is="ms-dropdown" name="id" id="Variants-{{ section.id }}" class="select__select variantSelect" form="{{ product_form_id }}">
+                          <select is="ms-dropdown" name="id" id="Variants-{{ forloop.index0 }}" class="select__select variantSelect" form="product-variants-form">
                             {%- for variant in product.variant -%}
                               <option
                                 {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
                                 {% if variant.available == false %}disabled{% endif %}
                                 value="{{ variant.id }}"
                                 data-image="{{ variant.image }}" 
-                                form="{{ product_form_id }}"
+                                form="product-variants-form"
                                 data-sku="{{ variant.sku }}" 
                                 data-price="{{ variant.price | money | strip_html }}" 
                                 {% if variant.title contains "Custom" %}class="customDraxx"{% endif %} 
@@ -79,7 +82,9 @@
             <div {{ block.shopify_attributes }}>
                 {%- form 'product', product, id: 'product-variants-form', class: 'product-form__input' -%}
                     {% for product in product_group %}
-                      <input type="hidden" name="tf-option-{{ forloop.index0 }}" value="{{ product.selected_or_first_available_variant.id }}">
+                      <input type="hidden" name="form_type" value="product">
+                      <input type="hidden" name="utf8" value="✓">            
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                     {% endfor %}
                     <input id="draxx" type="hidden" name="properties[Custom Color]" value="">
                     {{ form | payment_terms }}
@@ -112,7 +117,7 @@
     </div>
 </div>
 <!-- ADD-TO-CART-FORM -->
-                            {%- form 'product', product, id: 'product-variants-form', class: 'form product-form product-form-form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                            {%- form 'product', product, id: product_form_id, class: 'form product-form product-form-form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" >
                               <div id="product-variants-form" class="product-form__buttons w-full">
 <!-- ADD-TO-CART BUTTON -->
