@@ -489,7 +489,7 @@
                             id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                             name="{{ option.name }}"
                             value="{{ value | escape }}"
-                            form="{{ product_form_id }}"
+                            form="product-variants-form"
                             {% if option.selected_value == value %}
                               checked
                             {% endif %}
