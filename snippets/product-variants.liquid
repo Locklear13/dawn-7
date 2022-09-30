@@ -21,14 +21,19 @@
                                       {{ option.name }}
                                     </label>
                                     <div class="select variant-selects-input-container">
-                                      <select is="ms-dropdown" id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                                      <select is="ms-dropdown" id="tf-option-{{ forloop.index0 }}"
                                         class="select__select variant-selects-select"
                                         name="options[{{ option.name | escape }}]"
                                         data-image="{{ variant.image }}"
-                                        form="{{ product_form_id }}"
+                                        form="product-variants-form"
                                       >                              
                                         {%- for value in option.values -%}
-                                          <option id="cc-dd" value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %} {% if value contains "Custom" %}class="customDraxx"{% endif %} >
+                                          <option 
+                                            id="cc-dd" 
+                                            value="{{ value | escape }}" 
+                                            {% if option.selected_value == value %}selected="selected"{% endif %} 
+                                            {% if value contains "Custom" %}class="customDraxx"{% endif %} 
+                                          >
                                             {{ value }}
                                           </option>
                                         {%- endfor -%}
@@ -44,61 +49,61 @@
                         </script>
                       </div>
                    </div>
-                    <noscript class="product-form__noscript-wrapper-{{ section.id }}">
-                  <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-                    <label class="form__label text-center" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
-                    <div class="select">
-                      <select is="ms-dropdown" name="id" id="Variants-{{ section.id }}" class="select__select variantSelect" form="{{ product_form_id }}">
-                        {%- for variant in product.variant -%}
-                          <option
-                            {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
-                            {% if variant.available == false %}disabled{% endif %}
-                            value="{{ variant.id }}"
-                            data-image="{{ variant.image }}" 
-                            form="{{ product_form_id }}"
-                            data-sku="{{ variant.sku }}" 
-                            data-price="{{ variant.price | money | strip_html }}" 
-                            {% if variant.title contains "Custom" %}class="customDraxx"{% endif %} 
-                          >
-                            {{ variant.title }}
-                            {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-                            - {{ variant.price | money | strip_html }}
-                          </option>
-                        {%- endfor -%}
-                      </select>
-                      {% render 'icon-caret' %}
-                    </div>
-                  </div>
+                  <noscript class="product-form__noscript-wrapper-{{ section.id }}">
+                      <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+                        <label class="form__label text-center" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
+                        <div class="select">
+                          <select is="ms-dropdown" name="id" id="Variants-{{ section.id }}" class="select__select variantSelect" form="{{ product_form_id }}">
+                            {%- for variant in product.variant -%}
+                              <option
+                                {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                                {% if variant.available == false %}disabled{% endif %}
+                                value="{{ variant.id }}"
+                                data-image="{{ variant.image }}" 
+                                form="{{ product_form_id }}"
+                                data-sku="{{ variant.sku }}" 
+                                data-price="{{ variant.price | money | strip_html }}" 
+                                {% if variant.title contains "Custom" %}class="customDraxx"{% endif %} 
+                              >
+                                {{ variant.title }}
+                                {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                                - {{ variant.price | money | strip_html }}
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                          {% render 'icon-caret' %}
+                        </div>
+                      </div>
                 </noscript>
             <div {{ block.shopify_attributes }}>
-              {%- form 'product', product, id: 'product_form_id', class: 'product-form__input' -%}
-                {% for product in product_group %}
-                  <input type="hidden" name="Option-{{ section.id }}-{{ forloop.index }}" value="{{ product.selected_or_first_available_variant.id }}">
-                {% endfor %}
-              <input id="draxx" type="hidden" name="properties[Custom Color]" value="">
-              {{ form | payment_terms }}
-                <button
-                  style="font-weight:700; font-size:2.2rem; font-family:'Rajdhani';"
-                  type="submit"
-                  name="add"
-                  id="add-to-cart"
-                  class="button-prod-page shadow-xl rounded-xl product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
-                {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-                >    
-                    <span>
-                        {%- if product.selected_or_first_available_variant.available -%}
-                            {{ 'products.product.add_to_cart' | t }}
-                        {%- else -%}
-                            {{ 'products.product.sold_out' | t }}
-                        {%- endif -%}
-                    </span>
-                    <div class="loading-overlay__spinner hidden">
-                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                      </svg>
-                    </div>
-                </button>
-              {%- endform -%}
+                {%- form 'product', product, id: 'product-variants-form', class: 'product-form__input' -%}
+                    {% for product in product_group %}
+                      <input type="hidden" name="Option-{{ section.id }}-{{ forloop.index }}" value="{{ product.selected_or_first_available_variant.id }}">
+                    {% endfor %}
+                    <input id="draxx" type="hidden" name="properties[Custom Color]" value="">
+                    {{ form | payment_terms }}
+                      <button
+                            style="font-weight:700; font-size:2.2rem; font-family: 'Rajdhani', Roboto, Arial;"
+                            type="submit"
+                            name="add"
+                            id="add-to-cart"
+                            class="button-prod-page shadow-xl rounded-xl product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                          {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                          >    
+                          <span>
+                              {%- if product.selected_or_first_available_variant.available -%}
+                                  {{ 'products.product.add_to_cart' | t }}
+                              {%- else -%}
+                                  {{ 'products.product.sold_out' | t }}
+                              {%- endif -%}
+                          </span>
+                          <div class="loading-overlay__spinner hidden">
+                            <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                            </svg>
+                          </div>
+                      </button>
+                {%- endform -%}
             </div>
             <div 
           </div> <!-- end all-variants-container -->
