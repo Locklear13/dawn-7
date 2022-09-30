@@ -79,7 +79,9 @@
             <div {{ block.shopify_attributes }}>
                 {%- form 'product', product, id: 'product-variants-form', class: 'product-form__input' -%}
                     {% for product in product_group %}
-                      <input type="hidden" name="tf-option-{{ forloop.index0 }}" value="{{ product.selected_or_first_available_variant.id }}">
+                      <input type="hidden" name="form_type" value="product">
+                      <input type="hidden" name="utf8" value="✓">            
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                     {% endfor %}
                     <input id="draxx" type="hidden" name="properties[Custom Color]" value="">
                     {{ form | payment_terms }}
