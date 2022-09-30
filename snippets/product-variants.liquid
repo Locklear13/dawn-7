@@ -46,7 +46,7 @@
                                 {%- endfor -%} 
                             </div>
                         {% endfor %}
-                        {% for variants in product-array | split: ''  %}                                      
+                        {% for variants in product-array %}                                      
                         <script type="application/json">
                           {{ product.variants | json }}                        
                         </script>
