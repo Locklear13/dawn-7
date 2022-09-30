@@ -557,7 +557,7 @@
                       name="id"
                       id="Variants-{{ section.id }}"
                       class="select__select"
-                      form="{{ product_form_id }}"
+                      form="product-variants-form"
                     >
                       {%- for variant in product.variants -%}
                         <option
@@ -598,7 +598,7 @@
                     <span class="product-form__error-message"></span>
                   </div>
 
-                  {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                  {%- form 'product', product, id: 'product-variants-form', class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                     <input
                       type="hidden"
                       name="id"
