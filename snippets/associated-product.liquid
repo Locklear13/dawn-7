@@ -118,7 +118,7 @@
                         >{{ associatedProduct1.title }} {{ associatedProduct1.price | money | strip_html }}</option>
                 {% else %}
                 {%- for variant in associatedProduct1.variants -%}
-                <option class="associatedOption associatedProduct1Option  {% if variant.title contains "Lo-Brow" %}loBrow{% endif %} {% if variant.title contains "Hi-Brow" %}hiBrow{% endif %}" 
+                <option class="associatedOption associatedProduct1Option {% if variant.title contains "Lo-Brow" %}loBrow{% endif %}{% if variant.title contains "Hi-Brow" %}hiBrow{% endif %}" 
                         value="{{ variant.id }}" 
                         data-variant_title="{{ variant.title | escape }}" 
                         data-product_title="{{ associatedProduct1.title | escape }}" 
@@ -286,12 +286,11 @@
                       data-image="{{ associatedProduct2.image | img_url: '512x', format: 'pjpg' }}" 
                       data-product-title="{{ associatedProduct2.title }}" 
                       data-variant_title="" 
-                      onClick="tfAssociatedChange();" 
                       > 
                       {{ associatedProduct2.title }} {{ associatedProduct2.price | money | strip_html }}</option>
               {% else %}
               {%- for variant in associatedProduct2.variants -%}
-              <option class="associatedOption associatedProduct2Option  {% if variant.title contains "Lo-Brow" %}loBrow{% endif %} {% if variant.title contains "Hi-Brow" %}hiBrow{% endif %}" 
+              <option class="associatedOption associatedProduct2Option {% if variant.title contains "Lo-Brow" %}loBrow{% endif %}{% if variant.title contains "Hi-Brow" %}hiBrow{% endif %}" 
                       value="{{ variant.id }}" 
                       data-variant_title="{{ variant.title | escape }}" 
                       data-product_title="{{ associatedProduct2.title | escape }}" 
