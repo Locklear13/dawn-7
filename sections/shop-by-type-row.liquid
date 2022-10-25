@@ -1,0 +1,86 @@
+/<style>
+  .shop-by-type {
+   	background:linear-gradient(180deg, rgba(255,255,255,1) 90%, rgba(145,145,145,40%) 100%); 
+  }
+  .category-img { 
+    width:90%;
+    height: 90%;
+    text-align:center;
+    margin:5rem auto 1rem;
+    box-shadow: 0px 5px 10px -3px rgb(0 0 0 / 0.8), 0 4px 6px -4px rgb(0 0 0 / 0.8);
+  }
+  .category-img:hover {
+    box-shadow: 0px 0px 10px 0px rgb(255 255 255 / 80%), 0 4px 6px -4px rgb(0 0 0 / 80%);
+  }
+</style>
+
+{% if template contains 'collection' %}
+<div style="margin:0 auto 5rem; text-align:-webkit-center;">
+  <a class="affirm-site-modal" data-page-type="banner">
+    <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/affirm_thin_banner.png?v=1645725197" />
+  </a>
+</div>
+{% endif %}
+<section id="shop-by-type" class="shop-by-type">  
+	<div class="shop-by-TYPE-brand-container w-full flex-wrap justify-center">
+    	<div class="index-section-title w-full text-4xl md:text-5xl lg:text-6xl  text-left pt-5 pl-10 raj-semi text-white">SHOP BY TYPE</div>
+    	<div class="index-section-content w-full">
+          <div class="shop-by-ride-grid w-7/8 bg-gray-600">
+          	<div class="flex flex-wrap overflow-hidden mx-5 sm:mx-5 md:mx-10 lg:mx-20 pb-20 ">
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4 overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/all/accessories">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/accessories_category_card.jpg?v=1640044493" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4  overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/audio">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/audio_category_card.jpg?v=1640044492" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4 overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/bumpers">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/bumpers_category_card.jpg?v=1640044492" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4 overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/cages">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/cages_category_card.jpg?v=1640044492" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4  overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/doors">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/doors_category_card.jpg?v=1640044492" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4  overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/lighting">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/lighting_category_card.jpg?v=1640044492" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4  overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/racks">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/racks_category_card.jpg?v=1655307181" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4  overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/roofs">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/roofs_category_card.jpg?v=1640044492" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4  overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/suspension">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/suspension_category_card_281bd4a1-b3bb-4b08-a245-96069a57d232.jpg?v=1655305273" class="category-img rounded-xl" /></a>
+              </div>
+              <div class="w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4  overflow-hidden justify-center text-center m-auto">
+                <a href="https://thumperfab.com/collections/winches">
+                  <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/winches_category_card.jpg?v=1640044491" class="category-img rounded-xl" /></a>
+              </div>
+            </div>          
+          </div>
+      	</div>
+	</div>
+</section>
+{% schema %}
+  {
+    "name": "Shop By Type",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

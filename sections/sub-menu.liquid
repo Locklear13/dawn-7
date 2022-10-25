@@ -1,0 +1,212 @@
+{% if template contains 'index' or 'product' or 'collection' %}
+
+<!-- DETECT BRAND IN URL -->
+{%- if request.page_type == "collection" -%}
+{% assign url_parts = request.path | split: "/" %}
+{%- endif -%}
+
+{%- if request.page_type == "product" -%}
+{% assign url_parts = product.metafields.global.product_make | downcase %}
+{%- endif -%}
+
+
+{% for part in url_parts %}
+{% case part %}
+{% when "polaris" %}
+{% assign currentBrand = "polaris" %}
+{% assign brandColor = "#305799" %}
+{% assign brandSVG = collections.polaris.metafields.make.svg_data %}
+{% break %}
+{% when "yamaha" %}
+{% assign currentBrand = "yamaha" %}
+{% assign brandColor = "#CCCCCB" %}
+{% assign brandSVG = collections.yamaha.metafields.make.svg_data %}
+{% break %}
+{% when "can" %}
+{% assign currentBrand = "can-am" %}
+{% assign brandColor = "#fdc832" %}
+{% assign brandSVG = collections.can-am.metafields.make.svg_data %}
+{% break %}
+{% when "can-am" %}
+{% assign currentBrand = "can-am" %}
+{% assign brandColor = "#fdc832" %}
+{% assign brandSVG = collections.can-am.metafields.make.svg_data %}
+{% break %}
+{% when "tracker" %}
+{% assign currentBrand = "tracker" %}
+{% assign brandColor = "#3c3c3c" %}
+{% assign brandSVG = collections.tracker.metafields.make.svg_data %}
+{% break %}
+{% when "honda" %}
+{% assign currentBrand = "honda" %}
+{% assign brandColor = "#e0262f" %}
+{% assign brandSVG = collections.honda.metafields.make.svg_data %}
+{% break %}
+{% else %}
+{% assign currentBrand = "" %}
+{% assign brandColor = "#555" %}
+{% endcase %}
+{% endfor %}
+
+<style>
+    .collection-SubMenu-Section {
+      width:100%;
+      /*height:3rem;*/
+      text-align:center;
+      {%- case request.page_type -%} 
+      	{%- when "index"-%} 
+      		display: none;
+      	{%- when "cart"-%} 
+      		display: none;
+      	{%- when "page"-%}
+      		display: none;
+      	{%- when "blog"-%}
+      		display: none;
+        {%- when "policy"-%}
+      		display: none;
+      	{%- else -%}
+      		display: block; 
+      {%- endcase -%}
+    }
+    .collection-SubMenu {
+      display: inline-flex;
+      padding: 0;
+      justify-content: space-around; 
+    }
+    @media screen {
+        .svg-wrapper {
+           /* max-height: 75px;*/
+        }
+    }
+    .svg-wrapper .svg_logo {
+       /* min-width: 200px;
+        /*width:50%; */
+    }
+    @media screen and (min-width: 750px) {
+        .svg-wrapper .svg_logo {
+         /*   min-width: 200px;
+            /*width:16%; */
+        }
+    }
+    @media screen and (min-width: 990px) {
+        .svg-wrapper .svg_logo {
+          /*  min-width: 200px;
+            /*width:25%; */
+        }
+    }
+    .menu {
+      width: 100%;
+      max-height: 3rem;
+      place-items:center;
+    }
+    .menu-items {
+      display:inline-flex;
+      justify-content:center;
+      flex-wrap: wrap;
+      text-shadow:2px 2px 2px rgba(0, 0, 0, 0.8);
+    }
+    .menu-item a {
+      padding:2px 5px;
+      font-family:"Rajdhani";
+      font-weight:500;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration:none;
+    }
+    @media screen and (min-width:950px) {
+        .menu-item a {
+        padding:2px 0.5rem;
+        font-family:"Rajdhani";
+        font-weight:500;
+        font-size: 1.8rem;
+        color: #fff;
+        text-decoration:none;
+      }
+    }
+   @media screen and (min-width:750px) {
+        .menu-item a {
+        padding:2px 7px;
+        font-family:"Rajdhani";
+        font-weight:500;
+        font-size: 2rem;
+        color: #fff;
+        text-decoration:none;
+      }
+    }
+  	.menu-item a:hover {
+      color:#000;
+      text-shadow:0 0 5px #000;
+    }
+    .menu-items a:active {
+      color:#000!important;
+      text-shadow:0 0 5px #000;
+    }
+    .back-arrow-2 {
+      margin-top:-4px;
+    }
+    .back-arrow-2 a {
+      color:#fff;
+    }
+    .submenu { display:block; }
+    @media only screen and (max-width: 749px) {
+      .submenu { display:block; }
+    }
+    @media only screen and (max-width: 950px) {
+      .submenu { display:none; }
+    }
+</style>
+
+{% assign typeArray = "accessories,audio,bumpers,cages,doors,lighting,racks,roofs,suspension,winches" | split: ',' %}
+<div class="submenu collection-SubMenu-Section p-0" style="background-color:#555; background-color:{{ brandColor }};">
+    <div id="collection-SubMenu" class="w-full px-5 md:px-8 lg:px-12 place-self-center">
+        <div class="inline drop-shadow ">
+            <!--<div class="svg-wrapper flex  justify-center" style="width:20%; margin:0 auto; display:contain;">{{ brandSVG }}</div>-->
+        </div>
+        <div class="menu text-center place-self-center">
+          <div class="menu-items">
+            {% if template contains 'collection' %}
+            <div class="back-arrow-2 place-self-center">
+              <script>
+                document.write('<a class="text-5xl flex-start" href="' + document.referrer + '">&#8592;</a>');
+              </script>
+            </div>
+            {% endif %}
+            {% for item in typeArray %}
+            {% if request.path contains product_type %}
+            <div class="{{ item }}-section menu-item shadow-md">
+              <a style="color:black!important;font-weight:500;"
+                 href="/{{ currentBrand }}/{{ product_type }}">{{ product_type }}</a>{{ brandSVG }}
+            </div>
+            {% else %}
+            <!-- ADDED 2/21/2022 TO FIX BROKEN LINKS ON SEM RUSH REPORT -->
+              {% if currentBrand == blank %}
+                  <div class="{{ item }}-section menu-item"><a href="/collections/{{ item | downcase }}">{{ item | upcase }}</a></div>
+              {% else %}
+                  <div class="{{ item }}-section menu-item"><a href="/collections/{{ currentBrand }}/{{ item | downcase }}">{{ item | upcase }}</a></div>
+              {% endif %}
+              <!--XX ADDED 2/21/2022 TO FIX BROKEN LINKS ON SEM RUSH REPORT XX-->
+              {% unless forloop.last %}
+                  <div style="font-weight:900;"></div>
+              {% endunless %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+    </div>
+</div>
+
+  {% endif %}
+  
+    {% schema %}
+    {
+    "name": "Submenu",
+    "settings": []
+    }
+    {% endschema %}
+
+    {% stylesheet %}
+    {% endstylesheet %}
+
+    {% javascript %}
+    {% endjavascript %}
+  

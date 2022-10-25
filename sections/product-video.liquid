@@ -1,0 +1,39 @@
+<style>
+  .product-video-title {
+		background-color: #ccc;
+    	font-family: Rajdhani;
+        -webkit-text-size-adjust: 100%;
+      	-webkit-font-smoothing: antialiased;
+    }
+	.product-video-content {
+		background-color: #eee;
+      	font-family: Roboto;
+      	font-weight: normal;
+      	line-height: 1.6;
+      	font-size: 100%;
+    	-webkit-text-size-adjust: 100%;
+      	-webkit-font-smoothing: antialiased;
+    }
+</style>
+
+{%- if product.metafields.global.video_embed != blank -%}  
+
+<section class="product-video-section w-full flex flex-wrap mx-auto justify-center">
+  	<!--<div class="product-section-title product-video-title w-full text-3xl font-bold p-10 ">
+		PRODUCT VIDEOS
+	</div>-->
+    {% assign videoId = product.metafields.global.video_embed | split: "=" | last %}
+	<div class="product-video-content w-full h-100 p-0" style="min-height: 512px; width:100%; background-image: url('img.youtube.com/vi/{{ videoId }}/maxresdefault.jpg')!important;">
+      <iframe class="w-full h-full" src="{{ product.metafields.global.video_embed | replace: '/watch?v=', '/embed/' }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <!--<iframe width="560" height="315" src="{{ product.metafields.global.video_embed | replace: '/watch?v=', '/embed/' }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+	</div>
+</section>
+	
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Video",
+  "settings": []
+}
+{% endschema %}

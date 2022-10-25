@@ -1,0 +1,91 @@
+<style>
+  .index-section-content {
+    border-top: 0px solid #999; 
+    border-bottom: 0px solid #cfcfcf;
+    text-align: -webkit-center;
+    background-color:transparent;
+  }
+  .brand-sub-menu {
+    padding-top:1rem;
+  }  
+  .brand-sub-menu a {
+    color:#222;
+  }  
+  .brand-sub-menu a:hover {
+    color:#0fa0ea;
+    border-bottom: 2px solid #222; 
+  }
+  .make-logo:hover {
+   	background-color:#ccc;
+    border-radius:10px;
+  }
+  .make-wrapper {
+    align-items:baseline; 
+  }
+</style>
+<section id="shop-by-ride" class="shop-by-ride">
+	<div class="shop-by-ride-brand-container w-full flex-wrap justify-center" style="text-align: -webkit-center;">          	
+{% if template contains 'index' %}
+      <div class="index-section-title w-full text-4xl md:text-5xl lg:text-6xl  bg-gray-400 text-center pl-10 pt-8 pb-5 raj-semi">SHOP BY RIDE</div>
+    	<div class="index-section-content w-full bg-gray-200 justify-center py-10">
+          <div class="shop-by-ride-grid ml-10 mr-10">
+            	<div class="make-wrapper flex flex-wrap overflow-hidden pt-0 pb-10 justify-center">
+                  <div class="make-logo w-1/2 md:w-1/5 pb-8 md:pb-0 overflow-hidden justify-center text-center px-5">
+                        <a href="/collections/can-am">
+                          {% render 'can-am-logo-base64' %}
+                        </a>
+                        <div class="brand-sub-menu text-3xl raj font-semibold">
+                          <a href="https://thumperfab.com/collections/defender">Defender</a>
+                          <span class="text-color:#ccc"> | </span>
+                          <a href="https://thumperfab.com/collections/maverick">Maverick X3</a>
+                        </div>
+                  </div>
+                  <div class="make-logo w-1/2 md:w-1/5 pb-8 md:pb-0  overflow-hidden justify-center text-center px-5">
+                        <a href="/collections/polaris">
+                          {% render 'polaris-logo-base64' %}
+                        </a>
+                        <div class="brand-sub-menu text-3xl raj font-semibold">
+                          <a href="https://thumperfab.com/collections/general">General</a>
+                          <span class="text-color:#ccc"> | </span>
+                          <a href="https://thumperfab.com/collections/polaris-ranger">Ranger</a>
+                          <span class="text-color:#ccc"> | </span>
+                          <a href="https://thumperfab.com/collections/rzr">RZR</a>
+                        </div>
+                  </div>
+                  <div class="make-logo w-1/2 md:w-1/5 pb-8 md:pb-0   overflow-hidden justify-center text-center px-5">
+                        <a href="/collections/honda">
+                          {% render 'honda-logo-base64' %}
+                        </a>
+                        <div class="brand-sub-menu text-3xl raj font-semibold">
+                          <a href="https://thumperfab.com/collections/talon">Talon 1000</a>
+                        </div>
+                  </div>
+                  <div class="make-logo w-1/2 md:w-1/5 pb-8 md:pb-0   overflow-hidden justify-center text-center px-5">
+                        <a href="/collections/tracker">
+                          {% render 'tracker-logo-base64' %}
+                        </a>
+                        <div class="brand-sub-menu text-3xl raj font-semibold">
+                          <a href="https://thumperfab.com/collections/800sx">800SX</a>
+                    	</div>
+                  </div>
+                  <div class="make-logo w-1/2 md:w-1/5 overflow-hidden justify-center text-center px-5" style="text-align:-webkit-center;">
+                    <a href="/collections/yamaha">
+                      {% render 'yamaha-logo-base64' %}
+                    </a>
+                    <div class="brand-sub-menu text-3xl raj font-semibold">
+                      <a href="https://thumperfab.com/collections/yxz">YXZ</a>                         
+                    </div>
+                  </div>
+               </div> 
+             </div>
+        </div>
+{% endif %}        
+	</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Shop By Ride",
+    "settings": []
+  }
+{% endschema %}
