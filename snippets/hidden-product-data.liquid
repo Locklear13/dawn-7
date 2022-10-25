@@ -1,0 +1,158 @@
+<!-- ********************************************************** -->
+<!-- ****           tfShopifyData SECTION                  **** -->
+<!-- ********************************************************** -->
+<!-- HIDDEN DIV CONTAINER....................shopifyProductData -->
+<!-- SELECT BOX HAS ID...................tfShopifyVariantSelect -->
+<!-- SELECT BOX HAS CLASS.......................variantSelector -->
+<!-- INDIVIDUAL OPTIONS HAVE CLASS.........shopifyVariantOption -->
+<!-- IND OPTIONS HAVE DATASET VALUES OF:                        -->
+<!-- price, sku, variantId, image, title                        -->
+<!-- ********************************************************** -->
+<!-- getCurrentShopifyPrice():                                  -->
+<!-- To get the price of the currently selected shopify variant -->
+<!-- or product in JS                                           -->
+<!-- EXAMPLE:    var currentprice = getCurrentShopifyPrice();   -->
+<!-- ********************************************************** -->
+            <div class="hidden" id="shopifyProductData">
+              <select id="tfShopifyVariantSelect" class="hidden variantSelector" form="none">
+                    {%- for variant in product.variants -%}
+                      <option
+                        value="{{ variant.id }}"
+                        class="shopifyVariantOption"
+                        data-price="{{ variant.price }}"
+                        data-sku="{{ variant.sku }}"
+                        data-variantId="{{ variant.id }}"
+                        data-image="{{ variant.image | img_url }}"
+                        data-title="{{ variant.title }}"
+                      >{{ variant.id }}</option>
+                    {%- endfor -%}
+              </select>
+            </div>
+
+<!-- ********************************************************** -->
+<!-- ****           tfAssociatedData SECTION               **** -->
+<!-- ********************************************************** -->
+<!-- HIDDEN DIV CONTAINER.................associatedProductData -->
+<!-- SELECT BOXES HAVE IDS............tfAssociatedVariantSelect -->
+<!-- SELECT BOXES HAVE CLASS....................variantSelector -->
+<!-- IND OPTIONS HAVE CLASS.............associatedVariantOption -->
+<!-- IND OPTIONS HAVE DATASET VALUES OF:                        -->
+<!-- price, sku, variantId, image, title                        -->
+<!-- ********************************************************** -->
+<!-- getCurrentAssociatedPrice():                               -->
+<!-- To get the price of the currently selected associated      -->
+<!-- product(s) in JS. Send a variantId to return a single      -->
+<!-- options price and info                                     -->
+<!-- EXAMPLE: var currentprice = getCurrentAssociatedPrice();   -->
+<!-- ********************************************************** -->
+              
+{% liquid 
+	assign associatedProduct1 = product.metafields.associated_products.associated-1.value
+    assign associatedProduct2 = product.metafields.associated_products.associated-2.value
+    assign associatedProduct3 = product.metafields.associated_products.associated-3.value
+    assign associatedAccentPanels = product.metafields.associated_products.accents.value
+%}
+<div class="hidden" id="associatedProductData" data-totalPrice="">
+  <select id="tfAssociatedProduct1" class="hidden associatedVariantSelector" form="none">
+    {% if associatedProduct1.has_only_default_variant %}
+    <option
+            value="{{ associatedProduct1.selected_or_first_available_variant.id }}"
+            class="associatedVariantOption tfAssociatedProduct1Options"
+            data-price="{{ associatedProduct1.selected_or_first_available_variant.price }}"
+            data-sku="{{ associatedProduct1.selected_or_first_available_variant.sku }}"
+            data-variantId="{{ associatedProduct1.selected_or_first_available_variant.id }}"
+            data-image="{{ associatedProduct1.selected_or_first_available_variant.image | img_url }}"
+            data-title="{{ associatedProduct1.selected_or_first_available_variant.title }}"
+            >{{ associatedProduct1.selected_or_first_available_variant.id }}</option>
+    {% else %}                	
+    {%- for variant in associatedProduct1.variants -%}
+    <option
+            value="{{ variant.id }}"
+            class="associatedVariantOption tfAssociatedProduct1Options"
+            data-price="{{ variant.price }}"
+            data-sku="{{ variant.sku }}"
+            data-variantId="{{ variant.id }}"
+            data-image="{{ variant.image | img_url }}"
+            data-title="{{ variant.title }}"
+            >{{ variant.id }}</option>
+    {%- endfor -%}
+    {% endif %}                
+  </select>
+  
+  <select id="tfAssociatedProduct2" class="hidden associatedVariantSelector" form="none">
+    {% if associatedProduct2.has_only_default_variant %}
+    <option
+            value="{{ associatedProduct2.selected_or_first_available_variant.id }}"
+            class="associatedVariantOption tfAssociatedProduct2Options"
+            data-price="{{ associatedProduct2.selected_or_first_available_variant.price }}"
+            data-sku="{{ associatedProduct2.selected_or_first_available_variant.sku }}"
+            data-variantId="{{ associatedProduct2.selected_or_first_available_variant.id }}"
+            data-image="{{ associatedProduct2.selected_or_first_available_variant.image | img_url }}"
+            data-title="{{ associatedProduct2.selected_or_first_available_variant.title }}"
+            >{{ associatedProduct2.selected_or_first_available_variant.id }}</option>
+    {% else %}  
+    {%- for variant in associatedProduct2.variants -%}
+    <option
+            value="{{ variant.id }}"
+            class="associatedVariantOption tfAssociatedProduct2Options"
+            data-price="{{ variant.price }}"
+            data-sku="{{ variant.sku }}"
+            data-variantId="{{ variant.id }}"
+            data-image="{{ variant.image | img_url }}"
+            data-title="{{ variant.title }}"
+            >{{ variant.id }}</option>
+    {%- endfor -%}
+    {% endif %}
+  </select>
+  
+  <select id="tfAssociatedProduct3" class="hidden associatedVariantSelector" form="none">
+    {% if associatedProduct3.has_only_default_variant %}
+    <option
+            value="{{ associatedProduct3.selected_or_first_available_variant.id }}"
+            class="associatedVariantOption tfAssociatedProduct3Options"
+            data-price="{{ associatedProduct3.selected_or_first_available_variant.price }}"
+            data-sku="{{ associatedProduct3.selected_or_first_available_variant.sku }}"
+            data-variantId="{{ associatedProduct3.selected_or_first_available_variant.id }}"
+            data-image="{{ associatedProduct3.selected_or_first_available_variant.image | img_url }}"
+            data-title="{{ associatedProduct3.selected_or_first_available_variant.title }}"
+            >{{ associatedProduct3.selected_or_first_available_variant.id }}</option>
+    {% else %}  
+    {%- for variant in associatedProduct3.variants -%}
+    <option
+            value="{{ variant.id }}"
+            class="associatedVariantOption tfAssociatedProduct3Options"
+            data-price="{{ associatedProduct3.selected_or_first_available_variant.price }}"
+            data-sku="{{ associatedProduct3.selected_or_first_available_variant.sku }}"
+            data-variantId="{{ associatedProduct3.selected_or_first_available_variant.id }}"
+            data-image="{{ associatedProduct3.selected_or_first_available_variant.image | img_url }}"
+            data-title="{{ associatedProduct3.selected_or_first_available_variant.title }}"
+            >{{ variant.id }}</option>
+    {%- endfor -%}
+    {% endif %}
+  </select>
+  <select id="tfAssociatedAccentPanels" class="hidden associatedVariantSelector" form="none">
+    {% if associatedAccentPanels.has_only_default_variant %}
+    <option
+            value="{{ associatedAccentPanels.selected_or_first_available_variant.id }}"
+            class="associatedVariantOption tfAssociatedAccentPanelsOptions"
+            data-price="{{ associatedAccentPanels.selected_or_first_available_variant.price }}"
+            data-sku="{{ associatedAccentPanels.selected_or_first_available_variant.sku }}"
+            data-variantId="{{ associatedAccentPanels.selected_or_first_available_variant.id }}"
+            data-image="{{ associatedAccentPanels.selected_or_first_available_variant.image | img_url }}"
+            data-title="{{ associatedAccentPanels.selected_or_first_available_variant.title }}"
+            >{{ associatedAccentPanels.selected_or_first_available_variant.id }}</option>
+    {% else %}  
+    {%- for variant in associatedAccentPanels.variants -%}
+    <option
+            value="{{ variant.id }}"
+            class="associatedVariantOption tfAssociatedAccentPanelsOptions"
+            data-price="{{ variant.price }}"
+            data-sku="{{ variant.sku }}"
+            data-variantId="{{ variant.id }}"
+            data-image="{{ variant.image | img_url }}"
+            data-title="{{ variant.title }}"
+            >{{ variant.id }}</option>
+    {%- endfor -%}
+    {% endif %}
+  </select>
+</div>

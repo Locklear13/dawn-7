@@ -1,0 +1,207 @@
+<script src="//cdn.shopify.com/s/files/1/0043/2252/assets/jquery-1.3.2.min.js?0" type="text/javascript"></script>
+<style>
+    .multi-button {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: rgb(185, 28, 28);
+        color: #ffffff;
+        font-size: 2.2rem;
+        width: 100%;
+        text-align: center;
+        font-family: "Rajdhani";
+        font-weight: 700;
+        border-radius: 10px;
+    }
+    .selector-wrapper {
+      font-weight:bold; 
+    }
+    .option-label {
+        background: rgb(204, 204, 204);
+        background: linear-gradient(180deg, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 1) 55%);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-left: 0px;
+        text-transform: uppercase;
+        font-family: "Rajdhani";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.5rem;
+        line-height: calc(1 + .5 / var(--font-body-scale));
+        letter-spacing: .04rem;
+    }
+    .single-option-selector {
+      font-size:1.5rem; 
+      font-family:"Rajdhani";
+    }
+    .multi-button #alttext-image img { display:inline !important;}
+</style>
+
+
+{% assign buy_with = false %}
+{% if product.metafields.associated_products.associated-1 != nil %}
+{% assign buy_with = true %}
+{% assign accessory1 = product.metafields.associated_products.associated-1.value %}
+{% assign accessory2 = product.metafields.associated_products.associated-2.value %}
+{% assign accessory3 = product.metafields.associated_products.associated-3.value %}
+{% assign add_on = product.metafields.global.add-ons.value %}
+{% endif %}
+
+<!--product-block-->
+<div class="multi-product-container w-full mx-auto">
+    <div class="info-column">
+        <form action="/cart/add" method="post" class="cartableProduct">
+          
+            <div id="product-variants">
+                <fieldset class="w-full">
+                    <div class="w-full flex flex-wrap" style="margin-top:0px;">
+<!-------orig product----------------------------------------------------------------------->                      
+                        <div class="w-max-md mb-5 mr-5">
+                            <!--<select id="product-select" name='id'>-->
+                            <div class="option-label">Select Option</div>
+                            <select class="text-2xl" id="product-select-0" name='id[]'>
+                                {%- for variant in product.variants -%}
+                                <option {% if variant==product.selected_or_first_available_variant %}selected="selected"
+                                    {% endif %} {% if variant.available==false %}disabled{% endif %}
+                                    value="{{ variant.id }}">
+                                    {{ variant.title }}
+                                    {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif
+                                    %}
+                                    - {{ variant.price | money | strip_html }}
+                                </option>
+                                {%- endfor -%}
+                            </select>
+                        </div>        
+<!-------associated 1----------------------------------------------------------------------->      
+                        <div class="w-max-none" style="margin-top:0;">
+                            {% if buy_with == true %}
+                            <div class="option-label">{{ accessory1.title }} Options</div>
+                            <select class="text-3xl" id="product-select-1" name='id[]' multiple size="{{ accessory1.variants | size }}">
+                                {%- for variant in accessory1.variants -%}
+                                <option {% if variant==product.selected_or_first_available_variant %}selected="selected"
+                                    {% endif %} {% if variant.available==false %}disabled{% endif %}
+                                    value="{{ variant.id }}">
+                                    {{ variant.title }}
+                                    {%- if variant.available == false %} - {{ 'accessory1.product.sold_out' | t }}{% endif
+                                    %}
+                                    - {{ variant.price | money | strip_html }}
+                                </option>
+                                {%- endfor -%}
+                            </select>
+                            {% endif %}
+            			</div>
+<!-------associated 2----------------------------------------------------------------------->      
+                        <div class="w-max-none" style="margin-top:0;">
+                            {% if buy_with == true %}
+                            <div class="option-label">{{ accessory2.title }} Options</div>
+                            <select class="text-3xl" id="product-select-2" name='id[]' multiple size="{{ accessory2.variants | size }}">
+                                {%- for variant in accessory2.variants -%}
+                                <option {% if variant==product.selected_or_first_available_variant %}selected="selected"
+                                    {% endif %} {% if variant.available==false %}disabled{% endif %}
+                                    value="{{ variant.id }}">
+                                    {{ variant.title }}
+                                    {%- if variant.available == false %} - {{ 'accessory2.product.sold_out' | t }}{% endif
+                                    %}
+                                    - {{ variant.price | money | strip_html }}
+                                </option>
+                                {%- endfor -%}
+                            </select>
+                            {% endif %}
+            			</div>
+<!-------associated 3----------------------------------------------------------------------->      
+                        <div class="w-max-none" style="margin-top:0;">
+                            {% if buy_with == true %}
+                            <div class="option-label">{{ accessory3.title }} Options</div>
+                            <select class="text-3xl" id="product-select-3" name='id[]' multiple size="{{ accessory3.variants | size }}">
+                                {%- for variant in accessory3.variants -%}
+                                <option class="option-name" {% if variant==product.selected_or_first_available_variant %}selected="selected"
+                                    {% endif %} {% if variant.available==false %}disabled{% endif %}
+                                    value="{{ variant.id }}">
+                                    {{ variant.title }}
+                                    {%- if variant.available == false %} - {{ 'accessory3.product.sold_out' | t }}{% endif
+                                    %}
+                                    - {{ variant.price | money | strip_html }}
+                                </option>
+                                {%- endfor -%}
+                            </select>
+                            {% endif %}
+            			</div>                      
+    
+                  </div>                 
+              </fieldset>
+           {% render 'cage-add-ons' %}
+            <div id="product-variant"><!-----broken on purpose --->
+                <fieldset class="w-full">
+                        <div class="w-full">
+                            <div class="option-label">Select Add-Ons</div>
+
+                            <select class="text-3xl" id="product-select-4" name='id[]' multiple size="{{ accessory3.variants | size }}">
+                                {%- for variant in accessory3.variants -%}
+                                <option {% if variant==product.selected_or_first_available_variant %}selected="selected"
+                                    {% endif %} {% if variant.available==false %}disabled{% endif %}
+                                    value="{{ variant.id }}">
+                                    {{ variant.title }}
+                                    {%- if variant.available == false %} - {{ 'accessory3.product.sold_out' | t }}{% endif
+                                    %}
+                                    - {{ variant.price | money | strip_html }}
+                                </option>
+                                {%- endfor -%}
+                            </select>
+                        </div>
+                 <div class="multiselect-wrapper" id="testSelect1_multiSelect">
+                    <div class="multiselect-input-div">
+                      <input  id="product-select-4" class="multiselect-input" type="text">
+                      <label id="testSelect1_inputCount" class="multiselect-count" for="product-select-4" style="visibility: visible; left: -45px;">5</label>
+                      <label class="multiselect-dropdown-arrow" for="product-select-2" style="margin-left: -42px;">
+                      </label>
+                    </div>
+                    <div id="product-selelct-4" class="multiselect-list">
+                    <span style="display: block;">
+                 
+                    <ul>
+                      {%- for variant in add_on.variants -%}
+                      <li class="active" style="display: block;">
+                        <label>
+                          <input class="multiselect-checkbox" type="checkbox" >
+                          <span class="multiselect-text">{{ variant.title }}</span>
+                        </label>
+                      </li>
+                      {% endfor %}
+                      </ul>
+                      </span>
+                   </div></div>
+                </fieldset>
+                <div id="price-field"></div>
+            </div>
+          </div>
+            <button class="multi-button" type="image" src="#" name="add" value="ADD TO CART" id="purchase" />
+        </form>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    // <![CDATA[  
+    var selectCallback = function (variant, selector) {
+        if (variant && variant.available == true) {
+            // selected a valid variant
+            jQuery('#purchase').removeClass('disabled').removeAttr('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+            jQuery('#price-field').html(Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}} ));  // update price field
+        } else {
+            // variant doesn't exist
+            jQuery('#purchase').addClass('disabled').attr('disabled', 'disabled');      // set add-to-cart button to unavailable class and disable button
+             var message = variant ? "Sold Out" : "Unavailable";    
+             jQuery('#price-field').html(message); // update price-field message
+        }
+    };
+
+    // initialize multi selector for product
+    jQuery(function () {
+        new Shopify.OptionSelectors("product-select-0", { product: {{ product | json }}, onVariantSelected: selectCallback });
+        new Shopify.OptionSelectors("product-select-1", { product: {{ accessory1 | json }}, onVariantSelected: selectCallback });
+        new Shopify.OptionSelectors("product-select-2", { product: {{ accessory2 | json }}, onVariantSelected: selectCallback });
+        new Shopify.OptionSelectors("product-select-3", { product: {{ accessory3 | json }}, onVariantSelected: selectCallback });
+        new Shopify.OptionSelectors("product-select-4", { product: {{ accessory3 | json }}, onVariantSelected: selectCallback });
+ 
+	});
+	// ]]>
+</script>
