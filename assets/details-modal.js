@@ -42,7 +42,7 @@ class DetailsModal extends HTMLElement {
     document.body.addEventListener('click', this.onBodyClickEvent);
     document.body.classList.add('overflow-hidden');
 
-    trapFocus(
+    this.trapFocus(
       this.detailsContainer.querySelector('[tabindex="-1"]'),
       this.detailsContainer.querySelector('input:not([type="hidden"])')
     );
