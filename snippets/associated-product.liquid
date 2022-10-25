@@ -107,7 +107,7 @@
                 {% if associatedProduct1.has_only_default_variant %}
                 <option
                         value="{{ associatedProduct1.id }}" 
-                        class="associatedOption associatedProduct1Option" 
+                        class="associatedOption associatedProduct1Option {% if associatedProduct1.title contains "Lo-Brow" %}loBrow{% endif %} {% if associatedProduct1.title contains "Hi-Brow" %}hiBrow{% endif %}" 
                         data-price="{{ associatedProduct1.price }}" 
                         data-sku="{{ associatedProduct1.sku }}" 
                         data-variantId="{{ associatedProduct1.id }}" 
@@ -279,7 +279,7 @@
               {% if associatedProduct2.has_only_default_variant %}
               <option
                       value="{{ associatedProduct2.id }}"
-                      class="associatedOption associatedProduct2Option" 
+                      class="associatedOption associatedProduct2Option  {% if associatedProduct2.title contains "Lo-Brow" %}loBrow{% endif %} {% if associatedProduct2.title contains "Hi-Brow" %}hiBrow{% endif %}" 
                       data-price="{{ associatedProduct2.price }}" 
                       data-sku="{{ associatedProduct2.sku }}" 
                       data-variantId="{{ associatedProduct2.id }}" 

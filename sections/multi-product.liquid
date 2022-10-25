@@ -724,7 +724,7 @@ var doneBeenSubmitted = false;
                                   >
                                     {%- for value in option.values -%}
                                       <option 
-                                        class="VSO-DROPDOWN-INPUT {% if value contains "Lo-Brow" %}loBrow{% endif %} {% if value contains "Hi-Brow" %}hiBrow{% endif %}" 
+                                        class="VSO-DROPDOWN-INPUT" 
                                         value="{{ value | escape }}" 
                                         {% if option.selected_value == value %}checked{% endif %}
                                       >
