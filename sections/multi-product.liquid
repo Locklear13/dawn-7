@@ -72,7 +72,7 @@ var doneBeenSubmitted = false;
 
 </script>
 <script src="{{ 'thumper-product.js' | asset_url }}"></script>
-{% style %}
+<style>
   .itoris-dynamicoptions-swatch_html {
     font-weight:semibold;
     font-family:"Rajdhani";
@@ -459,9 +459,8 @@ var doneBeenSubmitted = false;
   margin: 1rem 1rem 0 0;
   padding: 0.5rem 2rem;
 }
-{% endstyle %}
+</style>
 
-<!-- END DETECT BRAND IN URL -->
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
 {%- assign productPictures = product.media | where: "media_type", "image" -%}
 {%- if first_3d_model -%}
@@ -724,7 +723,11 @@ var doneBeenSubmitted = false;
                                     onClick="tfAssociatedChange();"      
                                   >
                                     {%- for value in option.values -%}
-                                      <option class="VSO-DROPDOWN-INPUT" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                                      <option 
+                                        class="VSO-DROPDOWN-INPUT {% if value contains "lo-brow" %}loBrow{% endif %} {% if value contains "hi-brow" %}hiBrow{% endif %}" 
+                                        value="{{ value | escape }}" 
+                                        {% if option.selected_value == value %}checked{% endif %}
+                                      >
                                         {{ value }}
                                       </option>
                                     {%- endfor -%}
