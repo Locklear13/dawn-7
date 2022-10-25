@@ -1,3 +1,9 @@
+.multicolumn {
+  border-top: 2px solid #cfcfcf; 
+  border-bottom: 2px solid #cfcfcf;
+  /*background-image: url(/*https://cdn.shopify.com/s/files/1/0258/5424/6963/files/muddy_landscape_faded.jpg?v=1614287451https://cdn.shopify.com/s/files/1/0258/5424/6963/files/polaris_hero_desert.jpg?v=1639474920);"*/
+}
+
 .multicolumn .title {
   margin: 0;
 }
@@ -6,22 +12,29 @@
   display: none;
 }
 
-.multicolumn .title-wrapper-with-link {
+@media screen and (max-width: 749px) {
+  .multicolumn.no-heading.background-secondary {
+    padding-top: 0rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .multicolumn.no-heading:not(.background-secondary) {
+    margin-top: 0;
+  }
+}
+
+.multicolumn.background-secondary .title-wrapper-with-link {
   margin-top: 0;
 }
 
 @media screen and (max-width: 749px) {
   .multicolumn .title-wrapper-with-link {
-    margin-bottom: 3rem;
-  }
-
-  .multicolumn .page-width {
-    padding-left: 0;
-    padding-right: 0;
+    margin-bottom: 0rem;
   }
 }
 
-.multicolumn-card__image-wrapper--third-width {
+/*.multicolumn-card__image-wrapper--third-width {
   width: 33%;
 }
 
@@ -34,7 +47,7 @@
 .multicolumn-list__item:only-child {
   margin-left: auto;
   margin-right: auto;
-}
+}*/
 
 .multicolumn .button {
   margin-top: 1.5rem;
@@ -47,7 +60,6 @@
 }
 
 .multicolumn-list {
-  margin-top: 0;
   margin-bottom: 0;
   padding: 0;
 }
@@ -56,17 +68,60 @@
   max-width: 72rem;
 }
 
-.multicolumn-list__item--empty {
-  display: none;
-}
-
 .multicolumn:not(.background-none) .multicolumn-card {
-  background: rgb(var(--color-background));
-  height: 100%;
+  background: rgba(var(--color-foreground), 0.04);
+  height:auto;
+  width:auto;
+  min-height:150px;
+  min-width:150px;
+}
+@media screen and (min-width:990px) {
+ .multicolumn:not(.background-none) .multicolumn-card {
+  background: rgba(var(--color-foreground), 0.04);
+  height:auto;
+  width:auto;
+  min-height:200px;
+  min-width:250px;
+} 
+@media screen and (min-width:750px) {
+ .multicolumn:not(.background-none) .multicolumn-card {
+  background: rgba(var(--color-foreground), 0.04);
+  height:auto;
+  width:auto;
+  min-height:250px;
+  min-width:250px;
+} 
 }
 
-.multicolumn.background-primary .multicolumn-card {
-  background: rgb(var(--color-background)) linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));
+.multicolumn.background-secondary .multicolumn-card {
+  background: rgb(var(--color-background));
+}
+
+.multicolumn.background-secondary {
+  padding: 0rem 0 0rem;
+  box-shadow: -2px -2px 15px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 750px) {
+  .multicolumn.background-secondary {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .multicolumn.background-secondary .slider-buttons {
+    margin-bottom: -2rem;
+  }
+}
+
+.multicolumn:not(.background-secondary) {
+  margin: 0rem 0;
+}
+
+@media screen and (min-width: 750px) {
+  .multicolumn:not(.background-secondary) {
+    margin: /*calc(5rem + var(--page-width-margin))*/ 0;
+  }
 }
 
 .multicolumn-list h3 {
@@ -89,7 +144,7 @@
 }
 
 .multicolumn-list__item.center .media--adapt,
-.multicolumn-list__item .media--adapt .multicolumn-card__image {
+.multicolumn-list__item .media--adapt img {
   width: auto;
 }
 
@@ -99,17 +154,33 @@
 }
 
 @media screen and (max-width: 749px) {
+  .multicolumn .page-width {
+    padding: 0;
+  }
+
   .multicolumn-list {
     margin: 0;
     width: 100%;
+  }
+
+  .multicolumn-list__item {
+    /*margin: 1rem 4rem;*/
+    padding: 0;
   }
 
   .multicolumn-list:not(.slider) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-}
 
+  .multicolumn-list.slider .multicolumn-list__item {
+    width: calc(100% - 3rem);
+  }
+
+  .multicolumn-list.slider .multicolumn-list__item + .multicolumn-list__item {
+    padding-left: 0.5rem;
+  }
+}
 
 @media screen and (min-width: 750px) {
   .multicolumn-list.slider,
@@ -122,8 +193,28 @@
     padding-bottom: 0;
   }
 
+  .grid--2-col-tablet .multicolumn-list__item {
+    margin-top: 1rem;
+    max-width: 50%;
+  }
+
   .background-none .grid--2-col-tablet .multicolumn-list__item {
     margin-top: 4rem;
+  }
+
+  .grid--2-col-tablet .multicolumn-list__item:nth-of-type(-n + 2) {
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .grid--2-col-tablet.grid--4-col-desktop .multicolumn-list__item {
+    max-width: 25%;
+  }
+
+  .grid--2-col-tablet.grid--4-col-desktop
+    .multicolumn-list__item:nth-of-type(-n + 4) {
+    margin-top: 0;
   }
 }
 
@@ -133,17 +224,13 @@
 }
 
 .multicolumn-card__info {
-  padding: 2.5rem;
+  padding: 2.5rem 2.5rem;
 }
 
 .background-none .multicolumn-card__info {
   padding-top: 0;
   padding-left: 0;
   padding-right: 0;
-}
-
-.background-none .slider .multicolumn-card__info {
-  padding-bottom: 0;
 }
 
 .background-none .multicolumn-card__image-wrapper + .multicolumn-card__info {
@@ -169,16 +256,6 @@
   padding-right: 2.5rem;
 }
 
-@media screen and (max-width: 749px) {
-  .background-none .slider .multicolumn-card__info {
-    padding-bottom: 1rem;
-  }
-
-  .multicolumn.background-none .slider.slider--mobile {
-    margin-bottom: 0rem;
-  }
-}
-
 @media screen and (min-width: 750px) {
   .background-none .multicolumn-card__image-wrapper {
     margin-left: 1.5rem;
@@ -192,37 +269,5 @@
     .multicolumn-card__info {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-}
-
-.multicolumn-card {
-  position: relative;
-  box-sizing: border-box;
-}
-
-.multicolumn-card > .multicolumn-card__image-wrapper--full-width:not(.multicolumn-card-spacing) {
-  border-top-left-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
-  border-top-right-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
-  overflow: hidden;
-}
-
-.multicolumn.background-none .multicolumn-card {
-  border-radius: 0;
-}
-
-.multicolumn-card__info .link {
-  text-decoration: none;
-  font-size: inherit;
-  margin-top: 1.5rem;
-}
-
-.multicolumn-card__info .icon-wrap {
-  margin-left: 0.8rem;
-  white-space: nowrap;
-}
-
-@media screen and (min-width: 990px) {
-  .multicolumn-list__item--empty {
-    display: list-item;
   }
 }
