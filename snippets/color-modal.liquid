@@ -1,0 +1,169 @@
+<style>  
+  .modal_element {
+    background: #fff;
+    transition: transform .3s cubic-bezier(.6,.4,0,1),opacity .3s cubic-bezier(.6,.4,0,1);
+    box-shadow: rgb(0 0 0 / 10%) 0 5px 20px;
+    will-change: transform;
+    display: inline-block;
+    text-align: left;
+    margin-top: 0!important;
+    margin: 0 auto;
+    transform: translate3d(0,100%,0);
+    opacity: 1;
+    width: 100%;
+    height: 200px;
+    padding:2rem;
+    border-radius: 14px 14px 0 0;
+    position: fixed;
+    bottom: 0;    
+}
+  .nav ul {
+    display:inline-flex;
+}
+  .nav ul a {
+    padding:0 5px;
+}
+  .modal_nav {
+    padding-bottom:2rem;
+    border-bottom: 1px solid rgba(0,0,0,.075);
+    width: 100%;
+    text-align: center;
+}
+  .modal_element {
+    border-radius: 14px;
+    transform: translate3d(0,0,0) scale(.95);
+    opacity: 1;
+    width: 380px;
+    position: relative;
+}
+  @media (min-width: 576px)
+	.modal:not(.modal--xs) .modal_element {
+    width: 468px;
+}
+  .modal.is-visible .modal_container>.modal_cell>.modal_element {
+    position: relative;
+    transform: translate3d(0,0,0) scale(1)!important;
+    opacity: 1!important;
+}
+  ._m-b-0, ._m-y-0, .modal_element {
+    margin-bottom: 0!important;
+}
+  .palette-selector_colors {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+}
+.palette-selector, .palette-selector_colors {
+    height: 46px;
+    position: relative;
+}
+
+.palette-selector_colors div.is-visible {
+    display: block;
+}
+.palette-selector_colors div {
+    box-shadow: 1px 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    display: none;
+    flex-grow: 1;
+}
+:not(input):not(code) {
+    -webkit-user-select: none;
+    user-select: none;
+}
+label {
+ padding:20px;
+ font-size:14px;
+}
+</style>
+
+<div class="modal_element">
+  <nav class="nav modal_nav inline-flex px-5 place-content-center">
+    <ul>
+      <li>
+        <a href="labels" class="py-2 link link--secondary is-active" data-toggle="tab">
+          Polaris
+        </a>
+      </li>
+      <li>
+        <a href="labels" class="py-2 link link--secondary" data-toggle="tab">
+          Can-Am
+        </a>
+      </li>
+      <li>
+        <a href="labels" class="py-2 link link--secondary" data-toggle="tab">
+          Honda
+        </a>
+      </li>
+      <li>
+        <a href="labels" class="py-2 link link--secondary" data-toggle="tab">
+          Premium
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <form id="palette-image-exporter_form">
+    <div class="modal_body"> 
+      <div data-tab="labels" class="is-visible">
+        <div class="input-group">
+          <label>            
+            <div class="pro-star">
+              Polaris
+            </div>
+          </label>
+        </div>
+        <div id="palette-image-exporter_labels_selector">
+          <div class="palette-selector is-selectable" data-colors="8">        
+            <div class="palette-selector_colors">
+              <div data-index="0" class="is-visible selected" style="background-color: rgb(0, 9, 20); color: rgb(0, 9, 20);">
+                <span>#000914</span>
+              </div>
+              <div data-index="1" class="is-visible" style="background-color: rgb(105, 109, 104); color: rgb(105, 109, 104);">
+                <span>#696D68</span>
+              </div>
+              <div data-index="2" class="is-visible" style="background-color: rgb(225, 86, 0); color: rgb(225, 86, 0);">
+                <span>#E15600</span>
+              </div>
+              <div data-index="3" class="is-visible" style="background-color: rgb(192, 30, 36); color: rgb(192, 30, 36);">
+                <span>#C01E24</span>
+              </div>
+              <div data-index="4" class="is-visible" style="background-color: rgb(255, 0, 0); color: rgb(255, 0, 0);">
+                <span>#FF0000</span>
+              </div>
+              <div data-index="5" class="is-visible is-active" style="background-color: rgb(28, 123, 216); color: rgb(28, 123, 216);">
+                <span>#1C7BD8</span>
+              </div>
+              <div data-index="6" class="is-light is-visible" style="background-color: rgb(200, 177, 141); color: rgb(200, 177, 141);">
+                <span>#C8B18D</span>
+              </div>
+              <div data-index="7" class="is-light is-visible" style="background-color: rgb(225, 255, 9); color: rgb(225, 255, 9);">
+                <span>#E1FF09</span>
+              </div>
+              <div data-index="8">
+                <span></span>
+              </div>
+              <div data-index="9">
+                <span></span>
+              </div>            
+            </div>        
+            <!--<div class="palette-selector_buttons">          
+                <input type="text" class="input input--m" name="label" id="palette-image-exporter_label">
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="modal_footer">
+      <div class="modal_footer_btns">
+          <button type="submit" class="button btn btn--m btn--primary" id="palette-image-exporter_submit-btn">Export</button>
+      </div>
+    </div>-->
+  </form>
+</div>

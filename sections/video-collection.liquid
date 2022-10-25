@@ -1,0 +1,145 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer="defer"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.js" defer="defer"></script>
+<style>
+.modal {
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-header {
+  border-bottom: 1px solid #505050;
+  padding: 12px 16px 6px 16px;
+  .modal-title {
+    color: #ccc;
+   
+    margin: 0;
+  }
+  .close {
+    font-size: 32px;
+    opacity: 1.0;
+    color: #ccc;
+    text-shadow: none;
+    outline: none;
+  }
+}
+.modal-content {  
+  border-radius:0;
+  border: 0;
+  background-color: #323232;
+}
+.img-responsive { width: 100%; }
+button.btn-play {
+  position: absolute;
+  top: 120px;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  margin-left: -15px;
+  border: 0px solid #0fa0ea;
+  border-radius: 0;
+  outline: 0 !important;
+  width: 100%;
+  background-color: transparent;
+  color: rgba(245, 245, 245, 0.8);
+  &:hover, &:active, &:visited, &:focus {
+    color: rgba(255, 255, 255, 1.0);
+  }
+  .glyphicon {
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    background-color: inherit;
+    font-size: 64px;
+  }
+}
+  .btn-circle {
+    display: block;
+    margin: 10px auto 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 0;
+    line-height: 0;
+    background: #0fa0ea;
+    color:#fff;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 23%);
+}
+  .btn-circle:before {
+    content: "";
+    display: block;
+    height: 12px;
+    width: 12px;
+    left: 50%;
+    top: calc(50% - 2px);
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transform-origin: 50% 50%;
+    position: absolute;
+}
+  .btn-circle.btn-close {
+    transform: translate(-50%, -50%) rotate(135deg);
+    background: #404040;
+}
+
+</style>
+<section id="youtube-videos">
+<div class="container pb-10">
+  <div class="product-section-title raj font-semibold text-6xl pt-12">
+		TF Video Collection
+  </div>
+  <h3 class="page-header" id="youtube-gallery">Demo's & Walkaround's</h3>
+  <div class="w-full flex flex-wrap inline-block">
+    {% assign video_list = page.metafields.custom.video_url.value | split: 'https://' %}
+    {% for video_id in video_list offset:1 %}
+      {% assign single_video = video_id | split: '&' | first %}
+      <div id="vid" class="sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto inline">
+          <a href="https://{{ single_video }}"
+             data-title="{{ block.settings.linktext }}"
+             data-width="1024"
+             data-toggle="lightbox" data-gallery="youtubevideos" class="video">
+            <img src="https://i1.ytimg.com/vi/{{ single_video | split: 'watch?v=' | last }}/hqdefault.jpg" class="img-responsive p-5" alt="Youtube Link:{{ single_video }}">
+          </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+ $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+    var thumby=document.querySelectorAll('.ytp-cued-thumbnail-overlay-image')[0];
+        thumby.style.backgroundImage=thumby.style.backgroundImage.replace('hqdefault', 'maxresdefault');
+});
+</script>
+</section>
+{% schema %}
+{
+  "name": "video-collection",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+   "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "id": "linkurl",
+          "type": "url",
+          "label": "URL link"
+        },
+        {
+          "id": "linktext",
+          "type": "text",
+          "label": "Link text"
+        }
+      ]
+    }
+   ]
+}
+{% endschema %}
+

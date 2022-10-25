@@ -1,0 +1,265 @@
+<link rel="stylesheet" href="{{ 'trust-badges.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<style>
+  .trust-link:hover {
+	text-shadow:0px 0px 10px #fff;
+  }
+  .trust-title {
+    font-family: "teko";
+    padding-bottom: 2rem;
+  }
+</style>
+
+<section class="w-full h-full shadow-2xl bg-gray-700">
+<div class="w-7/8 lg:w-7/8 md:w-full sm:w-full m-auto px-5 pt-10 pb-16 shadow-lg">
+  <div class="p-0 w-full">
+    <div class="title-wrapper-with-link place-content-center" style="border-bottom:0px dotted #036597; margin:0rem 0 0rem;">
+      <h2 class="product-section-title trust-title w-full text-7xl text-white font-bold px-8 pt-12">
+        {{ section.settings.title | escape }}
+      </h2>
+    </div>
+    <slider-component class="pb-0">
+      <div class="grid flex grid-cols-1 sm:grid-cols-1 md:grid-cols-4 slider w-full mx-auto gap-4"
+        id="Slider-{{ section.id }}"
+        role="list"
+      >
+        {%- liquid
+          assign highest_ratio = 0
+          for block in section.blocks
+            if block.settings.image.aspect_ratio > highest_ratio
+              assign highest_ratio = block.settings.image.aspect_ratio
+            endif
+          endfor
+        -%}
+        {%- for block in section.blocks -%}
+          <div class="p-2 trustbadges-list__item block max-h-max {% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}">
+            <a class="trust-link" href="{{ block.settings.trust-link }}">
+              <div class="trustbadges-card h-full rounded-xl flex flex-row justify-center p-2 sm:p-2 md:p-5 lg:p-7 pt-5" style=" border-bottom:0px dotted #036597; background-color:transparent;">
+                {%- if block.settings.image != blank -%}
+                  {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
+                    {% assign spaced_image = true %}
+                  {% endif %}
+                  <div class="trustbadges-card__image-wrapper pb-5" style="min-width:60px;">
+                    <div class="media media--transparent media--{{ section.settings.image_ratio }}"
+                      {% if section.settings.image_ratio == 'adapt' %}
+                        style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
+                      {% endif %}>
+                      <img
+                        srcset="{%- if block.settings.image.width >= 275 -%}{{ block.settings.image | img_url: '275x' }} 275w,{%- endif -%}
+                          {%- if block.settings.image.width >= 550 -%}{{ block.settings.image | img_url: '550x' }} 550w,{%- endif -%}
+                          {%- if block.settings.image.width >= 710 -%}{{ block.settings.image | img_url: '710x' }} 710w,{%- endif -%}
+                          {%- if block.settings.image.width >= 1420 -%}{{ block.settings.image | img_url: '1420x' }} 1420w,{%- endif -%}"
+                        src="{{ block.settings.image | img_url: '550x' }}"
+                        sizes="(min-width: 990px) {% if section.blocks.size <= 2 %}710px{% else %}550px{% endif %},
+                          (min-width: 750px) {% if section.blocks.size == 1 %}710px{% else %}550px{% endif %},
+                          calc(100vw - 30px)"
+                        alt="{{ block.settings.title }}"
+                        height="{{ block.settings.image.height }}"
+                        width="{{ block.settings.image.width }}"
+                        loading="lazy"
+                        style="min-width:60px;"
+                      >
+                    </div>
+                  </div>
+                {%- endif -%}
+                <div class="text-center">
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="text-4xl text-white text-left pl-5">{{ block.settings.title | escape }}</h3>
+                  {%- endif -%}
+                  {%- if block.settings.text != blank -%}
+                    <div class="text-lg sm:text-lg md:text-lg lg:text-xl text-left ml-0 text-white pb-5 pl-4 raj">{{ block.settings.text }}</div>
+                  {%- endif -%}
+                </div>
+              </div>
+            </a>
+          </div>
+        {%- endfor -%}
+         {%- if section.settings.button_label != blank and section.settings.swipe_on_mobile -%}
+        <a href="{{ section.settings.button_link }}" class="link underlined-link large-up-hide">{{ section.settings.button_label | escape }}</a>
+      {%- endif -%}
+      </div>
+
+      {%- if section.settings.swipe_on_mobile -%}
+        <div class="slider-buttons no-js-hidden medium-hide{% if section.blocks.size < 2 %} small-hide{% endif %}">
+          <div class="slider-counter caption">
+            <span class="slider-counter--current">1</span>
+            <span aria-hidden="true"> / </span>
+            <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
+            <span class="slider-counter--total">{{ section.blocks.size }}</span>
+          </div>
+          <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
+          <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
+        </div>
+      {%- endif -%}
+    </slider-component>
+    <div class="center{% if section.settings.swipe_on_mobile %} small-hide medium-hide{% endif %}">
+      {%- if section.settings.button_label != blank -%}
+        <a class="button button--primary"{% if section.settings.button_link == blank %} aria-disabled="true" role="link"{% else %} href="{{ section.settings.button_link }}"{% endif %}>
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif-%}
+    </div>
+  </div>
+</div>
+</section>
+{% schema %}
+{
+  "name": "Trust Badge Columns",
+  "class": "spaced-section spaced-section--full-width",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "title",
+      "label": "title",
+      "type": "text",
+      "default": "trustbadges"
+    },
+    {
+      "id": "image_width",
+      "label": "image width",
+      "type": "select",
+      "default": "full",
+      "options": [
+        {
+          "value": "third",
+          "label": "t:sections.trustbadges.settings.image_width.options__1.label"
+        },
+        {
+          "value": "half",
+          "label": "t:sections.trustbadges.settings.image_width.options__2.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.trustbadges.settings.image_width.options__3.label"
+        }
+      ]
+    },
+    {
+      "id": "image_ratio",
+      "label": "image ratio",
+      "type": "select",
+      "default": "adapt",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.trustbadges.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.trustbadges.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.trustbadges.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "circle",
+          "label": "t:sections.trustbadges.settings.image_ratio.options__4.label"
+        }
+      ]
+    },
+    {
+      "id": "column_alignment",
+      "label": "t:sections.trustbadges.settings.column_alignment.label",
+      "type": "select",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.trustbadges.settings.column_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.trustbadges.settings.column_alignment.options__2.label"
+        }
+      ]
+    },
+    {
+      "id": "background_style",
+      "label": "t:sections.trustbadges.settings.background_style.label",
+      "type": "select",
+      "default": "primary",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.trustbadges.settings.background_style.options__1.label"
+        },
+        {
+          "value": "primary",
+          "label": "t:sections.trustbadges.settings.background_style.options__2.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.trustbadges.settings.background_style.options__3.label"
+        }
+      ]
+    },
+    {
+      "id": "button_label",
+      "label": "t:sections.trustbadges.settings.button_label.label",
+      "type": "text",
+      "default": "Button label"
+    },
+    {
+      "id": "button_link",
+      "label": "t:sections.trustbadges.settings.button_link.label",
+      "type": "url"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "label": "t:sections.trustbadges.settings.swipe_on_mobile.label",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "t:sections.trustbadges.blocks.column.name",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Choose Image"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Heading",
+          "default": "Column"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Text",
+          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+        },
+		{
+          "type": "url",
+          "id": "trust-link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Badges",
+      "blocks": [
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+

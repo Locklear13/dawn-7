@@ -1,0 +1,110 @@
+
+                <style>
+                .cc-selector input{
+                  margin:0 0 20px 0 !important;
+                  padding:0 !important;
+                  -webkit-appearance:none !important;
+                  -moz-appearance:none !important;
+                  appearance:none !important;
+                  display:inline-flex!important;                  
+                }
+                .swatches {
+                  width:fit-content;
+                }
+                .palette-cell {
+                  width:3rem!important;
+                  height:3rem!important;
+                  padding:0 !important;
+                  cursor:pointer !important;
+                  background-size:contain !important;
+                  background-repeat:no-repeat !important;
+                  display:inline-block !important;
+                  font-size:0px!important;
+                  border:1px solid #fff!important;
+                  -webkit-transition: all 100ms ease-in !important;
+                  -moz-transition: all 100ms ease-in !important;
+                  transition: all 100ms ease-in !important;
+                }
+                .selection {
+                  border: 2px solid white !important;
+                  padding: 0px 0px 10px 0!important;
+                  box-shadow: 0px 0px 5px #000;
+                  transform: scale(1.1);
+                  border-radius: 5px;
+                  z-index: 8;
+                }                
+                </style>
+<!-- CUSTOM COLOR PICKER -->
+                <div hidden class="cc-selector tfColorSelector__wrapper pb-10">                  
+                  <div class="swatches flex inline pb-3">                      
+                    <div>
+                      <label class="rounded-l-lg palette-cell POLARIS-Black" for="black" aria-label="Black">
+                        <input id="black" type="radio" value="Black" name="custom-color" onclick="addCode()" />
+                        Black
+                      </label>
+                    </div>
+                    <div>
+                      <label class="palette-cell POLARIS-Jewel_Grey" for="jewel_grey" aria-label="Jewel Grey">
+                        <input id="jewel_grey" type="radio" value="Jewel Grey" name="custom-color" onclick="addCode()" />
+                        Jewel
+                        Grey</label>
+                    </div>
+                    <div>
+                      <label class="palette-cell POLARIS-Orange_Madness" for="Orange_Madness" aria-label="Orange Madness">
+                        <input id="Orange_Madness" type="radio" value="Orange Madness" name="custom-color" />
+                        Orange Madness</label>
+                    </div>
+                    <div>
+                      <label class="palette-cell POLARIS-Havasu_Red" for="Havasu_Red" aria-label="Havasu Red">
+                        <input id="Havasu_Red" type="radio"  value="Havasu Red" name="custom-color" />
+                        Havasu Red</label>
+                    </div>
+                    <div>
+                      <label class="palette-cell POLARIS-Indy_Red" for="Indy_Red" aria-label="Indy Red">
+                        <input id="Indy_Red" type="radio" value="Indy Red" name="custom-color" />
+                        Indy Red</label>
+                    </div>
+                    <div>
+                      <label class="palette-cell POLARIS-Polaris_Blue" for="Polaris_Blue" aria-label="Polaris Blue">
+                        <input id="Polaris_Blue" type="radio" value="Polaris Blue" name="custom-color" />
+                        Polaris Blue</label>
+                    </div>
+                    <div>
+                      <label class="palette-cell POLARIS-Lime_Squeeze" for="Lime_Squeeze" aria-label="Lime Squeeze">
+                        <input id="Lime_Squeeze" type="radio" value="Lime Squeeze" name="custom-color" />
+                        Lime Squeeze</label>
+                    </div>
+                    <div>
+                        <label class="palette-cell POLARIS-Military_Tan" for="Military_Tan" aria-label="Military Tan">
+                        <input id="Military_Tan" type="radio" value="Military Tan" name="custom-color" />
+                        Military Tan</label>
+                    </div>
+                    <div class="rounded-r-xl">
+                      <label class="rounded-r-lg palette-cell POLARIS-Illusion_Purple" for="Illusion_Purple" aria-label="Illusion Purple">
+                        <input id="Illusion_Purple" type="radio" value="Illusion Purple" name="custom-color" />
+                        Illusion Purple</label> 
+                    </div>
+                  </div>
+                  <div class="result-box bg-gray-200 p-2 rounded-xl">
+                    <div id="result" class="custom-color-description text-xl font-bold" aria-live="polite"><span style="font-weight:semibold">Choose Color</span></div>
+                    <div><a href="#">Don't see the color you're looking for?</a></div>
+                  </div>
+                </div>
+               
+                <script>
+                  let radioInputs = document.querySelectorAll('input[type=radio][name="custom-color"]');
+                  radioInputs.forEach(radio => radio.addEventListener('change', () => document.querySelectorAll('.custom-color[]').value = radio.value));
+                </script>       
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script>
+                  $(function() {
+                    $(".palette-cell").click(function(e){
+                      e.preventDefault();
+                      $(".palette-cell").removeClass("selection");
+                      $(this).addClass("selection");
+                      $("#result").html("Custom Color: "+$(this).html());
+                      $(".cc-prop")[0].value = $(".selection")[0].ariaLabel;
+                    });
+                  });  
+                </script>
+

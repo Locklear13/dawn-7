@@ -1,0 +1,35 @@
+{% liquid
+assign associatedChecklistList = product.metafields.associated_products.checklist_list.value
+%}
+{% unless associatedChecklistList == blank %}
+{% for associatedVariant in associatedChecklistList %}
+      <div class="w-full align-center flex items-center justify-center">
+        <!--<input type="checkbox" id="associatedChecklist-{{ associatedVariant.id }}-{{ forloop.index0 }}"
+               name="{{ associatedVariant.id }}"
+               value="{{ associatedVariant.title | escape }}"
+               onClick="tfAssociatedChange();"
+               form="{{ product_form_id }}"
+               data-product_title="{{ associatedProduct.title | escape }}"
+               data-variant_title="{{ associatedVariant.title | escape }}"
+               data-sku="{{ associatedVariant.sku }}"
+               data-price="{{ associatedVariant.price }}"
+               data-variant_id="{{ associatedVariant.id }}"
+               data-image="{{ associatedVariant.image | img_url: "1024x1024" }}"
+               class="associatedChecklist-INPUT associatedOption associatedChecklistOption variant-radios-input toggle-box"
+               />-->
+        <label class="associatedChecklist-LABEL  w-5/6 align-center justify-center" for="associatedChecklist-{{ associatedVariant.id }}-{{ forloop.index0 }}">
+          <div id="optionCard" class="stuffNthangs flex flex-wrap items-center justify-center">
+            <div class="w-full align-center flex items-center justify-center raj">
+              <div>
+                <img src="{{ associatedVariant.image | img_url: "100x100" | format: 'pjpg' }}" width="100" height="100" loading="lazy" class="optionCardImage" />
+                <br />
+              </div>
+              <div class="text-4xl">
+                <strong>{{ associatedVariant.title }}</strong><br><span class="text-3xl">{{ associatedVariant.price | money }}</span>                
+              </div>                
+            </div>
+          </div>
+        </label>        
+      </div>
+{%- endfor -%}
+{% endunless %}

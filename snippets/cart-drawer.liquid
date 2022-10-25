@@ -1,10 +1,8 @@
 {% comment %}
     Renders cart drawer
-
     Usage:
     {% render 'cart-drawer' %}
 {% endcomment %}
-
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
 <style>
@@ -221,7 +219,7 @@
                             </quantity-input>
 
                             <cart-remove-button id="CartDrawer-Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                              <button type="button" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                              <button class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
                                 {% render 'icon-remove' %}
                               </button>
                             </cart-remove-button>
@@ -325,10 +323,8 @@
       const ua = window.navigator.userAgent;
       const msie = ua.indexOf('MSIE ');
       const trident = ua.indexOf('Trident/');
-
       return (msie > 0 || trident > 0);
     }
-
     if (!isIE()) return;
     const cartSubmitInput = document.createElement('input');
     cartSubmitInput.setAttribute('name', 'checkout');
@@ -339,4 +335,3 @@
     });
   });
 </script>
-

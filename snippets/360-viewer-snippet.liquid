@@ -1,0 +1,152 @@
+<style>
+  .cd-product-viewer-wrapper .product-viewer {
+  position: relative;
+  overflow: hidden;
+}
+.cd-product-viewer-wrapper img {
+  /* this is the image visible before the image sprite is loaded */
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.cd-product-viewer-wrapper .product-sprite {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* our image sprite is composed of 16 frames */
+  width: 1400%;
+  background: url(https://cdn.shopify.com/s/files/1/0258/5424/6963/t/74/assets/AUDIO_ROOF_SPRITE_default.jpg) no-repeat center center;
+  background-size: 100%;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.cd-product-viewer-wrapper.loaded .product-sprite {
+  /* image sprite has been loaded */
+  opacity: 1;
+}
+  
+/*********************************************************************/
+  
+   .cd-product-viewer-handle {
+  position: relative;
+  z-index: 2;
+  width: 60%;
+  max-width: 300px;
+  height: 4px;
+  background: #4d4d4d;
+}
+.cd-product-viewer-handle .fill {
+  /* this is used to create the loading fill effect */
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: #b54240;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s;
+}
+.loaded .cd-product-viewer-handle .fill {
+  /* image sprite has been loaded */
+  opacity: 0;
+}
+.cd-product-viewer-handle .handle {
+  position: absolute;
+  z-index: 2;
+  display: inline-block;
+  height: 44px;
+  width: 44px;
+  left: 0;
+  top: -20px;
+  background: #b54240 url(https://codyhouse.co/demo/360-degrees-product-viewer/img/cd-arrows.svg) no-repeat center center;
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+}
+.loaded .cd-product-viewer-handle .handle {
+  /* image sprite has been loaded */
+  transform: translateX(-50%) scale(1);
+  animation: cd-bounce 0.3s 0.3s;
+  animation-fill-mode: both;
+}
+@keyframes cd-bounce {
+  0% {
+    transform: translateX(-50%) scale(0);
+  }
+  60% {
+    transform: translateX(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+</style>
+
+
+<div class="cd-product-viewer-wrapper" data-frame="16" data-friction="0.33">
+   <div>
+      <figure class="product-viewer">
+         <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/t/74/assets/AUDIO_ROOF_SPRITE_default.jpg" alt="Product Preview">
+         <div class="product-sprite" data-image="https://cdn.shopify.com/s/files/1/0258/5424/6963/t/74/assets/AUDIO_ROOF_SPRITE.jpg"></div>
+      </figure> <!-- .product-viewer -->
+
+      <div class="cd-product-viewer-handle">
+         <span class="fill"></span>
+         <span class="handle">Handle</span>
+      </div>
+   </div> <!-- .cd-product-viewer-handle -->
+</div> <!-- .cd-product-viewer-wrapper -->
+
+<script>
+ 
+  
+//////////////////////////////////////////////////////// produductViewer object
+  
+  var productViewer = function(element) {
+   this.element = element;
+   this.handleContainer = this.element.find('.cd-product-viewer-handle');
+   this.handleFill = this.handleContainer.children('.fill');
+   //...
+   this.frames = this.element.data('frame');
+   //increase this value to increase the friction while dragging on the image - it has to be bigger than zero
+   this.friction = this.element.data('friction');
+   this.visibleFrame = 0;
+   this.loaded = false;
+   //...
+   this.loadFrames();
+} 
+
+productViewer.prototype.loadFrames = function() {
+   var self = this,
+       imageUrl = this.slideShow.data('image');
+   //you need this to check if the image sprite has been loaded
+   $('<img/>').attr('src', imageUrl).load(function() {
+      self.loaded = true;
+   });
+
+   this.loading('0.5'); //triggers loading animation
+}
+
+var productToursWrapper = $('.cd-product-viewer-wrapper');
+productToursWrapper.each(function(){
+   new productViewer($(this));
+});
+  
+  
+if( self.loaded ){
+   //sprite image has been loaded
+   self.element.addClass('loaded');
+   self.dragImage();
+   self.dragHandle();
+   //..
+} else {
+   //...
+}  
+</script>
+<script src="https://codyhouse.co/demo/360-degrees-product-viewer/js/jquery-2.1.4.js"></script>  
+<script src="https://codyhouse.co/demo/360-degrees-product-viewer/js/jquery.mobile.custom.min.js"></script>
+<script src="https://codyhouse.co/demo/360-degrees-product-viewer/js/main.js"></script>

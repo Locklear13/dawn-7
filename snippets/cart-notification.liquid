@@ -9,12 +9,17 @@
 {% endcomment %}
 
 <cart-notification>
-  <div class="cart-notification-wrapper page-width">
-    <div id="cart-notification" class="cart-notification focus-inset{% if color_scheme %} color-{{ color_scheme }} gradient{% endif %}" aria-modal="true" aria-label="{{ 'general.cart.item_added' | t }}" role="dialog" tabindex="-1">
+  <div class="cart-notification-wrapper absolute right-0 top-0 page-width{% if color_scheme %} color-{{ color_scheme }}{% endif %}">
+    <div id="cart-notification" class="cart-notification focus-inset hidden" aria-modal="true" aria-label="{{ 'general.cart.item_added' | t }}" role="dialog" tabindex="-1">
       <div class="cart-notification__header">
-        <h2 class="cart-notification__heading caption-large text-body">{%- render 'icon-checkmark' -%} {{ 'general.cart.item_added' | t }}</h2>
-        <button type="button" class="cart-notification__close modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
-          <svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="#icon-close"></svg>
+        <h2 class="cart-notification__heading text-3xl text-body">{%- render 'icon-checkmark' -%} {{ 'general.cart.item_added' | t }}</h2>
+        <button 
+           type="button" 
+           class="cart-notification__close modal__close-button link link--text focus-inset" 
+           aria-label="{{ 'accessibility.close' | t }}" 
+           onClick="document.getElementById('cart-notification').classList.add('hidden');" 
+        >
+          <svg class="icon icon-close" aria-hidden="false" focusable="false"><use href="#icon-close" /></svg>
         </button>
       </div>
       <div id="cart-notification-product" class="cart-notification-product"></div>
@@ -23,13 +28,13 @@
         <form action="{{ routes.cart_url }}" method="post" id="cart-notification-form">
           <button class="button button--primary button--full-width" name="checkout">{{ 'sections.cart.checkout' | t }}</button>
         </form>
-        <button type="button" class="link button-label">{{ 'general.continue_shopping' | t }}</button>
+        <a href="https://www.thumperfab.com/cart" class="link button-label">-View Cart-</button>
       </div>
     </div>
   </div>
 </cart-notification>
-{% style %}
-  .cart-notification {
-     display: none;
+<style>
+  .cart-notification-wraper {
+  	visibility: hidden; 
   }
-{% endstyle %}
+</style>
