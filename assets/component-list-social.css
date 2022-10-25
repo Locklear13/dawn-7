@@ -1,7 +1,8 @@
 .list-social {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  text-align-last:center;
 }
 
 @media only screen and (max-width: 749px) {
@@ -11,15 +12,15 @@
 }
 
 .list-social__item .icon {
-  height: 1.8rem;
-  width: 1.8rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 .list-social__link {
   align-items: center;
-  display: flex;
+  display: inline-flex;
   padding: 1.3rem;
-  color: rgb(var(--color-foreground));
+  color:#ccc;
 }
 
 .list-social__link:hover .icon {

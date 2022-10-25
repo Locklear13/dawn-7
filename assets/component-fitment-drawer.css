@@ -1,0 +1,158 @@
+product-fitment {
+  display: block;
+}
+product-fitment[available] {
+  min-height: 8rem;
+}
+.product-fitment-preview {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.2rem;
+  padding: 1rem 2rem 0 0;
+}
+
+.product-fitment-preview .icon {
+  flex-shrink: 0;
+  height: 1.8rem;
+}
+
+.product-fitment-preview .icon-unavailable {
+  height: 1.6rem;
+  margin-top: 0.1rem;
+}
+
+.product-fitment-drawer-button {
+  background-color: transparent;
+  color: rgba(var(--color-foreground), 0.75);
+  letter-spacing: 0.06rem;
+  padding: 0 0 0.2rem;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.product-fitment-drawer-button:hover {
+  color: rgb(var(--color-foreground));
+}
+
+.product-fitment-drawer-info * {
+  margin: 0 0 0.6rem;
+}
+
+product-fitment-drawer {
+  background-color: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  height: 100%;
+  opacity: 0;
+  overflow-y: auto;
+  padding: 2rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  transition: opacity var(--duration-default) ease,
+    transform var(--duration-default) ease;
+  transform: translateX(100%);
+  width: 100%;
+}
+
+product-fitment-drawer[open] {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media screen and (min-width: 750px) {
+  product-fitment-drawer {
+    transform: translateX(100%);
+    width: 37.5rem;
+  }
+
+  product-fitment-drawer[open] {
+    opacity: 1;
+    transform: translateX(0);
+    animation: animateDrawerOpen var(--duration-default) ease;
+  }
+}
+
+.product-fitment-header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.product-fitment-drawer-title {
+  margin: 0.5rem 0 0;
+}
+
+.product-fitment-header .icon {
+  width: 2rem;
+}
+
+.fitment-drawer-button {
+  background-color: transparent;
+  border: none;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  display: block;
+  height: 4.4rem;
+  padding: 1.2rem;
+  width: 4.4rem;
+}
+
+.product-fitment-drawer-button:hover {
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+
+.product-fitment-drawer-list__item {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  padding: 2rem 0;
+}
+
+.product-fitment-list__item:first-child {
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.product-fitment-list__item > * {
+  margin: 0;
+}
+
+.product-fitment-list__item > * + * {
+  margin-top: 1rem;
+}
+
+.product-fitment-address {
+  font-style: normal;
+  font-size: 1.2rem;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+}
+
+.product-fitment-address p {
+  margin: 0;
+}
+
+@keyframes animateDrawerOpen {
+  @media screen and (max-width: 749px) {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}

@@ -1,0 +1,42 @@
+/*.badge {
+  background-image:url('https://cdn.shopify.com/s/files/1/0258/5424/6963/files/sale_badge.png?v=1646172417');
+  border: 1px solid transparent;
+  border-radius: 4rem;
+  display: inline-block;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  padding: 0.6rem 1.6rem;
+  text-align: center;
+  background-color: var(--color-badge-background);
+  border-color: var(--color-badge-border);
+  color: var(--color-foreground);
+  word-break: break-word;
+}*/
+
+.badge {
+    display: inline-block;
+    width: 55px;
+    line-height: 1;
+    text-align: center;
+    background-color: transparent;
+    border-color: rgba(var(--color-badge-border), var(--alpha-badge-border));
+    word-break: break-word;
+    background-image: url(https://cdn.shopify.com/s/files/1/0258/5424/6963/files/sale_badge.png?v=1646172417);
+    height: 55px;
+    background-repeat: no-repeat;
+}
+.badge-new {
+    display: inline-block;
+    width: 55px;
+    line-height: 1;
+    color:transparent;
+    text-align: center;
+    background-color: transparent;
+    border-color: transparent;
+    word-break: break-word;
+    background-image: url('https://cdn.shopify.com/s/files/1/0258/5424/6963/files/new_badge.png?v=1646173722');
+    height: 55px;
+    background-repeat: no-repeat;
+    margin:-1px 0 0 0;
+}
