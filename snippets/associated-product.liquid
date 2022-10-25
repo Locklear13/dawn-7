@@ -118,7 +118,7 @@
                         >{{ associatedProduct1.title }} {{ associatedProduct1.price | money | strip_html }}</option>
                 {% else %}
                 {%- for variant in associatedProduct1.variants -%}
-                <option class="associatedOption associatedProduct1Option" 
+                <option class="associatedOption associatedProduct1Option  {% if variant.title contains "Lo-Brow" %}loBrow{% endif %} {% if variant.title contains "Hi-Brow" %}hiBrow{% endif %}" 
                         value="{{ variant.id }}" 
                         data-variant_title="{{ variant.title | escape }}" 
                         data-product_title="{{ associatedProduct1.title | escape }}" 
@@ -279,7 +279,7 @@
               {% if associatedProduct2.has_only_default_variant %}
               <option
                       value="{{ associatedProduct2.id }}"
-                      class="associatedOption associatedProduct2Option  {% if associatedProduct2.title contains "Lo-Brow" %}loBrow{% endif %} {% if associatedProduct2.title contains "Hi-Brow" %}hiBrow{% endif %}" 
+                      class="associatedOption associatedProduct2Option" 
                       data-price="{{ associatedProduct2.price }}" 
                       data-sku="{{ associatedProduct2.sku }}" 
                       data-variantId="{{ associatedProduct2.id }}" 
@@ -291,7 +291,7 @@
                       {{ associatedProduct2.title }} {{ associatedProduct2.price | money | strip_html }}</option>
               {% else %}
               {%- for variant in associatedProduct2.variants -%}
-              <option class="associatedOption associatedProduct2Option" 
+              <option class="associatedOption associatedProduct2Option  {% if variant.title contains "Lo-Brow" %}loBrow{% endif %} {% if variant.title contains "Hi-Brow" %}hiBrow{% endif %}" 
                       value="{{ variant.id }}" 
                       data-variant_title="{{ variant.title | escape }}" 
                       data-product_title="{{ associatedProduct2.title | escape }}" 
