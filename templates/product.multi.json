@@ -1,13 +1,7 @@
 {
   "sections": {
-    "big-product": {
-      "type": "big-product-viewer",
-      "disabled": true,
-      "settings": {
-      }
-    },
-    "main": {
-      "type": "main-product",
+    "multi": {
+      "type": "multi-product",
       "blocks": {
         "title": {
           "type": "title",
@@ -31,6 +25,20 @@
           "settings": {
           }
         },
+        "associated_product": {
+          "type": "associated_product",
+          "settings": {
+          }
+        },
+        "69592b9b-8371-4e06-9187-3ccfc92d262c": {
+          "type": "popup",
+          "settings": {
+            "popup_tag": "",
+            "text": "ADD ON's",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -43,6 +51,8 @@
         "price",
         "variant_picker",
         "d4286f1e-a57d-4d6a-8cdb-a699c854ce99",
+        "associated_product",
+        "69592b9b-8371-4e06-9187-3ccfc92d262c",
         "buy_buttons"
       ],
       "settings": {
@@ -139,17 +149,17 @@
       "settings": {
       }
     },
+    "product-reviews": {
+      "type": "product-reviews",
+      "settings": {
+      }
+    },
     "product-related-products": {
       "type": "product-related-products",
       "settings": {
         "heading": "Related Products",
         "navigation_amount": 3,
         "navigation_color": ""
-      }
-    },
-    "product-reviews": {
-      "type": "product-reviews",
-      "settings": {
       }
     },
     "product-recommendations": {
@@ -178,8 +188,7 @@
     }
   },
   "order": [
-    "big-product",
-    "main",
+    "multi",
     "product-videos",
     "lifestyle-images",
     "product-description",
@@ -188,8 +197,8 @@
     "product-fitment",
     "product-docs",
     "product-stack",
-    "product-related-products",
     "product-reviews",
+    "product-related-products",
     "product-recommendations",
     "cage-options",
     "seths-sandbox"

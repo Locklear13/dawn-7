@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "dynamic-1": {
+      "type": "dynamic-1",
+      "settings": {
+        "css": "",
+        "grid_type": "rows",
+        "grid_qty": 1
+      }
+    },
+    "dynamic-2": {
+      "type": "dynamic-2",
+      "blocks": {
+        "ea001aca-bea5-4fcc-abe1-2128d522c3b7": {
+          "type": "page",
+          "settings": {
+            "tailwind": "text-white bg-cover w-full h-full",
+            "title": "d-1",
+            "page_handle": "dynamic-test-page",
+            "image": "shopify:\/\/shop_images\/person-tilts-their-head-up-and-looks-at-the-camera.jpg",
+            "content": "DYNAMIC UNO;\nThis is the bestest uno page.;",
+            "headline": "adsasdfasdf",
+            "description": "<p>asdfasdfaf<\/p>",
+            "section_width": "full"
+          }
+        },
+        "3b8bc721-a17f-4f7c-8b40-00307f0bdacb": {
+          "type": "page",
+          "settings": {
+            "tailwind": "",
+            "title": "",
+            "page_handle": "",
+            "content": "",
+            "headline": "",
+            "description": "",
+            "section_width": "full"
+          }
+        }
+      },
+      "block_order": [
+        "ea001aca-bea5-4fcc-abe1-2128d522c3b7",
+        "3b8bc721-a17f-4f7c-8b40-00307f0bdacb"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "dynamic-1",
+    "dynamic-2"
+  ]
+}

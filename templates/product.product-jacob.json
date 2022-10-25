@@ -1,0 +1,253 @@
+{
+  "sections": {
+    "mega-menu": {
+      "type": "mega-menu",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "d4286f1e-a57d-4d6a-8cdb-a699c854ce99": {
+          "type": "tf_variant_picker",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "d4286f1e-a57d-4d6a-8cdb-a699c854ce99",
+        "buy_buttons"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "hide_variants": false,
+        "enable_video_looping": false
+      }
+    },
+    "lifestyle-images": {
+      "type": "lifestyle-images",
+      "settings": {
+      }
+    },
+    "product-stack": {
+      "type": "product-stack",
+      "blocks": {
+        "77b53d45-3648-48eb-bc3c-467650c616d1": {
+          "type": "empty-stack-layer",
+          "disabled": true,
+          "settings": {
+            "empty_layer_css_classes": "Css Classes"
+          }
+        },
+        "2c38b38f-0383-4d40-8d7a-797653cdb612": {
+          "type": "image-with-text-layer",
+          "settings": {
+            "image_with_text_css_classes": "text-white text p-20 justify-center",
+            "background": "shopify:\/\/shop_images\/purple_gradient_bg_494963cf-5991-4b40-885c-ee2ecc38787e.png",
+            "image": "shopify:\/\/shop_images\/L5-overview-2.png",
+            "heading_": "The Level 5 Audio Roof",
+            "text": "<p><br\/>The Biggest, Baddest audio roof we've EVER built is here! It's on another <em>level<\/em> with the latest from <strong>Rockford Fosgate<\/strong>!<br\/><br\/>Featuring <strong>360° LED Surround<\/strong> & <strong>10-speaker Rockford Fosgate Audio<\/strong><\/p>",
+            "heading_2": "",
+            "text_2": ""
+          }
+        },
+        "d6427d84-74b7-44f6-8cd2-d86cc5aaba4e": {
+          "type": "image-with-text-layer",
+          "settings": {
+            "image_with_text_css_classes": "bg-gray-300 p-20 justify-center text-white outline-black shadow-xl",
+            "background": "shopify:\/\/shop_images\/concrete_wall.png",
+            "image": "shopify:\/\/shop_images\/L5-alum_top.png",
+            "heading_": "STRONG ENOUGH TO STAND ON",
+            "text": "<p><br\/>Our roofs use <strong>100% aluminum <\/strong>for it's light weight & resistance to corrosion, and <em>boy<\/em> are they <strong>STRONG<\/strong>!<br\/><br\/>Get customizable <strong>Accent Panels <\/strong>with our in-house <strong>3-stage powder coat <\/strong>to match your ride with <em>hundreds<\/em> of color options available.<\/p>",
+            "heading_2": "",
+            "text_2": ""
+          }
+        },
+        "45934376-4b6f-4446-bee6-d50e1b0ab166": {
+          "type": "image-with-text-layer",
+          "disabled": true,
+          "settings": {
+            "image_with_text_css_classes": "text-white p-20",
+            "background": "shopify:\/\/shop_images\/mountain-magic-hour.jpg",
+            "image": "shopify:\/\/shop_images\/L5_lighting_group-white-2_txt_3896b178-4ba4-4fff-86e7-62436c01264e.png",
+            "heading_": "LIGHT UP THE NIGHT",
+            "text": "<p>Experience <strong>360°<\/strong>of super bright LED's with a <strong>40\" quad-row LED <\/strong>light bar in front, six <strong>3\" quad-row LEDs <\/strong>on the sides and rear, and an additional pair of <strong>20” LEDs <\/strong>on the sides for an <strong>INCREDIBLE <\/strong>amount of light!<\/p>",
+            "heading_2": "Don't hate! ILLUMINATE!",
+            "text_2": ""
+          }
+        },
+        "1098a08f-ac6e-43df-b986-1dc6399e84f4": {
+          "type": "two-over-four-layer",
+          "settings": {
+            "two_over_four_css_classes": "text-white",
+            "background": "shopify:\/\/shop_images\/mountain-magic-hour.jpg",
+            "top_panel_1_css": "text-4xl text-shadow tracking-wider rajdhani px-10 pt-10",
+            "top_panel_1_heading_css": "text-7xl rajdhani font-bold text-shadow pt-10 pb-0",
+            "top_panel_1_heading_": "LIGHT UP THE NIGHT",
+            "top_panel_1_text": "<p>Experience 360°of super bright LED's with a 40-inch quad-row LED light bar in front, six 3\" quad-row LEDs on the sides and rear, and an additional pair of 20” LEDs on the sides for an INCREDIBLE amount of light!<\/p>",
+            "top_panel_2_css": "text-4xl text-shadow tracking-wider rajdhani px-10 pt-10",
+            "top_panel_2_heading_css": "text-7xl rajdhani font-bold text-shadow pt-10 pb-0",
+            "top_panel_2_heading_": "",
+            "top_panel_2_image": "shopify:\/\/shop_images\/lights.jpg",
+            "top_panel_2_text": "",
+            "middle_panel_css": "",
+            "middle_panel_image": "shopify:\/\/shop_images\/L5_lighting_group-white-2_txt_3896b178-4ba4-4fff-86e7-62436c01264e.png",
+            "middle_panel_text": "",
+            "bottom_panel_1_css": "",
+            "bottom_panel_1_text": "",
+            "bottom_panel_2_css": "",
+            "bottom_panel_2_text": "",
+            "bottom_panel_3_css": "",
+            "bottom_panel_3_text": "",
+            "bottom_panel_4_css": "",
+            "bottom_panel_4_text": ""
+          }
+        },
+        "46d2e84e-cd84-47d7-9b2e-213933a2b646": {
+          "type": "two-over-four-layer",
+          "settings": {
+            "two_over_four_css_classes": "text-white",
+            "background": "shopify:\/\/shop_images\/gradient_bg_overlay.png",
+            "top_panel_1_css": "text-2xl text-shadow tracking-wider rajdhani",
+            "top_panel_1_heading_css": "text-2xl rajdhani font-normal pr-10 text-shadow",
+            "top_panel_1_heading_": "",
+            "top_panel_1_image": "shopify:\/\/shop_images\/receiver_L5_51754565-3390-4597-b9e1-b57675ffc41f.png",
+            "top_panel_1_text": "<p>PMX-2 AM\/FM Bluetooth w\/Aux Receiver<\/p>",
+            "top_panel_2_css": "text-3xl sm:text-3xl md:text-6-xl rajdhani font-normal pr-10 text-shadow pt-1",
+            "top_panel_2_heading_css": "textx-4l sm:text-6xl md:text-7-xl lg:text-8xl rajdhani font-bold justify-center pb-5",
+            "top_panel_2_heading_": "WE BRING THE THUMP!",
+            "top_panel_2_text": "Out partnership with Rockford Fosgate guarantees you'll get the loudest,  most durable sound available",
+            "middle_panel_css": "p-0",
+            "middle_panel_image": "shopify:\/\/shop_images\/rockford_tagline.png",
+            "middle_panel_text": "",
+            "bottom_panel_1_css": "text-3xl font-normal tracking-wider rajdhani",
+            "bottom_panel_1_image": "shopify:\/\/shop_images\/10in_sub.png",
+            "bottom_panel_1_text": "(2) 10\"-inch M2 Color Optix Subwoofers",
+            "bottom_panel_2_css": "text-3xl font-normal tracking-wider rajdhani",
+            "bottom_panel_2_image": "shopify:\/\/shop_images\/8in_speaker.png",
+            "bottom_panel_2_text": "(4) 8-inch M1 Color Optix Speakers",
+            "bottom_panel_3_css": "text-3xl font-normal tracking-wider rajdhani",
+            "bottom_panel_3_image": "shopify:\/\/shop_images\/6in_speaker.png",
+            "bottom_panel_3_text": "(4) 6.5-inch M1 Color Optix Speakers",
+            "bottom_panel_4_css": "text-3xl font-normal tracking-wider rajdhani",
+            "bottom_panel_4_image": "shopify:\/\/shop_images\/rockford_amp.png",
+            "bottom_panel_4_text": "(1) M5 Series 1000 watt Amplifier"
+          }
+        },
+        "2ff7f2dd-f545-491b-a7d5-af04b556496b": {
+          "type": "image-with-text-layer",
+          "settings": {
+            "image_with_text_css_classes": "p-64",
+            "background": "shopify:\/\/shop_images\/Audio_Roofs_banner_skinny_0b430887-80f9-468f-b29a-0fb835943dff.jpg",
+            "heading_": "",
+            "text": "",
+            "heading_2": "",
+            "text_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "77b53d45-3648-48eb-bc3c-467650c616d1",
+        "2c38b38f-0383-4d40-8d7a-797653cdb612",
+        "d6427d84-74b7-44f6-8cd2-d86cc5aaba4e",
+        "45934376-4b6f-4446-bee6-d50e1b0ab166",
+        "1098a08f-ac6e-43df-b986-1dc6399e84f4",
+        "46d2e84e-cd84-47d7-9b2e-213933a2b646",
+        "2ff7f2dd-f545-491b-a7d5-af04b556496b"
+      ],
+      "settings": {
+      }
+    },
+    "product-description": {
+      "type": "product-description",
+      "settings": {
+      }
+    },
+    "product-features": {
+      "type": "product-features",
+      "settings": {
+      }
+    },
+    "product-info-carousel": {
+      "type": "product-info-carousel",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "product-fitment": {
+      "type": "product-fitment",
+      "settings": {
+      }
+    },
+    "product-related-products": {
+      "type": "product-related-products",
+      "settings": {
+        "navigation_amount": 3,
+        "navigation_color": ""
+      }
+    },
+    "product-docs": {
+      "type": "product-docs",
+      "settings": {
+      }
+    },
+    "product-reviews": {
+      "type": "product-reviews",
+      "settings": {
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": false
+      }
+    }
+  },
+  "order": [
+    "mega-menu",
+    "main",
+    "lifestyle-images",
+    "product-stack",
+    "product-description",
+    "product-features",
+    "product-info-carousel",
+    "product-fitment",
+    "product-related-products",
+    "product-docs",
+    "product-reviews",
+    "product-recommendations"
+  ]
+}

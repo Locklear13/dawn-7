@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "video-collection": {
+      "type": "video-collection",
+      "blocks": {
+        "6cb62f32-c192-4996-a933-517288a6c0c3": {
+          "type": "link",
+          "disabled": true,
+          "settings": {
+            "linkurl": "",
+            "linktext": ""
+          }
+        }
+      },
+      "block_order": [
+        "6cb62f32-c192-4996-a933-517288a6c0c3"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "video-collection"
+  ]
+}

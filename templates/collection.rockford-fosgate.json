@@ -1,0 +1,323 @@
+{
+  "sections": {
+    "mega-menu": {
+      "type": "mega-menu",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "1642936708dce84fb0": {
+      "type": "collage",
+      "blocks": {
+        "05880886-10f2-4e1f-88de-382756392479": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/RF_512.jpg",
+            "image_padding": false,
+            "color_scheme": "background-1"
+          }
+        },
+        "66cd8e89-d9a0-466c-b357-148a86c45dda": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/TF-RZR1K2-L3-_6-SEAT-6.jpg",
+            "image_padding": false,
+            "color_scheme": "background-1"
+          }
+        },
+        "54cb577f-87fb-4801-859d-42d4fd1a8a82": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Audio_Roof_RF-Receiver.jpg",
+            "image_padding": false,
+            "color_scheme": "background-1"
+          }
+        }
+      },
+      "block_order": [
+        "05880886-10f2-4e1f-88de-382756392479",
+        "66cd8e89-d9a0-466c-b357-148a86c45dda",
+        "54cb577f-87fb-4801-859d-42d4fd1a8a82"
+      ],
+      "settings": {
+        "heading": "",
+        "desktop_layout": "left",
+        "mobile_layout": "collage"
+      }
+    },
+    "16429379146562ccf1": {
+      "type": "rich-text",
+      "blocks": {
+        "16429379145ca25c29-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thumper Fab products use 100% Rockford Fosgate audio components. From Audio Roofs to Ready-to-Install Kits, get your BANG from the BEST.",
+            "heading_size": "h1"
+          }
+        },
+        "16429379145ca25c29-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "16429379145ca25c29-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "16429379145ca25c29-0",
+        "16429379145ca25c29-1",
+        "16429379145ca25c29-2"
+      ],
+      "settings": {
+        "color_scheme": "inverse",
+        "full_width": true
+      }
+    },
+    "164293837704e191aa": {
+      "type": "collage",
+      "blocks": {
+        "16ccc77e-d855-4f8e-b4c2-49705be07b4e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/polaris_2048x1024_b413bf7c-260b-4192-922e-297e7350796b.jpg",
+            "image_padding": false,
+            "color_scheme": "background-1"
+          }
+        },
+        "5ab1c122-57ac-43db-a3dd-c16baef7c599": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Audio_Roofs_Level_Lineup_0-5.jpg",
+            "image_padding": false,
+            "color_scheme": "background-1"
+          }
+        },
+        "99d1ccbd-c6d5-49df-8601-058333a52794": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Audio_Roof_RF-Receiver.jpg",
+            "image_padding": false,
+            "color_scheme": "background-1"
+          }
+        }
+      },
+      "block_order": [
+        "16ccc77e-d855-4f8e-b4c2-49705be07b4e",
+        "5ab1c122-57ac-43db-a3dd-c16baef7c599",
+        "99d1ccbd-c6d5-49df-8601-058333a52794"
+      ],
+      "settings": {
+        "heading": "",
+        "desktop_layout": "left",
+        "mobile_layout": "collage"
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true
+      }
+    },
+    "16400180209b172696": {
+      "type": "multicolumn",
+      "disabled": true,
+      "blocks": {
+        "1640018020ec53535b-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/TF040310-BKDefenderMAXL5Underside_1024x1024_2x_1_1.png",
+            "title": "Level 5",
+            "text": "",
+            "image_link": "",
+            "model_name": ""
+          }
+        },
+        "1640018020ec53535b-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Ranger_L4_CREW-UNDERSIDE_1.jpg",
+            "title": "Level 4",
+            "text": "",
+            "image_link": "",
+            "model_name": ""
+          }
+        },
+        "26e0948c-e955-4b3a-b993-e05c77224beb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Ranger_L3_CREW-UNDERSIDE_0f4956d0-e61c-4ea7-b7c3-0f27a9f9ac95_1.jpg",
+            "title": "Level 3",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "image_link": "",
+            "model_name": ""
+          }
+        },
+        "ce22cc49-d70f-4065-b2d6-70437678a17a": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/RGR_L2_crew-underside_1.jpg",
+            "title": "Level 2",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "image_link": "",
+            "model_name": ""
+          }
+        },
+        "afb5117d-e367-4591-ba00-0f3242156199": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/TF040304-TN__Defender_MAX_L1_FRONT_Underside_1.jpg",
+            "title": "Level 1",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "image_link": "",
+            "model_name": ""
+          }
+        },
+        "a36e4d30-481b-4c2a-b1c4-9ffda662b118": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/TF010304-BKRangerLevel0Roof_1.jpg",
+            "title": "Level 0",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "image_link": "",
+            "model_name": ""
+          }
+        }
+      },
+      "block_order": [
+        "1640018020ec53535b-0",
+        "1640018020ec53535b-1",
+        "26e0948c-e955-4b3a-b993-e05c77224beb",
+        "ce22cc49-d70f-4065-b2d6-70437678a17a",
+        "afb5117d-e367-4591-ba00-0f3242156199",
+        "a36e4d30-481b-4c2a-b1c4-9ffda662b118"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/canvas_2.jpg",
+        "title": "Audio Roof LEVEL",
+        "image_width": "full",
+        "image_ratio": "square",
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false
+      }
+    },
+    "1642937921cc2b54e7": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Audio Roofs",
+        "collection": "thumper-audio-roofs",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": false
+      }
+    },
+    "make-collection-grid": {
+      "type": "make-collection-grid",
+      "disabled": true,
+      "settings": {
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_image_outline": false,
+        "show_vendor": true,
+        "show_rating": true,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "collapse_on_larger_devices": false
+      }
+    },
+    "1642936996c074dc93": {
+      "type": "collage",
+      "blocks": {
+        "66e521b3-f298-4171-a57e-b445be52534c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/polaris_2048x1024_b413bf7c-260b-4192-922e-297e7350796b.jpg",
+            "image_padding": true,
+            "color_scheme": "inverse"
+          }
+        },
+        "58259ac9-a57c-4a1a-8ec8-11039c8154a6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/audio_category_card.jpg",
+            "image_padding": false,
+            "color_scheme": "background-1"
+          }
+        },
+        "3fbc3fef-d24b-42a1-b24d-cc95a5a84318": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/RANGER_L4_slide_2475dbed-0115-4897-a5b4-f3a7aa1f4f0f.jpg",
+            "image_padding": false,
+            "color_scheme": "background-1"
+          }
+        }
+      },
+      "block_order": [
+        "66e521b3-f298-4171-a57e-b445be52534c",
+        "58259ac9-a57c-4a1a-8ec8-11039c8154a6",
+        "3fbc3fef-d24b-42a1-b24d-cc95a5a84318"
+      ],
+      "settings": {
+        "heading": "Multimedia collage",
+        "desktop_layout": "left",
+        "mobile_layout": "collage"
+      }
+    },
+    "shop-by-type-row": {
+      "type": "shop-by-type-row",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "16429345451f5d8953": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "rockford-fosgate",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": false
+      }
+    }
+  },
+  "order": [
+    "mega-menu",
+    "1642936708dce84fb0",
+    "16429379146562ccf1",
+    "164293837704e191aa",
+    "banner",
+    "16400180209b172696",
+    "1642937921cc2b54e7",
+    "make-collection-grid",
+    "1642936996c074dc93",
+    "shop-by-type-row",
+    "16429345451f5d8953"
+  ]
+}

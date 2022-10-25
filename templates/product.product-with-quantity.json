@@ -31,6 +31,11 @@
           "settings": {
           }
         },
+        "5ea20108-0306-4f74-970b-fd47d85032ee": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -43,6 +48,7 @@
         "price",
         "variant_picker",
         "d4286f1e-a57d-4d6a-8cdb-a699c854ce99",
+        "5ea20108-0306-4f74-970b-fd47d85032ee",
         "buy_buttons"
       ],
       "settings": {
@@ -73,6 +79,7 @@
     },
     "product-info-carousel": {
       "type": "product-info-carousel",
+      "disabled": true,
       "settings": {
       }
     },
@@ -139,6 +146,11 @@
       "settings": {
       }
     },
+    "product-reviews": {
+      "type": "product-reviews",
+      "settings": {
+      }
+    },
     "product-related-products": {
       "type": "product-related-products",
       "settings": {
@@ -147,13 +159,9 @@
         "navigation_color": ""
       }
     },
-    "product-reviews": {
-      "type": "product-reviews",
-      "settings": {
-      }
-    },
     "product-recommendations": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "image_ratio": "adapt",
@@ -188,8 +196,8 @@
     "product-fitment",
     "product-docs",
     "product-stack",
-    "product-related-products",
     "product-reviews",
+    "product-related-products",
     "product-recommendations",
     "cage-options",
     "seths-sandbox"

@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "support-contact-cards": {
+      "type": "support-contact-cards",
+      "settings": {
+      }
+    },
+    "support-trouble-tickets": {
+      "type": "support-trouble-tickets",
+      "settings": {
+      }
+    },
+    "support-faq": {
+      "type": "support-faq",
+      "settings": {
+      }
+    },
+    "support-manuals": {
+      "type": "support-manuals",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "support-contact-cards",
+    "support-trouble-tickets",
+    "support-faq",
+    "support-manuals"
+  ]
+}

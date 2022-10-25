@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "page-about": {
+      "type": "page-about",
+      "blocks": {
+        "e59bddb3-0d67-4bf4-bb6e-e525bcb91fd1": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/TF_trailer-1.jpg",
+            "text": "<p><strong>Thumper Fab <\/strong>is located in <strong>Marshall, Texas<\/strong> and we've been around since <strong>2019<\/strong>. <br\/><br\/><em>(Long enough to know which details matter most but not so long that we are antiquated and grumpy.)<\/em><\/p>"
+          }
+        },
+        "476ebe01-f8c6-452a-b24f-54f449f4e5b4": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_1965.jpg",
+            "text": "<p>We are a company that's all about giving people what they want:<br\/><br\/><em><strong>High-quality, durable products for your outdoor adventures.<\/strong><\/em><\/p>"
+          }
+        },
+        "8355b7ab-9479-4df9-9600-6e57eca1a260": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/polaris_2048xfull.jpg",
+            "text": "<p>Like <strong>Audio Roofs<br\/>←<\/strong><\/p>"
+          }
+        },
+        "afbb8991-d355-4fb9-9396-1b1e9efb43b5": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Ranger_Elite_RWB_featured-2_1.jpg",
+            "text": "<p>and <strong>Bumpers<\/strong><br\/><strong>←<\/strong><\/p>"
+          }
+        },
+        "e0ad4ddf-f62c-475c-a878-7f0792df2885": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3f29fb12d2003685ae2c93bff89cc4f3_1.jpg",
+            "text": "<p>Our products are designed <em>in-house<\/em> and begin with a<strong> 3D laser scan <\/strong>of the vehicle. <\/p>"
+          }
+        },
+        "a446c320-660a-402b-bcfe-87061f97d47f": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/robot_video_about.gif",
+            "text": "<p>From there we use even more lasers, CNC machines, robots, AND good old-fashioned <em>hands <\/em>to craft the products for your ride.<\/p>"
+          }
+        },
+        "b1fc7dfc-8df4-45f9-951f-7dd987017499": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/laser_cutter.gif",
+            "text": "<p>We even have our own state-of-the-art powder coating department. <\/p>"
+          }
+        },
+        "c08231c2-2f37-449d-a47f-9feb25bd036d": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/about_powder_coat.jpg",
+            "text": "<p>If you need help making your off-road vehicle the talk of the trail, give us a THUMP and let's get started! We are committed to customer service that will leave competitors in awe. <\/p>"
+          }
+        },
+        "88920948-8467-4572-8950-e943716a5556": {
+          "type": "image-text-pair",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/TF_group_580.jpg",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "e59bddb3-0d67-4bf4-bb6e-e525bcb91fd1",
+        "476ebe01-f8c6-452a-b24f-54f449f4e5b4",
+        "8355b7ab-9479-4df9-9600-6e57eca1a260",
+        "afbb8991-d355-4fb9-9396-1b1e9efb43b5",
+        "e0ad4ddf-f62c-475c-a878-7f0792df2885",
+        "a446c320-660a-402b-bcfe-87061f97d47f",
+        "b1fc7dfc-8df4-45f9-951f-7dd987017499",
+        "c08231c2-2f37-449d-a47f-9feb25bd036d",
+        "88920948-8467-4572-8950-e943716a5556"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "panorama": {
+      "type": "panorama",
+      "disabled": true,
+      "settings": {
+        "bg-image": "shopify:\/\/shop_images\/about_powder_coat.jpg",
+        "height-px": "400",
+        "width-px": "100%"
+      }
+    }
+  },
+  "order": [
+    "page-about",
+    "panorama"
+  ]
+}
