@@ -1,0 +1,117 @@
+<style>
+  
+  .product-nav { 
+   margin:0 auto;
+   text-align-last:center;
+   background-color:#ddd;
+  }
+  @media screen and (min-width:950px) {
+   .product-nav {
+   /*margin:0 50%;*/
+   text-align-last:center;
+   /*max-width:50%;*/
+  } 
+  }
+  .product-nav li a {
+   color:#666;
+  }
+  .product-nav li a:active {
+   color:#ca0000;
+  }
+  .product-nav li a:hover {
+   color:#ca0000;
+   background-color:
+  }
+  .sticky {
+  position: -webkit-sticky;
+
+  top: 0px;
+  padding: 0rem;
+  z-index:200;
+}
+.shadow-inner {
+   -moz-box-shadow:    inset 0 0 10px #aaa;
+   -webkit-box-shadow: inset 0 0 10px #aaa;
+   box-shadow:         inset 0 0 10px #aaa;
+}
+.back-arrow {
+  margin-top:-2px; 
+  margin-right:-5px;
+}
+.back-arrow a {
+  color:#555;
+}
+.back-arrow a:hover {
+  color:#ca0000;
+}
+.header-button {
+    background-color: transparent;
+    padding: 0px!important;
+    margin: 0px!important;
+    color: red;
+    font-size: 1.5rem!important;
+    border: 0px!important;
+}
+</style>
+
+<div class="mb-10" style="border-bottom:1px solid #aaa;">
+  <!--<div id="breadcrumbs" class="w-full block lg:block md:block sm:none">
+    <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+      <a href="/" title="Home"></a>
+      <span aria-hidden="true"></span>
+      <a href="/collections/frontpage" title=""></a>
+      <span aria-hidden="true"></span>
+      <span></span>
+    </nav>
+  </div>-->
+
+  <div id="product-nav" class="w-full shadow-inner">
+    <nav class="product-nav flex justify-center" role="navigation" aria-label="product-nav">
+      <div class="back-arrow">
+        <script>
+          document.write('<a class="text-5xl flex-start" href="' + document.referrer + '">&#8592;</a>');
+        </script>
+      </div>
+      <div>
+        <ul class="inline-flex text-2xl py-2 pl-5 sm:pl-2 pr-0">
+          <li class="px-2 sm:px-2 md:px-5"><a href="#product-gallery">Gallery</a></li>
+          <li class="px-2 sm:px-2 md:px-5"><a href="#product-description">Description</a></li>
+          <li class="px-2 sm:px-2 md:px-5"><a href="#product-features">Features</a></li>
+          <!--<li class="px-2 sm:px-2 md:px-5"><a href="#product-fitment">Fitment</a></li>-->
+          <li class="px-2 sm:px-2 md:px-5"><a href="#product-docs">Installation</a></li>
+          <li class="px-2 sm:px-2 md:px-5"><a href="#product-reviews">Reviews</a></li>
+        <!--  <li class="px-5">
+            <a href="#financing" class="site-nav__link">
+              	
+                                    <button
+                                      style="font-weight:700; font-size:1.5rem; font-family:'Rajdhani';"
+                                      type="submit"
+                                      name="add"
+                                      id="add-to-cart"
+                                      class="header-button shadow-xl rounded-xl product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                                      style=" padding: 0px!important; margin: 0px!important; min-height:20px!important;"
+                                    {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                                    >    
+                                        <span>
+                                            {%- if product.selected_or_first_available_variant.available -%}
+                                                {{ 'products.product.add_to_cart' | t }}
+                                            {%- else -%}
+                                                {{ 'products.product.sold_out' | t }}
+                                            {%- endif -%}
+                                        </span>
+                                        <div class="loading-overlay__spinner hidden">
+                                          <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                          </svg>
+                                        </div>
+                                    </button>
+              		<div class="w-5 h-5">{% render 'icon-cart' %}</div>
+                            </a>
+                          </li>-->
+                        </ul>
+                      </div>
+                    </nav>
+                  </div>
+
+                  <!--- <div class="clearfix"></div>-->
+                </div>

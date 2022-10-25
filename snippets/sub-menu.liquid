@@ -1,0 +1,124 @@
+<!-- DETECT BRAND IN URL -->
+{%- if request.page_type == "collection" -%}
+	{% assign url_parts = request.path | split: "/" %}
+{%- endif -%}
+
+{%- if request.page_type == "product" -%}
+	{% assign url_parts = product.metafields.global.product_make | downcase %}
+{%- endif -%}
+
+
+{% for part in url_parts %}
+  {% case part %}
+      {% when "polaris" %}
+		{% assign currentBrand  = "polaris" %}
+		{% assign brandColor = "#305799" %}
+		{% assign brandSVG = collections.polaris.metafields.make.svg_data %}
+        {% break %}
+      {% when "yamaha" %}
+        {% assign currentBrand  = "yamaha" %}
+        {% assign brandColor = "#CCCCCB" %}
+		{% assign brandSVG = collections.yamaha.metafields.make.svg_data %}
+        {% break %}
+      {% when "can" %}
+        {% assign currentBrand  = "can-am" %}
+        {% assign brandColor = "#fdc832" %}
+		{% assign brandSVG = collections.can-am.metafields.make.svg_data %}
+		{% break %}
+	{% when "can-am" %}
+        {% assign currentBrand  = "can-am" %}
+        {% assign brandColor = "#fdc832" %}
+		{% assign brandSVG = collections.can-am.metafields.make.svg_data %}
+		{% break %}
+      {% when "tracker" %}
+        {% assign currentBrand  = "tracker" %}
+        {% assign brandColor = "#3c3c3c" %}
+		{% assign brandSVG = collections.tracker.metafields.make.svg_data %}
+        {% break %}
+      {% when "honda" %}
+        {% assign currentBrand  = "honda" %}
+        {% assign brandColor = "#e0262f" %}
+		{% assign brandSVG = collections.honda.metafields.make.svg_data %}
+        {% break %}
+      {% else %}
+        {% assign currentBrand = "all" %}
+        {% assign brandColor = "#555" %}
+  {% endcase %}
+{% endfor %}
+<style>
+  .collection-SubMenu-Section {
+  	{%- case request.page_type -%}
+    {%- when "index" -%}
+    	display: none;
+    {%- when "cart" -%}
+    	display: none;
+    {%- when "page" -%}
+    	display: none;
+    {%- when "blog" -%}
+    	display: none;
+    {%- when "policy" -%}
+    	display: none;
+  	{%- else -%}	
+    	display: block; 
+  	{%- endcase -%}
+  }
+ 
+@media screen {  
+.svg-wrapper {
+  max-height:75px; 
+  
+}
+}
+  
+.svg-wrapper .svg_logo { 
+  min-width:200px;  
+ /*width:50%; */
+}
+@media screen and (min-width: 750px) {
+  .svg-wrapper .svg_logo { 
+  min-width:200px;  
+  /*width:16%; */
+}
+}
+@media screen and (min-width: 990px) {
+  .svg-wrapper .svg_logo { 
+   min-width:200px;  
+   /*width:25%; */
+}
+} 
+</style>
+{% assign typeArray = "accents,accessories,audio,bumpers,cages,doors,lighting,racks,roofs,suspension,winches" | split: ',' %}
+<div class="collection-SubMenu-Section p-0 shadow-lg" style="background-color:#555; background-color:{{ brandColor }};">
+  <div id="collection-SubMenu" 
+       class="w-full px-5 md:px-8 lg:px-12 grid gap-4 grid-flow-row md:grid-flow-col place-self-center" 
+       style="text-align:-webkit-center; max-inline-size:max-content;">
+    <div class="block drop-shadow place-self-center ">
+      <div class="svg-wrapper flex  justify-center">{{ brandSVG }}</div>
+    </div>
+    <div class="text-center place-self-center">
+      <div class="block w-full make-menu text-center">
+        <span>&nbsp;&nbsp;
+          {% for item in typeArray %}
+            {% if request.path contains product_type %}
+            <span class="{{ item }}-section">
+              <a style="color:black; font-weight:500; text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.0);" href="/{{ currentBrand }}/{{ product_type }}">{{ product_type }}</a>
+              &nbsp;&nbsp;•
+            </span>
+            {% else %}
+            <!-- ADDED 2/21/2022 TO FIX BROKEN LINKS ON SEM RUSH REPORT -->
+              {% if currentBrand == blank %} 
+              <span class="{{ item }}-section"><a href="/collections/{{ item | downcase }}">{{ item | upcase }}</a></span>
+              {% else %}
+              <span class="{{ item }}-section"><a href="/collections/{{ currentBrand }}/{{ item | downcase }}">{{ item | upcase }}</a></span>
+              {% endif %}
+            <!--XX ADDED 2/21/2022 TO FIX BROKEN LINKS ON SEM RUSH REPORT XX-->
+              {% unless forloop.last %}
+              &nbsp;<span style="margin-top:15px !important;font-weight:900;">.</span>&nbsp;
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+        </span>
+      </div>
+  </div>
+</div>
+
