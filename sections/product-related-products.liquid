@@ -1,0 +1,200 @@
+{% assign nav_range = section.settings.navigation_amount %}
+{% if product.metafields.related != blank %}
+<style>
+  .added {
+    background-color: green!important;
+    border-color: green!important;
+  }
+  .related-cards {
+    /* background:linear-gradient(180deg, rgba(255,255,255,1) 90%, rgba(145,145,145,40%) 100%);*/
+  }
+  .related-carousel-section {
+    text-align:-webkit-center!important;
+    width: 80%;
+    margin: auto;
+  }
+  .carousel-cell2 {
+    text-align: -webkit-center;
+    border-color: #ccc;
+    padding-bottom: 5rem;
+  }
+  .related-products-content {
+    font-family: 'Teko', san-serif;
+    font-weight: normal;
+    line-height: 1.6;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    font: 5vmin/1.3 Rajdhani;
+    font-size: 22px;
+    color: transparent;
+  }
+  .related-products-content a {
+    color:#222;
+    font-family: 'Rajdhani', san-serif;
+    font-size:3rem;
+  }
+  .related-products-content a:hover {
+    text-decoration:underline;      
+  }
+  .starz {
+    text-align: /*-webkit-center;  */center;
+    max-height:15px;
+    margin-bottom:5px;
+    margin-top:-3px;
+  }
+  @media screen and (min-width:950px) {
+    .starz {
+      text-align: center;  
+    }
+  }
+  @media screen and (min-width:750px) {
+    .starz {
+      text-align: -webkit-center;  
+    }
+  }
+  .starz svg {
+    color:#0fa0ea; 
+  }
+  .pricey a:hover {
+    color:#ca0000; 
+  }
+  .flickity-page-dots .dot {
+    background: {{ section.settings.navigation_color }};
+  }
+  .flickity-button-icon {
+    color: {{ section.settings.navigation_color }};
+  }
+  instaGrat:hover {
+    background-color: #0fa0ea; 
+  }
+  .button:not([disabled]):hover {
+    background-color: #0fa0ea;
+  }
+   .vtl-pr__btn {
+    height:85px!important;
+    width: min-width;
+    color: #fff!important;
+   /* background:#0fa0ea!important;*/
+    font-weight: 600;
+    font-size: large !important;
+    font-family: 'Rajdhani';
+    box-shadow:2px 2px 5px #555;
+    padding:1rem!important;
+    border:0px!important;
+    border-radius:5px!important;
+  }
+  @media and screen (min-width:950px) {
+      .vtl-pr__btn {
+        height:55px!important;
+    }
+  }
+  @media and screen (min-width:749px) {
+      .vtl-pr__btn {
+        height:55px!important;
+    }
+  }
+  
+</style>
+
+
+  <section class="related-carousel-section w-full pt-8" style="text-align:-webkit-center;">
+    {%- if section.settings.heading != blank -%}
+    <div class="product-section-title product-description-title italic w-full text-7xl font-bold px-8 pt-12">
+          {{ section.settings.heading }}
+    </div>
+    {%- endif -%}
+   
+    <div class=" carousel carousel3 text-center flex flex-col md:flex-row inline justify-around related_cards gap-4 px-8 pb-20 sm:border-b-2 md:border-b-0">
+        
+      {% for product in product.metafields.multi_product.related_array.value %}
+                  {%- assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image -%}
+                  <div class="carousel-cell carousel-cell2 sm:border-b-2 md:border-b-0 {% unless forloop.first %} pt-5 }{% endunless %}">
+                    <a href="{{ product.url }}">
+                      <img src="{{ product.featured_media | img_url: '250x250' }}" class="text-center shadow-none border-2 border-white md:hover:shadow-2xl my-5 rounded-2xl hover:border-red-500"/>                      
+                    </a>
+                    <div class="text-center place-self-top">
+                      <a href="{{ product.url }}">
+                        {%- if product.metafields.global.display_name.value != blank -%}
+                        <div class="text-2xl sm:text-2xl md:text-3xl raj text-black hover:text-red-500 font-semibold" ">{{ product.metafields.global.display_name.value }}</div>
+                        {%- else -%}
+                        <div class="text-2xl sm:text-2xl md:text-3xl raj text-black hover:text-red-500 font-semibold w-full">{{ product.title }}</div>
+                        {%- endif -%}
+                      </a>
+                      <div class="flex inline justify-center">                          
+                        <div class="pricey text-2xl sm:text-2xl md:text-3xl raj font-semibold">
+                          {{ product.price | money }}&nbsp;
+                        </div>
+                        <div class="starz pt-2 pb-2">
+                          <div class="vtl-pr-stars-snippet__front-inner" style="width: 8em;"><svg aria-hidden="true" data-prefix="fas" data-icon="star" class="star-solid_svg__svg-inline--fa star-solid_svg__fa-star star-solid_svg__fa-w-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8 194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg><svg aria-hidden="true" data-prefix="fas" data-icon="star" class="star-solid_svg__svg-inline--fa star-solid_svg__fa-star star-solid_svg__fa-w-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8 194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg><svg aria-hidden="true" data-prefix="fas" data-icon="star" class="star-solid_svg__svg-inline--fa star-solid_svg__fa-star star-solid_svg__fa-w-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8 194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg><svg aria-hidden="true" data-prefix="fas" data-icon="star" class="star-solid_svg__svg-inline--fa star-solid_svg__fa-star star-solid_svg__fa-w-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8 194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg><svg aria-hidden="true" data-prefix="fas" data-icon="star" class="star-solid_svg__svg-inline--fa star-solid_svg__fa-star star-solid_svg__fa-w-18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8 194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg></div>
+                        </div>
+                      </div>
+                      <div class="instaGrat w-full pt-2">
+                        {% render 'instant-add-to-cart',  product_to_add: product.selected_or_first_available_variant.id , button_text: 'Add to Cart', quantity_to_add: 1, button_class: 'tfInstantAdd button h-12 font-semibold'%}
+                      </div>
+                    </div>                  
+                  </div>
+      			{% endfor %}
+ 
+
+{% assign products_array = products_list | split: '::'%}
+{{ products_array }}
+      {% endif %}
+      </div>
+  
+  </section>
+
+
+
+  <script>
+    var elem = document.querySelector('.carousel3');
+    var flktyRelated = new Flickity( elem, {
+      freeScroll: true,
+      imagesLoaded: true,
+      wrapAround: true,
+      pageDots: false,
+      {% if related_products.size <= 3 %}
+      prevNextButtons: false,
+      draggable: false,
+      {% else %}}
+       prevNextButtons: true,
+      draggable: true,                             
+      {% endif %}
+    });
+
+  </script>
+
+
+{% schema %}
+{
+  "name": "Related Products Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Related Products",
+      "label": "Heading"
+    },
+  	{
+      "type": "range",
+      "id": "navigation_amount",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 1,
+      "label": "Change the number of cards in view"
+  	},
+    {
+      "type": "color",
+      "id": "navigation_color",
+      "label": "Change color of the pagination|navigation|scrollbar"
+    }
+  ],
+  	"presets": [
+  		{
+          "name": "Related Products Carousel",
+          "category":"Custom"
+  		}
+  	]
+  }
+{% endschema %}

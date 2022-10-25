@@ -1,0 +1,46 @@
+<style>
+  .product-description {
+  }
+  .product-description-title {
+        margin-top:/*21px;*/0px;
+    	color: #000;
+    	font-family: "Teko";
+        font-style: normal;
+        -webkit-text-size-adjust: 100%;
+      	-webkit-font-smoothing: antialiased;
+        border-top: 1px solid #ccc;         
+    }
+	.product-description-content {
+		background-color: #eee;
+        color:#000;
+      	font-family: Rajdhani;
+      	font-weight: normal;
+      	line-height: 1.6;
+      	font-size: 100%;
+    	-webkit-text-size-adjust: 100%;
+      	-webkit-font-smoothing: antialiased;
+      	list-style:disc;
+    }
+</style>
+<section id="product-description" class="product-description-section w-full flex flex-wrap mx-auto justify-center border-1 border-gray-900 shadow-2xl">
+  	<div class="product-section-title product-description-title w-7/8 md:w-5/6 text-7xl font-bold px-8 pt-12">
+		DESCRIPTION
+  </div>
+	<div class="description text-2xl w-7/8 md:w-5/6 px-10 pt-5 pb-10 text-black">
+		{{ product.description }}
+	</div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Product Description",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

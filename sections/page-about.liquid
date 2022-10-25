@@ -1,0 +1,147 @@
+
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url: format: 'pjpg' }}" media="print" onload="this.media='all'">
+
+
+<noscript>{{ 'component-rte.css' | asset_url: format: 'pjpg' | stylesheet_tag }}</noscript>
+
+<style>
+  
+ .section {
+  height:auto;
+  text-align:-webkit-center;
+  background: rgb(35,35,35);
+  background: linear-gradient(0deg, rgba(35,35,35,1) 0%, rgba(255,255,255,1) 71%);
+}
+.about-box {
+
+}
+#container {
+  display:table-caption;
+
+}
+/*  overflow-y:scroll;
+  overflow-x:hidden;
+  left: 0px;
+  top: 43px;
+  transform: rotate(270deg) translateX(-100%);
+  transform-origin: top left;
+  position:absolute;
+  width:100vh;
+  height:100vw;
+  /*background: rgb(35,35,35);
+  background: linear-gradient(0deg, rgba(68,68,68,1) 0%, rgba(35,35,35,1) 71%);
+}*/
+/*#container2 {
+  transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left;
+  white-space:nowrap;
+  font-size:0;
+  padding-top: 8rem;
+}*/
+ #container .box {
+  width:100vw;
+  max-width:1280px;
+  /*height:750px;*/
+  position:relative;
+  /*width:100px;*/
+  font-size:2rem;
+  color:#000;
+  box-shadow: 0px 0px 5px #000;
+  background-color: #232323;
+  margin-bottom: 2rem;
+  border: 1px solid #555;
+  border-radius: 10px; 
+}  
+#container p {
+  position: relative; 
+  white-space: normal;
+  color: #ccc; 
+  text-align: center;
+  font-size: 2.5rem;
+  max-width:400px;
+  margin: auto;
+  padding:3rem;
+  background-color: #232323;
+  height:100%;
+  border-radius: 10px; 
+}
+/* Translating the content's X ruines the scrollbar length. */
+/*
+#container {
+  overflow:scroll;
+  transform: rotate(90deg) translateY(-100%);
+  transform-origin: top left;
+  background-color:#999;
+  position:absolute;
+  width:100vh;
+  height:100vw;
+}
+#container2 {
+  transform: rotate(-90deg) translateX(-100vw);
+  transform-origin: top left;
+  white-space:nowrap;
+}
+*/  
+#container2 img {
+  width:100%;
+  max-width:100%;
+  max-height:unset;
+  border-left-radius: 10px; 
+}
+
+</style>
+
+
+
+<section class="page-section w-7/8 lg:w-7/8 md:w-7/8 sm:w-7/8 section">
+  <h1 class="about-box text-6xl md:text-7xl lg:text-8xl raj font-semibold text-center py-5 mb-8 w-full flex inline justify-center" style="align-items:baseline;">
+    <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/TF_75px.png?v=1650981799" style="height:45px" loading="lazy"/>&nbsp;{{ page.title | escape }}
+  </h1>
+  <div id="container">
+    <div>
+      	
+    </div>
+    <div id="container2">    
+      {% for block in section.blocks %}
+      <div class="box flex flex-col md:flex-row m-5">
+        <span class="about-image"><img src="{{ block.settings.image | img_url: '1500x', format: 'pjpg' }}" /></span>
+       {{ block.settings.text }}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+</section>
+
+{% schema %}
+{
+  "name": "Horizontal Scroll",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Horizontal Scroll"
+    }
+  ],
+  "blocks": [
+     {
+       "name": "image-text-pair",
+       "type": "image-text-pair",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         },
+         {
+           "type": "richtext",
+           "id": "text",
+           "label": "Text"
+         }
+       ]
+     }
+   ]
+  }
+{% endschema %}
+

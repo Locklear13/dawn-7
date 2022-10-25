@@ -1,0 +1,114 @@
+{% assign linklist = linklists['order-form'] %}
+<form>
+	<table cellspacing="0" cellpadding="0" border="1">  
+		<tbody>
+			<tr id="cart-headlines">
+				<td class="cart-thumb">&nbsp;</td>
+				<td class="cart-title">Product Title</td>     
+				<td class="cart-unitprice">Price</td>                       
+				<td class="cart-quantity">Quantitsy</td>                 
+			</tr>
+			{% for link in linklist.links %}    
+			<tr>
+				<td >
+					<a href="" title="View Page">
+						<img src="{{ link.object.featured_image | product_img_url: 'thumb' }}" alt="{{ link.object.title | escape }}" />
+					</a>
+				</td>
+				<td >
+					<a href="{{ link.object.url}}" title="View {{item.title | escape }} Page">
+						{{ link.object.title | truncatewords:5 }}
+					</a>
+				</td>
+				<td>
+					{{ link.object.variants.first.price | money }}
+				</td>
+				<td>
+					<input type="hidden"  value="{{ link.object.variants.first.id }}" id="variant-{{ forloop.index0 }}"/>
+					<input type="number"  id="quantity-{{ forloop.index0 }}" tabindex="1" {% if link.object.variants.first.inventory_management != '' and link.object.variants.first.inventory_policy == 'deny' %}max="{{ link.object.variants.first.inventory_quantity }}" {% endif %} 
+      {% unless link.object.variants.first.available %} 
+      disabled="disabled"
+      {% endunless %} />				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<p style='text-align:right;'>
+		<input type="submit" value="Add!" id="submit-table"/>
+	</p>
+</form>
+
+
+{% schema %}
+  {
+    "name": "order-form",
+    "settings": [
+        {
+          "type": "link_list",
+          "id": "order-form-menu",
+          "label": "Order Form Menu"
+        }
+	]
+  }
+{% endschema %}
+
+<script type="text/javascript" charset="utf-8">
+//<![CDATA[
+// Including jQuery conditionnally.
+if (typeof jQuery === 'undefined') {
+    document.write({{ "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" | script_tag | json }});
+	document.write('<script type="text/javascript">jQuery.noConflict();<\/script>');
+}
+//]]>
+</script>
+
+<script>
+{% assign linklist = linklists['order-form'] %}
+var length = {{ linklist.links.size }};
+
+$(document).ready(function () {
+	$("#quantity-0").focus();    
+	$("#submit-table").click(function(e) {     
+		e.preventDefault();
+		//array for Variant Titles
+		var toAdd = new Array();
+        var qty ;
+		for(i=0; i < length; i++){
+        
+			toAdd.push({
+				variant_id: $("#variant-"+i).val(),        
+				quantity_id: $("#quantity-"+i).val() || 0
+			});
+		}
+		function moveAlong(){
+			if (toAdd.length) {
+				var request = toAdd.shift();
+				var tempId= request.variant_id;
+				var tempQty = request.quantity_id;
+				var params = {
+					type: 'POST',
+					url: '/cart/add.js',
+					data: 'quantity='+tempQty+'&id='+tempId,
+					dataType: 'json',
+					success: function(line_item) { 
+						//console.log("success!");
+						moveAlong();
+
+					},
+					error: function() {
+						//console.log("fail");
+						moveAlong();
+						
+					}
+				};
+				$.ajax(params);
+			}
+			else {				
+				document.location.href = '/cart';
+			}  
+		};
+		moveAlong();
+	});
+});
+
+</script>

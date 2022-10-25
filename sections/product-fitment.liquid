@@ -1,0 +1,334 @@
+<style>
+  .accordion__content figure { width: unset!important; };
+  .accordion__content table { border: 1px solid #ddd!important; };
+
+  .product-fitment {
+    background-color: #bbb;
+  }
+  .product-fitment-section {
+    background-color: #555; 
+    place-content:center;
+    border-bottom: 1px solid #ccc;
+  }
+  .product-fitment-title {
+    font-family: 'teko';
+    -webkit-text-size-adjust: 100%;
+  }
+  .product-fitment-content {
+    background-color: #aaa;
+    color: #000;
+    padding:2rem;
+    border-radius: 8px;
+    box-shadow: 60px 16px #0fa0ea40;
+    
+  }
+  .fitment ul li {
+    width:fit-content;
+  }
+  li.fitment:hover {
+    text-decoration:underline;
+  }
+  .fitment {
+    column-rule: 0px solid #ccc;
+    column-gap: 2rem;
+    list-style-type:disc;
+    color: #000;
+    border-radius: 0 0 5px 5px;
+    border: 0px dashed #fff;
+    column-count:1;
+    padding:1rem;
+    margin:0 0 0 2rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .fitment {
+      column-count:2;
+      padding: 0 20px 0 20px;
+    }
+    
+  }
+  @media screen and (min-width: 950px) {
+    .fitment {
+      column-count:3;
+      padding: 0 20px 0 20px;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    .fitment {
+      column-count:4;
+      padding: 0 20px 0 20px;
+    }
+  }
+  dialog[open] {
+    animation: appear .15s cubic-bezier(0, 1.8, 1, 1.8);
+  }
+
+  dialog::backdrop {
+    /*background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));*/
+    backdrop-filter: blur(3px);
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateX(-3rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  } 
+  .fit-button {
+    display:flex;  
+  }
+  @media screen and (min-width:750px) {
+    .fit-button {
+      display:flex; 
+    }
+    #product-fitment table {
+  	 /*max-width: 400px;*/
+      width:80vw;
+  	}
+  }
+   @media screen and (min-width:950px) {
+    .fit-button {
+      display:flex; 
+    }
+    #product-fitment table {
+  	 /*max-width: 400px;*/
+      width:50vw;
+  	}
+  }
+  .fitment-modal ul li {
+	margin:0 auto !important;
+    column-rule: 1px solid #ccc;
+    column-gap: 2rem;
+    padding-bottom:2px;
+    text-align:-webkit-left!important;
+  }
+  ::marker {
+    color: #999;
+  }
+
+  table {
+    /*width: 400px;*/
+    text-align: center;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    column-count:1!important;
+  }
+  table th, table td {
+    padding: 5px;
+  }
+  
+  th {
+    border:0px solid rgb(221, 221, 221);
+    padding:5px;
+  }
+  figure {
+    font-family: "Rajdhani";
+  }
+  figure img {
+    max-width: 50px!important;
+    text-align: -webkit-center;
+  }
+  figure .image:nth-child(1) {
+    max-width: 50px;
+    text-align: center;
+    display: none;
+  }
+  figure .image:nth-child(3) {
+    min-width: 100px;
+    text-align: -webkit-center;
+  }
+  figure tr {
+    text-align: -webkit-center;
+  }
+  
+  figure .table {
+    /*width: unset!important;*/
+  }
+  h3 { 
+    font-size:2rem;
+    font-family: "Rajdhani";    
+  }
+  #product-fitment table {
+  	/*max-width: 50vw;*/
+  }
+  figure h1 {
+    margin: auto !important; 
+  }
+  figure {
+    text-align: -webkit-center;
+  }
+  #product-fitment p {
+    /*max-width: 400px;*/
+  }
+  summary .icon-caret {
+    display: none;
+    position: absolute;
+	height:11px;
+    right: 1rem;
+    /* top: calc(50% - 0.2rem); */
+  }
+  .expand-button__label {
+    font-size: 15px;
+    line-height: 13px;
+    display: inline-block;
+    margin-bottom: 17px;
+    text-transform: uppercase;
+}
+  .btn-circle {
+    display: block;
+    margin: 10px auto 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 0;
+    line-height: 0;
+    background: #0fa0ea;
+    color:#fff;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 23%);
+}
+  .btn-circle:before {
+    content: "";
+    display: block;
+    height: 12px;
+    width: 12px;
+    left: 50%;
+    top: calc(50% - 2px);
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transform-origin: 50% 50%;
+    position: absolute;
+}
+  .btn-circle.btn-close {
+    transform: translate(-50%, -50%) rotate(135deg);
+    background: #404040;
+}
+  .section-trigger-close btn-circle btn-close, .btn-circle:focus, .btn-circle:active {
+    outline: coral!important;
+    border: 20px solid #000 !important;
+    transition: all .5s cubic-bezier(0.35, 0.1, 0.25, 1);
+}
+
+  table:not([class]) {
+    table-layout: unset!important;
+     border:1px solid #ddd;
+  }
+
+  table:not([class]) td, table:not([class]) th {
+    text-align: left;
+  }
+
+  .accordion__content figure tr > :first-child {
+    width: 150px!important; 
+    text-align: left;
+  }
+</style>
+
+
+{% if product.metafields.global.fitment != blank or product.metafields.global.tables != blank %}
+<div id="product-fitment" class="product-fitment-section w-full mx-auto inline-block">
+  <div class="product-section-title product-description-title italic w-full text-7xl font-bold px-8 pt-12">
+    PRODUCT FITMENT GUIDE
+  </div>
+  <br>
+    {% if product.metafields.global.tables != blank %}
+       <div class="fitment__accordion pb-12">
+        <details>
+          <summary class="w-full text-center">
+            <div class="summary__title">
+              {% comment %}{% render 'icon-accordion', icon: block.settings.icon %}{% endcomment %}
+              <div class="fitment-accordion__title text-4xl text-center m-auto w-full text-center">
+                ( Click to expand fitment guide )  
+              </div>
+              <div class="btn-circle">{% render 'icon-caret' %}</div>
+            </div>          
+          </summary>
+          <!--inside accordion -->        
+          <div class="accordion__content flex" style="text-align:-webkit-center;">
+            <div class="w-full flex px-2 pt-5 pb-10">
+              <div class="mx-auto product-fitment-content text-md md:text-xl w-full text-black font-semibold text-left shadow-xl">  
+                {% if product.metafields.global.tables != blank %}
+                <div style="text-align:-webkit-center;">{{ product.metafields.global.tables }}</div>
+                {% endif %}
+                {% if product.metafields.global.fitment %}
+                {% assign listofshit = product.metafields.global.fitment | newline_to_br | split: '<br />' %}
+                <ul class="fitment">
+                  {% for shit in listofshit %}<li>{{ shit }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    {% endif %}
+  {% if product.metafields.global.fitment %}
+      {% assign listoftables = product.metafields.global.tables %} 
+      {% assign listofshit = product.metafields.global.fitment | newline_to_br | split: '<br />' %}
+      {% if listofshit.size < 20 %}
+        <div class="fitment__accordion pb-12">
+          <div class="accordion__content" style="text-align:-webkit-center;">
+            <div class="w-7/8 md:w-5/6 flex px-2 pt-5 pb-10">
+              <div class="mx-auto product-fitment-content text-md md:text-xl w-full text-black font-semibold text-left">
+                <ul class="fitment">
+                  {% for shit in listofshit %}<li>{{ shit }}</li>{% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% else %}
+      <div class="fitment__accordion pb-12">
+        <details>
+          <summary class="w-full text-center">
+            <div class="summary__title">
+              {% render 'icon-accordion', icon: block.settings.icon %}
+              <div class="fitment-accordion__title text-4xl text-center m-auto w-7/8 md:w-5/6 text-center">
+                ( Click to expand fitment guide )  
+              </div>
+              <div class="btn-circle">{% render 'icon-caret' %}</div>
+            </div>          
+          </summary>
+          <!--inside accordion -->        
+          <div class="accordion__content" style="text-align:-webkit-center;">
+            <div class="w-7/8 md:w-5/6 flex px-2 pt-5 pb-10">
+              <div class="mx-auto product-fitment-content text-md md:text-xl w-full text-black font-semibold text-left">  
+                {% if product.metafields.global.tables != blank %}
+                <div style="text-align:-webkit-center;">{{ product.metafields.global.tables }}</div>
+                {% endif %}
+                {% if product.metafields.global.fitment %}
+                {% assign listofshit = product.metafields.global.fitment | newline_to_br | split: '<br />' %}
+                <ul class="fitment">
+                  {% for shit in listofshit %}<li>{{ shit }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+   {% endif %}
+  {% endif %}
+</div>
+{% endif %}
+
+
+{% schema %}
+ {
+    "name": "Product Fitment",
+    "settings": []
+  }
+{% endschema %}
+
+
+
+

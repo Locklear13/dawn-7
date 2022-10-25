@@ -1,0 +1,355 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-grid.css' | asset_url | stylesheet_tag }}
+
+<!-- DETECT MAKE & MODEL IN URL -->
+{% assign url_parts = request.path | downcase | split: "/" %}
+{% assign typeArray = "accessories,audio,bumpers,cages,doors,lighting,roofs,suspension,winches" | split: ',' %}
+{% assign onlyShow = "ALL" %}
+{% for part in url_parts %}
+	{% assign downPart = part | downcase %}
+	{% case downPart %}
+		{% when "accents" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "accessories" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "audio" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "bumpers" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "cages" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "doors" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "lighting" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "roofs" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "suspension" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+		{% when "winches" %}
+			{% assign onlyShow = downPart %}
+			{% break %}
+	{% endcase %}
+{% endfor %}
+
+{% for part in url_parts %}
+{% assign downPart = part | downcase %}
+{% case downPart %}
+	{% when "polaris" %}
+		{% assign currentBrand  = "polaris" %}
+		{% assign brandColor = "#305799" %}
+		{% assign brandRGBA = "rgba(48, 87, 153, 0.5)" %}
+		{% assign modelArray = collections.polaris.metafields.global.models | split: ',' %}
+		{% break %}
+	{% when "yamaha" %}
+		{% assign currentBrand  = "yamaha" %}
+		{% assign brandColor = "#CCCCCB" %}
+		{% assign brandRGBA = "rgba(204, 204, 203, 1)" %}
+		{% assign modelArray = collections.yamaha.metafields.global.models | split: ',' %}
+		{% break %}
+	{% when "can-am" %}
+		{% assign currentBrand  = "can-am" %}
+		{% assign brandColor = "#fdc832" %}
+		{% assign brandRGBA = "#aaa" %}
+		{% assign modelArray = collections.can-am.metafields.global.models | split: ',' %}
+		{% break %}
+	{% when "tracker" %}
+		{% assign currentBrand  = "tracker" %}
+		{% assign brandColor = "#262526" %}
+		{% assign brandRGBA = "rgba(38, 37, 38, 1)" %}
+		{% assign modelArray = collections.tracker.metafields.global.models | split: ',' %}
+		{% break %}
+	{% when "honda" %}
+		{% assign currentBrand  = "honda" %}
+		{% assign brandColor = "#e0262f" %}
+		{% assign brandRGBA = "rgba(224, 38, 47, 0.5)" %}
+		{% assign modelArray = collections.honda.metafields.global.models | split: ',' | downcase %}
+		{% break %}
+	{% else %}
+		{% assign currentBrand = "all" %}
+		{% assign brandColor = "#555" %}
+{% endcase %}
+
+{% endfor %}
+{% assign downURL = request.path | downcase | split: '/' %}
+{% for part in downURL %}
+{% for indModel in modelArray %}
+	{% if indModel == part %}
+		{% assign currentModel = indModel %}
+	{% endif %}
+{% endfor %}
+{% endfor %}
+<style>
+  
+  
+  .collection-card-title {
+    color: #000000;
+    font-family: "Rajdhani";
+    font-weight: 600;
+    letter-spacing: 0px;
+    font-size: 1.7rem;
+  }
+  .collection-card-make-and-model {
+    color: #cacaca;
+    font-family: "Rajdhani";
+    font-weight: 400;
+    font-size:1.5rem;
+    letter-spacing: 0px;
+    line-height: 1;
+    text-shadow: 2px 2px #000000;
+  }
+  .collection-card-make-and-model a {
+    color: #aaa;
+    text-decoration:none;
+  }
+  .collection-card-make-and-model a:hover {
+    color: #0fa0ea;
+    text-decoration:underline;
+  }
+  .collection-card-price {
+    color: #000000;
+    font-family: "Rajdhani" !important;
+    font-weight: 500;
+    letter-spacing: 0px;
+    font-size: initial;
+  }
+  .collection-meta-image {
+    height:250px; 
+    /*min-height:550px;*/
+    max-height:250px;
+    background-size:cover;
+    background-color:#000;
+    background-position: center;
+    background-image:url('http://{{collection.metafields.collection.image | file_url:'512x' }}');
+  }
+  @media screen and (min-width: 750px) {
+   .collection-meta-image {
+    /*height:450px; */
+    min-height:550px;
+    background-size:cover; 
+    background-color:#000;
+    background-position: center;
+    background-image:url('http://{{collection.metafields.collection.image | file_url }}');
+   }
+  }
+  .svg_logo {
+    width:300px; 
+    margin-bottom:10px;
+    /*margin: 10px 0 5px 0px;*/
+  }
+  .product-section-title {
+    border-bottom:1px solid #777;
+  }
+  :root {
+    --brand-color: {{ brandColor }};
+  }
+  .rating {
+    display: none;
+    margin: 0;
+  }
+</style>
+
+<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+	{% if collection.metafields.collection.image != blank %}
+	<!--<div class="collection-meta-image bg-no-repeat" style="background-image:url('http://{{collection.metafields.collection.image | file_url }}'); box-shadow:5px 0px 20px #000; overflow:hidden; ">
+     <!--<img src="http://{{ collection.metafields.collection.image | file_url }}" />--><!--<span class="justify-center items-center m-auto text-6xl font-teko text-white shadow-2xl">{{ collection.title }}</span>-->
+<!--      <div class="min-w-2 p-8 bg-black bg-opacity-30">{%- render 'brand-svg' -%}<span class="text-white text-3xl raj bg-black bg-opacity-30 px-6 py-2" style="text-shadow:1px 1px 3px #000;"> Products by Thumper Fab</span></div>
+	</div>-->
+	{% else %}
+ <!--  <div class="product-section-title w-full text-5xl font-bold p-2 shadow-2xl">
+        {% render 'tf-svg' %}    
+    </div>-->
+	{% endif %}
+<section id="ProductGridContainer mt-12">
+	<div class="collection w-full align-center justify-items-center">
+      
+        {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+        {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+     <!--   <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+
+        <div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">
+          {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+        </div>     -->
+        {%- endif -%}
+
+      
+        <div class="loading-overlay gradient"></div>
+      	{% paginate collections.all.products by 500 %}
+        	{% assign productsArray = collections.all.products %}
+      	{% endpaginate %}
+      	
+        {% assign numberOfItemsInSection = 0 %}
+      	{% unless onlyShow == "ALL" %}
+      		{% assign typeArray = onlyShow %}
+      	{% endunless %}
+        {% for stuff in typeArray %}
+              <div class="{{ stuff }}-section w-full grid justify-items-center" style=""><!--background: rgb(255,255,255 0.5); background: linear-gradient(0deg, rgba(220,220,220,0.5) 90%, {{ brandRGBA }} 100%);-->
+                  <div class="w-11/12 justify-items-center pb-20">
+                     	  <div class="collection-description p-5 mx-2 lg:mx-2 sm:mx-10 mb-10 mt-12" style="height:max-content; background: linear-gradient(0deg, rgba(255,255,255,1) 10%, {{ brandColor }} 100%);">                            
+                              <span class="w-1/8"> 
+                                {%- render 'brand-svg' -%} 
+                              </span>                              
+                            	<h1 class="text-4xl raj"><strong>{{ stuff | upcase }}</strong></h1>
+                              <p class="text-3xl" style="font-family:'Rajdhani';"> 
+                                <a name="{{ stuff }}" style="scroll-behavior: smooth;">&nbsp</a>
+                              </p>
+                              <hr style="border-bottom:2px solid #555"/>
+                          </div>
+                          <ul id="product-grid"class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+                            <!--<li>
+                             
+                            </li>-->
+                            {%- assign numberOfItemsInSection = 0 -%}
+                            {% for product in productsArray %} 
+                            	{% unless product.tags contains 'no-display' %} 
+                                  {% assign tempCat = product.metafields.global.category | downcase %}
+                                  {% assign productMake = product.metafields.global.make | downcase %} 
+                                    {% if tempCat == stuff %}
+                                      {% if productMake == currentBrand or productMake contains currentBrand or currentBrand == "all" %}
+                                          {% if currentModel %}
+                                              {% if currentModel == product.metafields.global.product_model %}
+                                                  {%- assign numberOfItemsInSection = numberOfItemsInSection | plus: 1 -%}
+                                                  <li class="grid__item w-full align-center text-left mb-10">
+                                                      {% render 'collection-card',
+                                                          product_card_product: product,
+                                                          media_size: section.settings.image_ratio,
+                                                          show_secondary_image: section.settings.show_secondary_image,
+                                                          show_vendor: section.settings.show_vendor,
+                                                          show_image_outline: section.settings.show_image_outline,
+                                                          show_rating: false,
+                                                          brand_color: brandColor
+                                                      %}
+                                                  </li>
+                                              {%- endif -%}
+                                          {% else %}
+                                               {%- assign numberOfItemsInSection = numberOfItemsInSection | plus: 1 -%}
+                                              <li class="grid__item w-full align-center text-left mb-10">
+                                                      {% render 'collection-card',
+                                                          product_card_product: product,
+                                                          media_size: section.settings.image_ratio,
+                                                          show_secondary_image: section.settings.show_secondary_image,
+                                                          show_vendor: section.settings.show_vendor,
+                                                          show_image_outline: section.settings.show_image_outline,
+                                                          show_rating: false,
+                                                          brand_color: brandColor
+                                                      %}
+                                                  </li>
+                                          {%- endif -%}
+                                      {%- endif -%}
+                                    {%- endif -%}
+                            	{% endunless %}
+                              {%- endfor -%}
+                          </ul>
+                    
+                  </div>
+              </div>
+      
+      		{% if numberOfItemsInSection == 0 %}
+      			<style>
+                  .{{ stuff }}-section { display: none !important; }
+      			</style>
+      		{% endif %}
+       {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "make-collection-grid",
+  "class": "spaced-section collection-grid-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__3.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.main-collection-product-grid.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "add_image_padding",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.add_image_padding.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_outline",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.show_image_outline.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_rating.label",
+      "info": "t:sections.main-collection-product-grid.settings.show_rating.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "collapse_on_larger_devices",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.collapse_on_larger_devices.label"
+    }
+  ]
+}
+{% endschema %}
