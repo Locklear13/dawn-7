@@ -7,7 +7,7 @@
       "login_form_password_placeholder": "Parolanız",
       "login_form_error": "Yanlış parola!",
       "login_form_submit": "Gir",
-      "admin_link_html": "Mağaza sahibi misiniz? <a href=\"/admin\" class=\"link underlined-link\">Buradan oturum açın</a>",
+      "admin_link_html": "Mağaza sahibi misiniz? <a href=\"\/admin\" class=\"link underlined-link\">Buradan oturum açın<\/a>",
       "powered_by_shopify_html": "Bu mağaza {{ shopify }} tarafından desteklenir"
     },
     "social": {
@@ -47,12 +47,6 @@
       "share_url": "Bağlantı",
       "success_message": "Bağlantı panoya kopyalandı",
       "close": "Paylaşımı kapat"
-    },
-    "slider": {
-      "of": "/",
-      "next_slide": "Sağa kaydır",
-      "previous_slide": "Sola kaydır",
-      "name": "Kaydırıcı"
     }
   },
   "newsletter": {
@@ -63,7 +57,7 @@
   "accessibility": {
     "skip_to_text": "İçeriğe atla",
     "close": "Kapat",
-    "unit_price_separator": "/",
+    "unit_price_separator": "\/",
     "vendor": "Satıcı:",
     "error": "Hata",
     "refresh_page": "Bir seçim yapmanız sayfanın tamamının yenilenmesine neden olur.",
@@ -71,12 +65,13 @@
       "new_window": "Yeni bir pencerede açılır.",
       "external": "Harici web sitesini açar."
     },
+    "next_slide": "Sağa kaydır",
+    "previous_slide": "Sola kaydır",
     "loading": "Yükleniyor...",
+    "of": "\/",
     "skip_to_product_info": "Ürün bilgisine atla",
     "total_reviews": "toplam değerlendirme",
-    "star_reviews_info": "{{ rating_value }}/{{ rating_max }} yıldız",
-    "collapsible_content_title": "Daraltılabilir içerik",
-    "complementary_products": "Tamamlayıcı ürünler"
+    "star_reviews_info": "{{ rating_value }}\/{{ rating_max }} yıldız"
   },
   "blogs": {
     "article": {
@@ -131,26 +126,20 @@
         "view_store_info": "Mağaza bilgilerini görüntüleyin",
         "check_other_stores": "Diğer mağazalardaki stok durumunu kontrol edin",
         "pick_up_available": "Teslim alım kullanılabilir",
-        "pick_up_available_at_html": "Teslim alım <span class=\"color-foreground\">{{ location_name }}</span> konumunda kullanılabilir",
-        "pick_up_unavailable_at_html": "Teslim alım <span class=\"color-foreground\">{{ location_name }}</span> konumunda şu anda kullanılamıyor",
+        "pick_up_available_at_html": "Teslim alım <span class=\"color-foreground\">{{ location_name }}<\/span> konumunda kullanılabilir",
+        "pick_up_unavailable_at_html": "Teslim alım <span class=\"color-foreground\">{{ location_name }}<\/span> konumunda şu anda kullanılamıyor",
         "unavailable": "Teslim alım stok durumu yüklenemedi",
         "refresh": "Yenile"
       },
       "media": {
-        "open_media": "Medya {{ index }} modda oynatın",
+        "open_featured_media": "Öne çıkan medyayı galeri görünümünde aç",
+        "open_media": "Medya {{ index }} galeri görünümünde aç",
         "play_model": "3B Görüntüleyici'yi Oynat",
-        "play_video": "Videoyu oynat",
-        "gallery_viewer": "Galeri Görüntüleyici",
-        "load_image": "Görsel {{ index }} galeri görüntüleyicide yükleyin",
-        "load_model": "3B Model {{ index }} galeri görüntüleyicide yükleyin",
-        "load_video": "Video {{ index }} galeri görüntüleyicide oynatın",
-        "image_available": "Görsel {{ index }} artık galeri görüntüleyicide kullanılabilir"
+        "play_video": "Videoyu oynat"
       },
       "view_full_details": "Tüm ayrıntıları görüntüle",
       "include_taxes": "Vergi dahildir.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Kargo</a>, ödeme sayfasında hesaplanır.",
-      "choose_options": "Seçenekleri belirle",
-      "choose_product_options": "{{ product_name }} için seçenekleri belirle"
+      "shipping_policy_html": "<a href=\"{{ link }}\">Kargo<\/a>, ödeme sayfasında hesaplanır."
     },
     "modal": {
       "label": "Medya galerisi"
@@ -158,7 +147,7 @@
     "facets": {
       "apply": "Uygula",
       "clear": "Temizle",
-      "clear_all": "Tümünü kaldır",
+      "clear_all": "Tümünü temizle",
       "from": "En düşük",
       "filter_and_sort": "Filtrele ve sırala",
       "filter_by_label": "Filtre:",
@@ -169,8 +158,8 @@
       },
       "max_price": "En yüksek fiyat: {{ price }}",
       "product_count": {
-        "one": "{{ count }}/{{ product_count }} ürün",
-        "other": "{{ count }}/{{ product_count }} ürün"
+        "one": "{{ count }}\/{{ product_count }} ürün",
+        "other": "{{ count }}\/{{ product_count }} ürün"
       },
       "product_count_simple": {
         "one": "{{ count }} ürün",
@@ -180,10 +169,7 @@
       "sort_button": "Sırala",
       "sort_by_label": "Sıralama ölçütü:",
       "to": "En yüksek",
-      "clear_filter": "Filtreyi kaldır",
-      "filter_selected_accessibility": "{{ type }} ({{ count }} filtre seçildi)",
-      "show_more": "Daha fazla göster",
-      "show_less": "Daha az göster"
+      "clear_filter": "Filtreyi temizle"
     }
   },
   "templates": {
@@ -213,8 +199,7 @@
         "comment": "Yorum",
         "send": "Gönder",
         "post_success": "Bizimle iletişime geçtiğiniz için teşekkür ederiz. Mümkün olan en kısa sürede size dönüş yapacağız.",
-        "error_heading": "Lütfen aşağıdakileri düzenleyin:",
-        "title": "İletişim formu"
+        "error_heading": "Lütfen aşağıdakileri düzenleyin:"
       }
     },
     "404": {
@@ -242,21 +227,20 @@
       "empty": "Sepetiniz boş",
       "cart_error": "Sepetiniz güncellenirken bir hata oluştu. Lütfen tekrar deneyin.",
       "cart_quantity_error_html": "Sepetinize bu üründen yalnızca {{ quantity }} adet ekleyebilirsiniz.",
-      "taxes_and_shipping_policy_at_checkout_html": "Vergiler ve <a href=\"{{ link }}\">kargo</a>, ödeme sayfasında hesaplanır",
+      "taxes_and_shipping_policy_at_checkout_html": "Vergiler ve <a href=\"{{ link }}\">kargo<\/a>, ödeme sayfasında hesaplanır",
       "taxes_included_but_shipping_at_checkout": "Vergi dahildir ve kargo, ödeme sayfasında hesaplanır",
-      "taxes_included_and_shipping_policy_html": "Vergi dahildir. <a href=\"{{ link }}\">Kargo</a>, ödeme sayfasında hesaplanır.",
+      "taxes_included_and_shipping_policy_html": "Vergi dahildir. <a href=\"{{ link }}\">Kargo<\/a>, ödeme sayfasında hesaplanır.",
       "taxes_and_shipping_at_checkout": "Vergiler ve kargo, ödeme sayfasında hesaplanır",
       "headings": {
         "product": "Ürün",
         "price": "Fiyat",
         "total": "Toplam",
-        "quantity": "Adet",
-        "image": "Ürün görseli"
+        "quantity": "Adet"
       },
       "update": "Güncelle",
       "login": {
         "title": "Hesabınız var mı?",
-        "paragraph_html": "Daha hızlı ödeme yapmak için <a href=\"{{ link }}\" class=\"link underlined-link\">oturum açın</a>."
+        "paragraph_html": "Daha hızlı ödeme yapmak için <a href=\"{{ link }}\" class=\"link underlined-link\">oturum açın<\/a>."
       }
     },
     "footer": {
@@ -277,29 +261,17 @@
     "collection_template": {
       "title": "Koleksiyon",
       "empty": "Ürün bulunamadı",
-      "use_fewer_filters_html": "Daha az filtre kullan veya <a class=\"{{ class }}\" href=\"{{ link }}\">tümünü kaldır</a>"
+      "use_fewer_filters_html": "Daha az filtre kullan veya <a class=\"{{ class }}\" href=\"{{ link }}\">tümünü temizle<\/a>"
     },
     "video": {
       "load_video": "Videoyu yükle: {{ description }}"
-    },
-    "slideshow": {
-      "load_slide": "Slaytı yükle",
-      "previous_slideshow": "Önceki slayt",
-      "next_slideshow": "Sonraki slayt",
-      "pause_slideshow": "Slayt gösterisini duraklat",
-      "play_slideshow": "Slayt gösterisini oynat",
-      "carousel": "Döngü",
-      "slide": "Slayt"
-    },
-    "page": {
-      "title": "Sayfa başlığı"
     }
   },
   "localization": {
-    "country_label": "Ülke/bölge",
+    "country_label": "Ülke\/bölge",
     "language_label": "Dil",
     "update_language": "Dili güncelle",
-    "update_country": "Ülke/bölge bilgisini güncelle"
+    "update_country": "Ülke\/bölge bilgisini güncelle"
   },
   "customer": {
     "account": {
@@ -328,7 +300,7 @@
       "address1": "Adres 1",
       "address2": "Adres 2",
       "city": "Şehir",
-      "country": "Ülke/bölge",
+      "country": "Ülke\/bölge",
       "province": "İl",
       "zip": "Posta kodu",
       "phone": "Telefon",
@@ -379,7 +351,7 @@
     },
     "reset_password": {
       "title": "Hesap parolasını sıfırlayın",
-      "subtext": "Yeni bir parola girin",
+      "subtext": "{{ email }} için yeni bir parola girin",
       "password": "Parola",
       "password_confirm": "Parolayı doğrula",
       "submit": "Parolayı sıfırla"
@@ -406,8 +378,7 @@
       "tracking_url": "Takip bağlantısı",
       "tracking_company": "Kargo Şirketi",
       "tracking_number": "Takip numarası",
-      "subtotal": "Alt toplam",
-      "total_duties": "Gümrük vergileri"
+      "subtotal": "Alt toplam"
     }
   },
   "gift_cards": {

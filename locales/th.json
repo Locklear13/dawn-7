@@ -7,7 +7,7 @@
       "login_form_password_placeholder": "รหัสผ่านของคุณ",
       "login_form_error": "รหัสผ่านผิดพลาด!",
       "login_form_submit": "ป้อน",
-      "admin_link_html": "คุณเป็นเจ้าของร้านใช่ไหม <a href=\"/admin\" class=\"link underlined-link\">เข้าสู่ระบบที่นี่</a>",
+      "admin_link_html": "คุณเป็นเจ้าของร้านใช่ไหม <a href=\"\/admin\" class=\"link underlined-link\">เข้าสู่ระบบที่นี่<\/a>",
       "powered_by_shopify_html": "ร้านค้านี้จะได้รับการสนับสนุนจาก {{ shopify }}"
     },
     "social": {
@@ -47,12 +47,6 @@
       "share_url": "ลิงก์",
       "success_message": "คัดลอกลิงก์ไปยังคลิปบอร์ดแล้ว",
       "close": "ปิดแชร์"
-    },
-    "slider": {
-      "of": "จาก",
-      "next_slide": "ไปสไลด์ขวา",
-      "previous_slide": "ไปสไลด์ซ้าย",
-      "name": "แถบเลื่อน"
     }
   },
   "newsletter": {
@@ -71,12 +65,13 @@
       "new_window": "เปิดในหน้าต่างใหม่",
       "external": "เปิดเว็บไซต์ภายนอก"
     },
+    "next_slide": "Slide right",
+    "previous_slide": "Slide left",
     "loading": "กำลังโหลด...",
+    "of": "จาก",
     "skip_to_product_info": "ข้ามไปยังข้อมูลสินค้า",
     "total_reviews": "รีวิวทั้งหมด",
-    "star_reviews_info": "{{ rating_value }} จาก {{ rating_max }} ดาว",
-    "collapsible_content_title": "เนื้อหาที่ย่อได้",
-    "complementary_products": "สินค้าเสริม"
+    "star_reviews_info": "{{ rating_value }} จาก {{ rating_max }} ดาว"
   },
   "blogs": {
     "article": {
@@ -131,26 +126,20 @@
         "view_store_info": "ดูข้อมูลร้านค้า",
         "check_other_stores": "ตรวจสอบความพร้อมที่ร้านค้าอื่นๆ",
         "pick_up_available": "การรับสินค้าด้วยตนเองพร้อมให้บริการ",
-        "pick_up_available_at_html": "รับสินค้าด้วยตนเองได้ที่ <span class=\"color-foreground\">{{ location_name }}</span>",
-        "pick_up_unavailable_at_html": "การรับสินค้าด้วยตนเองที่ <span class=\"color-foreground\">{{ location_name }}</span> ยังไม่พร้อมให้บริการในขณะนี้",
+        "pick_up_available_at_html": "รับสินค้าด้วยตนเองได้ที่ <span class=\"color-foreground\">{{ location_name }}<\/span>",
+        "pick_up_unavailable_at_html": "การรับสินค้าด้วยตนเองที่ <span class=\"color-foreground\">{{ location_name }}<\/span> ยังไม่พร้อมให้บริการในขณะนี้",
         "unavailable": "ไม่สามารถโหลดความพร้อมในการรับสินค้าด้วยตนเองได้",
         "refresh": "รีเฟรช"
       },
       "media": {
-        "open_media": "เปิดสื่อ {{ index }} ในโมดอล",
+        "open_featured_media": "เปิดสื่อที่แนะนำในมุมมองแกลเลอรี",
+        "open_media": "เปิดสื่อ {{ index }} ในมุมมองแกลเลอรี",
         "play_model": "เล่นตัวแสดง 3 มิติ",
-        "play_video": "เล่นวิดีโอ",
-        "gallery_viewer": "เครื่องมือดูภาพของแกลเลอรี",
-        "load_image": "โหลดรูปภาพ {{ index }} ในมุมมองแกลเลอรี",
-        "load_model": "โหลดโมเดล 3 มิติ {{ index }} ในมุมมองแกลเลอรี",
-        "load_video": "เล่นวิดีโอ {{ index }} ในมุมมองแกลเลอรี",
-        "image_available": "รูปภาพ {{ index }} พร้อมใช้งานในมุมมองแกลเลอรี"
+        "play_video": "เล่นวิดีโอ"
       },
       "view_full_details": "ดูรายละเอียดทั้งหมด",
       "include_taxes": "รวมภาษี",
-      "shipping_policy_html": "<a href=\"{{ link }}\">ค่าจัดส่ง</a>ที่คำนวณในขั้นตอนการชำระเงิน",
-      "choose_options": "เลือกตัวเลือก",
-      "choose_product_options": "เลือกตัวเลือกสำหรับ {{ product_name }}"
+      "shipping_policy_html": "<a href=\"{{ link }}\">ค่าจัดส่ง<\/a>ที่คำนวณในขั้นตอนการชำระเงิน"
     },
     "modal": {
       "label": "แกลเลอรีสื่อ"
@@ -158,7 +147,7 @@
     "facets": {
       "apply": "นำไปใช้",
       "clear": "ล้าง",
-      "clear_all": "ลบออกทั้งหมด",
+      "clear_all": "ล้างทั้งหมด",
       "from": "จาก",
       "filter_and_sort": "กรองและจัดเรียง",
       "filter_by_label": "ตัวกรอง:",
@@ -180,10 +169,7 @@
       "sort_button": "จัดเรียง",
       "sort_by_label": "เรียงตาม:",
       "to": "ไปยัง",
-      "clear_filter": "ลบตัวกรองออก",
-      "filter_selected_accessibility": "{{ type }} (เลือกตัวกรองแล้ว {{ count }} รายการ)",
-      "show_more": "แสดงมากขึ้น",
-      "show_less": "แสดงน้อยลง"
+      "clear_filter": "ล้างตัวกรอง"
     }
   },
   "templates": {
@@ -198,8 +184,8 @@
       "products": "สินค้า",
       "search_for": "ค้นหา “{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "พบผลลัพธ์ {{ count }} รายการสำหรับ “{{ terms }}”",
-        "other": "พบผลลัพธ์ {{ count }} รายการสำหรับ “{{ terms }}”"
+        "one": "พบผลลัพธ์ {{ count }} รายการสำหรับ \"{{ terms }}\"",
+        "other": "พบผลลัพธ์ {{ count }} รายการสำหรับ \"{{ terms }}\""
       }
     },
     "cart": {
@@ -213,8 +199,7 @@
         "comment": "ความคิดเห็น",
         "send": "ส่ง",
         "post_success": "ขอขอบคุณที่ติดต่อเรา เราจะติดต่อกลับไปหาคุณโดยเร็วที่สุด",
-        "error_heading": "โปรดแก้ไขข้อมูลดังต่อไปนี้:",
-        "title": "แบบฟอร์มการติดต่อ"
+        "error_heading": "โปรดแก้ไขข้อมูลดังต่อไปนี้:"
       }
     },
     "404": {
@@ -242,21 +227,20 @@
       "empty": "ตะกร้าสินค้าของคุณว่างอยู่",
       "cart_error": "เกิดข้อผิดพลาดระหว่างการอัปเดตตะกร้าสินค้าของคุณ โปรดลองอีกครั้ง",
       "cart_quantity_error_html": "คุณสามารถเพิ่มรายการนี้ {{ quantity }} รายการลงในตะกร้าสินค้าของคุณเท่านั้น",
-      "taxes_and_shipping_policy_at_checkout_html": "ระบบจะคำนวณภาษีและ<a href=\"{{ link }}\">ค่าจัดส่ง</a>ในขั้นตอนการชำระเงิน",
+      "taxes_and_shipping_policy_at_checkout_html": "ระบบจะคำนวณภาษีและ<a href=\"{{ link }}\">ค่าจัดส่ง<\/a>ในขั้นตอนการชำระเงิน",
       "taxes_included_but_shipping_at_checkout": "ระบบจะรวมภาษีและคำนวณค่าจัดส่งในขั้นตอนการชำระเงิน",
-      "taxes_included_and_shipping_policy_html": "รวมภาษีแล้ว <a href=\"{{ link }}\">ค่าจัดส่ง</a>ที่คิดคำนวณในระหว่างขั้นตอนการชำระเงิน",
+      "taxes_included_and_shipping_policy_html": "รวมภาษีแล้ว <a href=\"{{ link }}\">ค่าจัดส่ง<\/a>ที่คิดคำนวณในระหว่างขั้นตอนการชำระเงิน",
       "taxes_and_shipping_at_checkout": "ระบบจะคำนวณภาษีและค่าจัดส่งในขั้นตอนการชำระเงิน",
       "headings": {
         "product": "สินค้า",
         "price": "ราคา",
         "total": "ยอดรวม",
-        "quantity": "ปริมาณ",
-        "image": "รูปภาพสินค้า"
+        "quantity": "ปริมาณ"
       },
       "update": "อัปเดต",
       "login": {
         "title": "มีบัญชีผู้ใช้อยู่แล้วใช่หรือไม่",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">เข้าสู่ระบบ</a>เพื่อชำระเงินให้รวดเร็วยิ่งขึ้น"
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">เข้าสู่ระบบ<\/a>เพื่อชำระเงินให้รวดเร็วยิ่งขึ้น"
       }
     },
     "footer": {
@@ -277,29 +261,17 @@
     "collection_template": {
       "title": "คอลเลกชัน",
       "empty": "ไม่พบสินค้า",
-      "use_fewer_filters_html": "ใช้ตัวกรองให้น้อยลง หรือ<a class=\"{{ class }}\" href=\"{{ link }}\">ลบทั้งหมด</a>"
+      "use_fewer_filters_html": "ใช้ตัวกรองให้น้อยลง หรือ<a class=\"{{ class }}\" href=\"{{ link }}\">ล้างทั้งหมด<\/a>"
     },
     "video": {
       "load_video": "โหลดวิดีโอ: {{ description }}"
-    },
-    "slideshow": {
-      "load_slide": "โหลดสไลด์",
-      "previous_slideshow": "สไลด์ก่อนหน้า",
-      "next_slideshow": "สไลด์ถัดไป",
-      "pause_slideshow": "หยุดสไลด์โชว์ชั่วคราว",
-      "play_slideshow": "เล่นสไลด์โชว์",
-      "carousel": "ภาพสไลด์",
-      "slide": "สไลด์"
-    },
-    "page": {
-      "title": "ชื่อหน้า"
     }
   },
   "localization": {
-    "country_label": "ประเทศ/ภูมิภาค",
+    "country_label": "ประเทศ\/ภูมิภาค",
     "language_label": "ภาษา",
     "update_language": "อัปเดตภาษา",
-    "update_country": "อัปเดตประเทศ/ภูมิภาค"
+    "update_country": "อัปเดตประเทศ\/ภูมิภาค"
   },
   "customer": {
     "account": {
@@ -328,9 +300,9 @@
       "address1": "ที่อยู่ 1",
       "address2": "ที่อยู่ 2",
       "city": "เมือง",
-      "country": "ประเทศ/ภูมิภาค",
+      "country": "ประเทศ\/ภูมิภาค",
       "province": "จังหวัด",
-      "zip": "รหัสไปรษณีย์/ZIP",
+      "zip": "รหัสไปรษณีย์\/ZIP",
       "phone": "โทรศัพท์",
       "set_default": "ตั้งเป็นที่อยู่เริ่มต้น",
       "add": "เพิ่มที่อยู่",
@@ -379,7 +351,7 @@
     },
     "reset_password": {
       "title": "รีเซ็ตรหัสผ่านของบัญชีผู้ใช้",
-      "subtext": "ป้อนรหัสผ่านใหม่",
+      "subtext": "ป้อนรหัสผ่านใหม่สำหรับ {{ email }}",
       "password": "รหัสผ่าน",
       "password_confirm": "ยืนยันรหัสผ่าน",
       "submit": "รีเซ็ตรหัสผ่าน"
@@ -406,8 +378,7 @@
       "tracking_url": "ลิงก์ติดตาม",
       "tracking_company": "ผู้ให้บริการขนส่ง",
       "tracking_number": "หมายเลขติดตามพัสดุ",
-      "subtotal": "ยอดรวม",
-      "total_duties": "อากร"
+      "subtotal": "ยอดรวม"
     }
   },
   "gift_cards": {
