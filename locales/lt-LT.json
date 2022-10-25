@@ -7,7 +7,7 @@
       "login_form_password_placeholder": "Jūsų slaptažodis",
       "login_form_error": "Slaptažodis neteisingas!",
       "login_form_submit": "Įvesti",
-      "admin_link_html": "Ar esate parduotuvės savininkas? <a href=\"/admin\" class=\"link underlined-link\">Prisijunkite čia</a>",
+      "admin_link_html": "Ar esate parduotuvės savininkas? <a href=\"\/admin\" class=\"link underlined-link\">Prisijunkite čia<\/a>",
       "powered_by_shopify_html": "Ši parduotuvė priklausys platformai „{{ shopify }}“"
     },
     "social": {
@@ -47,12 +47,6 @@
       "share_url": "Nuoroda",
       "success_message": "Nuoroda nukopijuota į iškarpinę",
       "close": "Uždaryti bendrinimą"
-    },
-    "slider": {
-      "of": "iš",
-      "next_slide": "Slinkti dešinėn",
-      "previous_slide": "Slinkti kairėn",
-      "name": "Slankiklis"
     }
   },
   "newsletter": {
@@ -67,16 +61,17 @@
     "vendor": "Tiekėjas:",
     "error": "Klaida",
     "refresh_page": "Pasirenkant variantą persikrauna visas puslapis.",
+    "next_slide": "Slinkite dešinėn",
+    "previous_slide": "Slinkite kairėn",
     "loading": "Įkeliama...",
     "link_messages": {
       "new_window": "Atsidaro naujame lange.",
       "external": "Atidaro išorinę svetainę."
     },
+    "of": "iš",
     "skip_to_product_info": "Pereiti prie informacijos apie gaminį",
     "total_reviews": "iš viso apžvalgų",
-    "star_reviews_info": "{{ rating_value }} iš {{ rating_max }} žvaigždučių",
-    "collapsible_content_title": "Suskleidžiamas turinys",
-    "complementary_products": "Papildomi produktai"
+    "star_reviews_info": "{{ rating_value }} iš {{ rating_max }} žvaigždučių"
   },
   "blogs": {
     "article": {
@@ -133,26 +128,20 @@
         "view_store_info": "Žiūrėti parduotuvės informaciją",
         "check_other_stores": "Pažiūrėti, ar yra kitose parduotuvėse",
         "pick_up_available": "Galima atsiimti",
-        "pick_up_available_at_html": "Galima atsiimti <span class=\"color-foreground\">{{ location_name }}</span>",
-        "pick_up_unavailable_at_html": "Šiuo metu atsiimti <span class=\"color-foreground\">{{ location_name }}</span>negalima",
+        "pick_up_available_at_html": "Galima atsiimti <span class=\"color-foreground\">{{ location_name }}<\/span>",
+        "pick_up_unavailable_at_html": "Šiuo metu atsiimti <span class=\"color-foreground\">{{ location_name }}<\/span>negalima",
         "unavailable": "Nepavyko įkelti atsiėmimo galimybių",
         "refresh": "Atnaujinti"
       },
       "media": {
-        "open_media": "Atidaryti mediją {{ index }} modaliniame lange",
+        "open_featured_media": "Atidaryti siūlomą mediją galerijos rodinyje",
+        "open_media": "Atidaryti mediją {{ index }} galerijos rodinyje",
         "play_model": "Paleisti 3D peržiūros programą",
-        "play_video": "Paleisti vaizdo įrašą",
-        "gallery_viewer": "Galerijos žiūryklė",
-        "load_image": "Įkelti vaizdą {{ index }} į galerijos rodinį",
-        "load_model": "Įkelti trimatį modelį {{ index }} į galerijos rodinį",
-        "load_video": "Leisti vaizdo įrašą {{ index }} galerijos rodinyje",
-        "image_available": "Vaizdas {{ index }} dabar prieinamas galerijos rodinyje"
+        "play_video": "Paleisti vaizdo įrašą"
       },
       "view_full_details": "Žiūrėti visą informaciją",
       "include_taxes": "Mokesčiai įtraukti.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Siuntimo išlaidos</a> apskaičiuojamos atsiskaitant.",
-      "choose_options": "Rinktis variantus",
-      "choose_product_options": "Rinktis {{ product_name }} variantus"
+      "shipping_policy_html": "<a href=\"{{ link }}\">Siuntimo išlaidos<\/a> apskaičiuojamos atsiskaitant."
     },
     "modal": {
       "label": "Medijų galerija"
@@ -160,7 +149,7 @@
     "facets": {
       "apply": "Taikyti",
       "clear": "Išvalyti",
-      "clear_all": "Pašalinti viską",
+      "clear_all": "Išvalyti viską",
       "from": "Nuo",
       "filter_and_sort": "Filtruoti ir rūšiuoti",
       "filter_by_label": "Filtruoti:",
@@ -188,10 +177,7 @@
         "few": "{{ count }} gaminiai (-ių)",
         "many": "{{ count }} gaminiai (-ių)"
       },
-      "clear_filter": "Pašalinti filtrą",
-      "filter_selected_accessibility": "{{ type }} (pasirinkta filtrų: {{ count }})",
-      "show_more": "Rodyti daugiau",
-      "show_less": "Rodyti mažiau"
+      "clear_filter": "Išvalyti filtrą"
     }
   },
   "templates": {
@@ -225,8 +211,7 @@
         "comment": "Komentuoti",
         "send": "Siųsti",
         "post_success": "Dėkojame, kad su mumis susisiekėte. Atsakysime kaip galėdami greičiau.",
-        "error_heading": "Pakoreguokite toliau pateiktą informaciją.",
-        "title": "Kontaktinė forma"
+        "error_heading": "Pakoreguokite toliau pateiktą informaciją."
       }
     },
     "404": {
@@ -256,21 +241,20 @@
       "empty": "Jūsų krepšelis tuščias",
       "cart_error": "Atnaujinant krepšelį įvyko klaida. Bandykite dar kartą.",
       "cart_quantity_error_html": "Į krepšelį galite įdėti tik {{ quantity }}šios prekės vnt.",
-      "taxes_and_shipping_policy_at_checkout_html": "Mokesčiai ir <a href=\"{{ link }}\">siuntimo išlaidos</a> apskaičiuojami atsiskaitant",
+      "taxes_and_shipping_policy_at_checkout_html": "Mokesčiai ir <a href=\"{{ link }}\">siuntimo išlaidos<\/a> apskaičiuojami atsiskaitant",
       "taxes_included_but_shipping_at_checkout": "Mokesčiai įtraukti, o siuntimo išlaidos apskaičiuojamos atsiskaitant",
-      "taxes_included_and_shipping_policy_html": "Mokesčiai įtraukti. <a href=\"{{ link }}\">Siuntimo išlaidos</a> apskaičiuojamos atsiskaitant.",
+      "taxes_included_and_shipping_policy_html": "Mokesčiai įtraukti. <a href=\"{{ link }}\">Siuntimo išlaidos<\/a> apskaičiuojamos atsiskaitant.",
       "taxes_and_shipping_at_checkout": "Mokesčiai ir siuntimo išlaidos apskaičiuojami atsiskaitant",
       "update": "Atnaujinti",
       "headings": {
         "product": "Gaminys",
         "price": "Kaina",
         "total": "Visa suma",
-        "quantity": "Kiekis",
-        "image": "Gaminio nuotrauka"
+        "quantity": "Kiekis"
       },
       "login": {
         "title": "Turite paskyrą?",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Prisijunkite</a> ir atsiskaitysite greičiau."
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Prisijunkite<\/a> ir atsiskaitysite greičiau."
       }
     },
     "footer": {
@@ -291,29 +275,17 @@
     "collection_template": {
       "title": "Kolekcija",
       "empty": "Nerasta jokių gaminių",
-      "use_fewer_filters_html": "Naudoti mažiau filtrų arba <a class=\"{{ class }}\" href=\"{{ link }}\">pašalinti viską</a>"
+      "use_fewer_filters_html": "Naudoti mažiau filtrų arba <a class=\"{{ class }}\" href=\"{{ link }}\">išvalyti viską<\/a>"
     },
     "video": {
       "load_video": "Įkelti vaizdo įrašą „{{ description }}“"
-    },
-    "slideshow": {
-      "load_slide": "Įkelti skaidrę",
-      "previous_slideshow": "Ankstesnė skaidrė",
-      "next_slideshow": "Kita skaidrė",
-      "pause_slideshow": "Pristabdyti skaidrių peržiūrą",
-      "play_slideshow": "Leisti skaidrių peržiūrą",
-      "carousel": "Karuselė",
-      "slide": "Skaidrė"
-    },
-    "page": {
-      "title": "Puslapio pavadinimas"
     }
   },
   "localization": {
-    "country_label": "Šalis / regionas",
+    "country_label": "Šalis \/ regionas",
     "language_label": "Kalba",
     "update_language": "Atnaujinti kalbą",
-    "update_country": "Atnaujinti šalį / regioną"
+    "update_country": "Atnaujinti šalį \/ regioną"
   },
   "customer": {
     "account": {
@@ -344,7 +316,7 @@
       "address1": "1 adresas",
       "address2": "2 adresas",
       "city": "Miestas",
-      "country": "Šalis / regionas",
+      "country": "Šalis \/ regionas",
       "province": "Provincija",
       "zip": "Pašto kodas",
       "phone": "Telefonas",
@@ -390,8 +362,7 @@
       "tracking_url": "Sekimo nuoroda",
       "tracking_company": "Vežėjas",
       "tracking_number": "Sekimo numeris",
-      "subtotal": "Tarpinė suma",
-      "total_duties": "Muito mokesčiai"
+      "subtotal": "Tarpinė suma"
     },
     "orders": {
       "title": "Užsakymų istorija",
@@ -418,7 +389,7 @@
     },
     "reset_password": {
       "title": "Nustatyti paskyros slaptažodį iš naujo",
-      "subtext": "Įveskite naują slaptažodį",
+      "subtext": "Įveskite naują paskyros {{ email }} slaptažodį",
       "password": "Slaptažodis",
       "password_confirm": "Patvirtinti slaptažodį",
       "submit": "Nustatyti slaptažodį iš naujo"
