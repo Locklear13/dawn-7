@@ -1,0 +1,125 @@
+<section {{ block.shopify_attributes }} style="{{section.settings.css}}"class="w-full grid grid-{{ section.settings.grid_type }}-{{ section.settings.grid_qty }} ">
+{% for block in section.blocks %}
+    {% assign b = block.settings %}
+    {% assign content = b.content | split: ";" %}
+    <!-- Assigning each item in the array to its own variable -->
+    {% assign headline = content[0] | strip_html %}
+    {% assign description = content[1] | strip_html %}
+    {% assign cta = content[2] | strip_html %}
+    {% assign hero_image = content[3] | strip_html | strip_newlines %}
+    {% assign collection = content[4] | strip_html | handleize %}
+    {% assign cta_title = content[5] | strip_html %}
+    {% assign cta_description = content[6] | strip_html %}
+    {% if page.handle == b.page_handle %}
+      <div style="background-image:url('{{b.image | img_url: '1500x1280' }}');" 
+           class="bg-cover bg-no-repeat {{b.tailwind}}">
+        <!--<img src="{{b.image | img_url: '1500x1280' }}"  class="w-{{ b.section_width }}"/>-->
+        <div class="my-auto">
+          <div class="text-5xl font-semibold">{{ headline }}</div>
+          <div class="text-3xl raj">{{description}}</div>
+        </div>
+		{% render 'cta', title: cta_title, description: cta_description %}
+
+     {%comment%}   {% render 'hero', image: hero_image, title: headline, description: description, cta: cta  %}
+        {% render 'product-grid', collection: collection %}
+        
+     {%endcomment%}
+      </div>
+    {% endif %}
+{% endfor %}
+</section>
+
+{% schema %}
+{
+	"name": "dynamic-1",
+	"settings": [
+	{
+		"type": "text",
+		"id": "css",
+		"label": "CSS"
+	},
+	{
+        "type": "radio",
+        "id": "grid_type",
+        "label": "Grid Type",
+        "options": [
+          {
+              "value": "cols",
+              "label": "columns"
+          },
+          {
+              "value": "rows",
+              "label": "rows"
+          }
+    	],
+        "default": "rows"
+    },
+    {
+        "type": "number",
+        "id": "grid_qty",
+        "label": "Number of row/cols",
+        "default": 1
+    }
+	],
+	"blocks": [{
+		"name": "Hero Image",
+		"type": "Hero",
+		"settings": [
+			{
+				"type":"text",
+				"id":"tailwind",
+				"label":"Tailwind CSS"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Name of this section"
+			},
+			{
+				"type": "textarea",
+				"id": "page_handle",
+				"label": "The pages where this image is shown"
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Choose an image"
+			},
+			{
+				"type": "textarea",
+				"id": "content",
+				"label": "headline, desc, cta, image, collection, cta title, cta description"
+			},
+			{
+				"type": "text",
+				"id": "headline",
+				"label": "Headline"
+			},
+			{
+				"type": "richtext",
+				"id": "description",
+				"label": "Description"
+			},
+			{
+				"type": "select",
+				"id": "section_width",
+				"label": "Section Width",
+				"default": "full",
+				"options": [{
+						"value": "full",
+						"label": "full"
+					},
+					{
+						"value": "1/2",
+						"label": "1/2"
+					},
+					{
+						"value": "1/4",
+						"label": "1/4"
+					}
+				]
+			}
+		]
+	}]
+}
+{% endschema %}

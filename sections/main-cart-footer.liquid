@@ -3,33 +3,43 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 
-<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
-  <div>
-    <div class="cart__footer">
-      {%- if settings.show_cart_note -%}
-        <cart-note class="cart__note field">
-          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
-          <textarea class="text-area field__input" name="note" form="cart" id="Cart-note" placeholder="{{ 'sections.cart.note' | t }}">{{ cart.note }}</textarea>
-        </cart-note>
-      {%- endif -%}
+<style>
+  .govx-id-slim-wrapper .govx-id-slim a { 
+    min-width: 150px;
+  }
+  .govx-id-slim {
+    width:100%;
+    padding:20px;
+  }
+  .money {
+   /*padding-left:20px; 
+   font-family:"Rajdhani";
+   font-size:2.2rem;*/
+  }
+  .affirm_cart_banner, .center-me {
+    text-align: -webkit-center;
+  }
+</style>
 
-      <div class="cart__blocks">
+<div class="w-full p-5 px-20 sm:px-0 md:px-10 pt-12" id="main-cart-footer" data-id="{{ section.id }}">
+    <div class="cart__footer w-full">
+       <div class="cart__blocks w-full xl:w-3/4 lg:w-7/8 md:w-7/8 sm:w-full xs:w-full text-center">
         {% for block in section.blocks %}
           {%- case block.type -%}
             {%- when '@app' -%}
               {% render block %}
             {%- when 'subtotal' -%}
-              <div class="js-contents" {{ block.shopify_attributes }}>
+              <div class="js-contents text-center" {{ block.shopify_attributes }}>
                 <div class="totals">
-                  <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
-                  <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+                  <div class="totals__subtotal text-3xl raj font-semibold">{{ 'sections.cart.subtotal' | t }}</div>
+                  <p class="totals__subtotal-value text-4xl rajdhani font-semibold">{{ cart.total_price | money_with_currency }}</p>
                 </div>
 
                 <div>
                   {%- if cart.cart_level_discount_applications.size > 0 -%}
                     <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                       {%- for discount in cart.cart_level_discount_applications -%}
-                        <li class="discounts__discount discounts__discount--position">
+                        <li class="discounts__discount discounts__discount--end">
                           {%- render 'icon-discount' -%}
                           {{ discount.title }}
                           (-{{ discount.total_allocated_amount | money }})
@@ -68,6 +78,12 @@
                 <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
                   {{ content_for_additional_checkout_buttons }}
                 </div>
+         
+         		<div class="affirm_cart_banner pt-10">
+                  <p class="affirm-product-modal" data-amount="5000" data-promo-id="promo_set_cart">
+                	<img src="https://cdn-assets.affirm.com/images/banners/468x60.png" />
+                  </p>
+                </div>
               {%- endif -%}
           {%- endcase -%}
         {% endfor %}
@@ -75,8 +91,72 @@
         <div id="cart-errors"></div>
       </div>
     </div>
-  </div>
+    
+    <div class="flex"><!---grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 text-center place-items-center-->
+        
+      <!-- cart note block -->       
+        
+      {%- if section.settings.show_cart_note -%}       
+          <div class="center-me w-full sm:w-full md:w-1/3">
+            <cart-note class="cart__note text-2xl raj font-semibold">
+              <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+              <textarea class="text-area text-area--resize-vertical field__input" name="note" form="cart" id="Cart-note" placeholder="{{ 'sections.cart.note' | t }}">If there's something you want us to know about your order, put 'er here.</textarea>
+            </cart-note>
+          </div>
+      {%- endif -%}
+        
+      <!-- govx id block -->
+        
+          <div class="center-me w-full sm:w-full md:w-1/3 pt-14 pl-5">
+            <!--<i data-govx-id="s"></i>-->
+            <a href="https://auth.govx.com/shopify/verify?shop=thumper-fab.myshopify.com&utm_source=shopify&utm_medium=govxid&utm_campaign=custom_link">
+              <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/govx-cart.jpg?v=1644448396" alt="GovX ID Discount for Military & Firsrt Responders"
+                    style="min-height:77px; min-width:206px;"/>
+            </a>
+          </div>
+        
+      <!-- buy safe guarantee block -->
+        
+       <!--  <div class="center-me w-full sm:w-full md:w-1/3 pt-14 pl-0">
+        	<span id="_GUARANTEE_Kicker_OLD" name="_GUARANTEE_Kicker_OLD" type="#">
+            	<img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/buysafe.png?v=1647975930"
+                     style="max-width:154px; max-height:154px; border:0px solid #000; text-align:left;" />
+            </span>
+      <!--      <span id="Kicker Custom 3_1" 
+                  name="Kicker Custom 3" 
+                  type="Kicker Custom 3" 
+                  role="button" aria-label="All purchases made on this site are protected by BuySafe Guarantee" 
+                  oncontextmenu="return false;" 
+                  data-pin-no-hover="true" data-pin-nopin="true" 
+                  style="display: inline-block; cursor: pointer;">    
+              <img src="https://seal.buysafe.com/sealcore/api/si?s=967938280&amp;p=10&amp;t=a&amp;TS=ag5g7&amp;R=0&amp;x=svg3" 
+                   oncontextmenu="return false;" 
+                   data-pin-no-hover="true" 
+                   data-pin-nopin="true" 
+            	   style="border:0;margin:0;padding:0;" 
+            	   alt="BuySafe">  
+              <!--https://seal.buysafe.com/sealcore/api/si?s=967938280&amp;p=10&amp;t=a&amp;TS=ag5g7&amp;R=0&amp;x=svg3-->
+        
+         <!-- </div>-->
+        
+     </div>
+
 </div>
+
+<script>
+  class CartNote extends HTMLElement {
+    constructor() {
+      super();
+
+      this.addEventListener('change', debounce((event) => {
+        const body = JSON.stringify({ note: event.target.value });
+        fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body }});
+      }, 300))
+    }
+  }
+
+  customElements.define('cart-note', CartNote);
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -103,6 +183,14 @@
 {
   "name": "t:sections.main-cart-footer.name",
   "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_cart_note",
+      "default": true,
+      "label": "t:sections.main-cart-footer.settings.show_cart_note.label"
+    }
+  ],
   "blocks": [
     {
       "type": "subtotal",

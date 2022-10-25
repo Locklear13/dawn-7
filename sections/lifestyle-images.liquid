@@ -1,0 +1,151 @@
+<style>
+  .flickity-viewport  {
+    height:522px; 
+  }
+  .flickity-page-dots .dot.is-selected {
+    opacity: 1;
+    width:20px;
+    height:20px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0258/5424/6963/files/TF_youtube_watermark.png?v=1632164473);
+    background-size:contain;
+    border:1px solid #000;
+    box-shadow: 0px 0px 15px #fa0000;
+  }
+  .flickity-page-dots {
+    background-color: #000;
+    /*height:30px;    */
+    bottom:5px!important;
+  }
+  .flickity-page-dots .dot {
+    display: inline-block;
+    margin:auto 5px;
+    width: 15px;
+    height: 15px;
+    background-color:#fff;
+    border-radius: 50%;
+    opacity: .5;
+    cursor: pointer;
+  }
+  .jacobs-carousel {
+    background-color:#000;
+  }
+  .carousel-lifestyle {
+    height:/*332px*/532px; 
+    padding-top:10px;
+  }
+  @media screen and (min-width:768px) {
+     .carousel-lifestyle {
+    height:532px; 
+    padding-top:10px;
+  }
+  }
+  .lifestyle-cell-image {
+    height:512px!important; 
+  }
+  .lifestyle-cell {
+    margin-right: 20px;
+    overflow: hidden;
+    /*width:512px;*/
+  }
+  .lifestyle-cell img {
+    height: /*312px*/512px!important;
+  }
+  @media screen and ( min-width: 768px ) {
+    .lifestyle-cell img {
+      height: 512px!important;
+    }
+  }
+
+</style>
+
+
+{%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
+{%- assign productPictures = product.media | where: "media_type", "image" -%}
+
+<section class="section bg-black lifestyle-images" id="lifestyle-images">
+<div class="jacobs-carousel bg-black">
+  <div class="carousel carousel-lifestyle productPictures bg-black">
+ 
+    <!--<div class="carousel-cell bg-black">
+		<div class="relative overflow-hidden" style="width:1024px; height:512px;">
+    		<iframe class="absolute top-0 left-0 w-full"style="width:1024px; height:512px;" src="{{ product.metafields.custom-video.custom_video | replace: '/watch?v=', '/embed/' }}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    	</div>
+    </div>-->
+    
+    {% assign howManyLifeStyle = 0 %}
+    {% for pic in productPictures %}
+      {% if pic.alt contains "lifestyle" %}
+    	{% assign howManyLifeStyle = howManyLifeStyle | plus: '1' %}
+    	<div class="carousel-cell lifestyle-cell">
+         {% comment %}<!-- <img class="lifestyle-cell-image" style="height:inherit; max-width:fit-content!important;" 
+                 data-flickity-lazyload-srcset="{{ pic.src | img_url: '1440x', format: 'pjpg' }} 1440w,{{ pic.src | img_url: '1080x', format: 'pjpg' }} 1080w,{{ pic.src | img_url: '720x', format: 'pjpg' }} 767w,{{ pic.src | img_url: '512x', format: 'pjpg' }} 512w"
+                 sizes="(min-width: 512px) 1440px, 1080px, 767px, 512px" 
+                 loading="lazy" 
+                 data-flickity-lazyload-src="{{ pic.src | img_url: "master" }}" alt="{{ pic.alt | escape }}"/>-->{% endcomment %}
+           <img
+                data-flickity-lazyload-srcset="{%- if pic.width >= 165 -%}{{ pic | img_url: '165x', format: 'pjpg' }} 165w,{%- endif -%}
+                        {%- if pic.width >= 360 -%}{{ pic | img_url: '360x', format: 'pjpg' }} 360w,{%- endif -%}
+                        {%- if pic.width >= 535 -%}{{ pic | img_url: '535x', format: 'pjpg' }} 535w,{%- endif -%}
+                        {%- if pic.width >= 750 -%}{{ pic | img_url: '750x', format: 'pjpg' }} 750w,{%- endif -%}
+                        {%- if pic.width >= 1070 -%}{{ pic | img_url: '1070x', format: 'pjpg' }} 1070w,{%- endif -%}
+                        {%- if pic.width >= 1500 -%}{{ pic | img_url: '1500x', format: 'pjpg' }} 1500w,{%- endif -%}                                             
+                        {{ pic | image_url }} {{ pic.width }}w"
+                src="{{ pic | img_url: '750x', format: 'pjpg' }}"                
+                alt="{{ pic.alt | escape }}"
+                width="{{ pic.width }}"
+                height="{{ pic.height }}"
+                data-media-id="{{ pic.id }}"               
+                style="height:inherit; max-width:fit-content!important;"
+                class="lifestyle-cell-image"
+            >                
+        </div>
+      {% endif %} 
+    {% endfor %}
+  </div>
+</div>
+</section>
+<script>
+  	{% if howManyLifeStyle == 0 %}
+    	document.getElementById('lifestyle-images').classList.add('hidden');
+    {% endif %}
+  var elem = document.querySelector('.carousel-lifestyle.productPictures');
+  var flktyLife = new Flickity( elem, {
+    contain: true,
+    imagesLoaded: true,
+    lazyLoad: 4,
+    pageDots: true,
+    {% if howManyLifeStyle <= 4 %}
+    prevNextButtons: false,
+    draggable: false,
+    pageDots: false,
+    {% endif %}
+    adaptiveHeight: true,
+    freeScroll: true,
+    wrapAround: false,
+    cellAlign: 'center',
+    percentPosition: true
+  });
+
+var imgs = document.querySelectorAll('.lifestyle-cell img');
+// get transform property
+var docStyle = document.documentElement.style;
+var transformProp = typeof docStyle.transform == 'string' ?
+  'transform' : 'WebkitTransform';
+
+flktyLife.on( 'scroll', function() {
+  flktyLife.slides.forEach( function( slide, i ) {
+    var img = imgs[i];
+    var x = ( slide.target + flktyLife.x ) * -1/3;
+    img.style[ transformProp ] = 'translateX(' + x  + 'px)';
+  });
+});  
+  
+</script>
+{% schema %}
+  {
+    "name": "Lifestyle Images",
+    "settings": []
+  }
+{% endschema %}
+
+

@@ -1,0 +1,65 @@
+
+{% render 'instant-add-to-cart', product_to_add: {{ product.metafields.related.accents }}, quantity_to_add: 1, button_class: 'button-css-class' %}
+
+{%- for block in section.blocks -%}
+    {%- assign accents = product.metafields.related.accents -%}
+    {% assign mf = product.metafields.related.accents %}
+      {% unless mf == empty %}
+        {% for f in product.metafields.related.accents %}
+          {{ f.first }}: {{ f.last }} : {{ mf[f.first].description }} <br />
+        {% endfor %}
+      {% endunless %}
+          <div>
+                <img src="{{ product.metafields.related.accents.featured_media | img_url: '480x480' }}">
+                <div class="text-2xl raj">{{ accents.title }}</div>
+          </div>
+{%- endfor -%}
+
+
+{% schema %}
+  {
+    "name": "Instant Add-to-Cart",
+    "settings": [],
+	 "blocks": [
+    {
+      "type": "instant",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "product",
+        "id": "accents",
+        "label": "Accent Panels"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Treat Yourself"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Sub Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Product Hero"
+  }]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,100 @@
+{% for block in section.blocks %}
+    {% assign b = block.settings %}
+    {% if b.page_handle contains page.handle %}
+        <section {{ block.shopify_attributes }}>
+            <img src="{{b.image | img_url }}">
+        </section>
+    {% break %}
+    {% endif %}
+{% endfor %}
+
+
+{% schema %}
+{
+    "name": "dynamic-2",
+    "blocks": [
+		{
+        "name" : "Landing Page Image",
+        "type": "Hero",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Name of this section"
+            },
+            {
+                "type": "textarea",
+                "id": "page_handle",
+                "label": "The pages where this image is shown"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Choose an image"
+            }
+            ]       
+        },
+        {
+        "name": "dynamic-1",
+        "type":"page",
+        "settings": [
+       		{
+ 				"type": "text",
+ 				"id": "tailwind",
+ 				"label": "Tailwind CSS"
+ 			},
+ 			{
+ 				"type": "text",
+ 				"id": "title",
+ 				"label": "Name of this section"
+ 			},
+ 			{
+ 				"type": "textarea",
+ 				"id": "page_handle",
+ 				"label": "The pages where this image is shown"
+ 			},
+ 			{
+ 				"type": "image_picker",
+ 				"id": "image",
+ 				"label": "Choose an image"
+ 			},
+ 			{
+ 				"type": "textarea",
+ 				"id": "content",
+ 				"label": "headline, desc, cta, image, collection, cta title, cta description"
+ 			},
+ 			{
+ 				"type": "text",
+ 				"id": "headline",
+ 				"label": "Headline"
+ 			},
+ 			{
+ 				"type": "richtext",
+ 				"id": "description",
+ 				"label": "Description"
+ 			},
+ 			{
+ 				"type": "select",
+ 				"id": "section_width",
+ 				"label": "Section Width",
+ 				"default": "full",
+ 				"options": [{
+ 						"value": "full",
+ 						"label": "full"
+ 					},
+ 					{
+ 						"value": "1/2",
+ 						"label": "1/2"
+ 					},
+ 					{
+ 						"value": "1/4",
+ 						"label": "1/4"
+ 					}
+ 				]
+ 			}
+ 		]
+ 	}
+    ]
+ 
+}
+{% endschema %}
