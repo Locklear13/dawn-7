@@ -38,7 +38,7 @@ menu-drawer > details[open] > summary::before {
   width: calc(100vw - 4rem);
   padding: 0;
   border-width: 0 var(--drawer-border-width) 0 0;
-  background-color: rgb(var(--color-background));
+  background-color: #fff;
   overflow-x: hidden;
   border-style: solid;
   border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
@@ -51,6 +51,7 @@ menu-drawer > details[open] > summary::before {
 }
 
 .js .menu-drawer {
+  width: 100vw;
   height: calc(100vh - 100%);
   height: calc(
     var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
@@ -86,7 +87,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer__inner-container {
   position: relative;
-  height: 100%;
+  height: fit-content;
 }
 
 .menu-drawer__navigation-container {
@@ -98,13 +99,14 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__navigation {
-  padding: 5.6rem 0;
+  padding: 0rem 0;
 }
 
 .menu-drawer__inner-submenu {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: #fff;
 }
 
 .no-js .menu-drawer__navigation {
@@ -120,17 +122,17 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .js .menu-drawer__menu li {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0rem;
 }
 
 .menu-drawer__menu-item {
-  padding: 1.1rem 3.2rem;
+  padding: 1rem 2.5rem;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 2.5rem;
 }
 
 .no-js .menu-drawer__menu-item {
-  font-size: 1.6rem;
+  font-size: 2.5rem;
 }
 
 .no-js .menu-drawer__submenu .menu-drawer__menu-item {
