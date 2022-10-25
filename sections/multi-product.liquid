@@ -771,7 +771,7 @@ var doneBeenSubmitted = false;
                                  value="{{ value | escape }}"
                                  form="{{ product_form_id }}"
                                  aria-expanded="false"
-                                 onClick="tfAssociatedChange(); {% if option.name contains "Lo-Brow" %}showHide('loBrow:hiBrow');{% endif %}{% if option.name contains "Hi-Brow" %}showHide('hiBrow:loBrow');{% endif %}"
+                                 onClick="tfAssociatedChange(); {% if value contains "Lo-Brow" %}showHide('loBrow:hiBrow');{% endif %}{% if value contains "Hi-Brow" %}showHide('hiBrow:loBrow');{% endif %}"
                                  {% if option.selected_value == value %}checked{% endif %}
                                  class="variant-radios-input"
                                  >
