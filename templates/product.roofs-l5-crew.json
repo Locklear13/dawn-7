@@ -1,0 +1,308 @@
+{
+  "sections": {
+    "multi": {
+      "type": "multi-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "d4286f1e-a57d-4d6a-8cdb-a699c854ce99": {
+          "type": "tf_variant_picker",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "associated_product": {
+          "type": "associated_product",
+          "settings": {
+          }
+        },
+        "69592b9b-8371-4e06-9187-3ccfc92d262c": {
+          "type": "popup",
+          "settings": {
+            "popup_tag": "",
+            "text": "ADD ON's",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "d4286f1e-a57d-4d6a-8cdb-a699c854ce99",
+        "associated_product",
+        "69592b9b-8371-4e06-9187-3ccfc92d262c",
+        "buy_buttons"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "hide_variants": false,
+        "enable_video_looping": false
+      }
+    },
+    "1646860434b2ffc544": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "{% render 'color-modal' %}"
+      }
+    },
+    "lifestyle-images": {
+      "type": "lifestyle-images",
+      "settings": {
+      }
+    },
+    "product-stack": {
+      "type": "product-stack",
+      "blocks": {
+        "77b53d45-3648-48eb-bc3c-467650c616d1": {
+          "type": "empty-stack-layer",
+          "disabled": true,
+          "settings": {
+            "empty_layer_css_classes": "Css Classes"
+          }
+        },
+        "1633c36e-a2e8-40e8-b767-003c74e5a2a9": {
+          "type": "image-with-text-layer",
+          "settings": {
+            "image_with_text_css_classes": "",
+            "background": "shopify:\/\/shop_images\/gradient_bg_overlay.png",
+            "image": "shopify:\/\/shop_images\/L5-overview-2.png",
+            "bg-color": "#9211df",
+            "text-color": "#ffffff",
+            "bg-blend": true,
+            "img-bleed-right": false,
+            "text_shadow": false,
+            "content_bg": true,
+            "content_bg_color": "#1e1e1e",
+            "heading_": "The Level 5 Audio Roof",
+            "text": "<p><br\/>The <em>Biggest<\/em>, <em><strong>Baddest<\/strong><\/em> audio roof we have <em>EVER <\/em>made is here! It's on another<em> 'Level' <\/em>with the latest from <strong>Rockford Fosgate<\/strong>!<\/p><p><strong><br\/>• 360°Surround LED Package<\/strong> <\/p><p><br\/><strong>• 10-speaker Rockford Fosgate Audio<\/strong> <strong>Package <br\/><\/strong><br\/><\/p>",
+            "heading_2": "",
+            "text_2": "<p><em>Provides an excellent seal for the <\/em><em><strong>Polaris Ranger CREW Northstar.<\/strong><\/em><\/p>",
+            "layout": "image_first"
+          }
+        },
+        "d98cc891-7f5f-46a9-9722-494230d3d23b": {
+          "type": "image-with-text-layer",
+          "settings": {
+            "image_with_text_css_classes": "Tailwind here...",
+            "background": "shopify:\/\/shop_images\/cargo_rack.jpg",
+            "image": "shopify:\/\/shop_images\/L5-alum_top.png",
+            "bg-color": "#655d5d",
+            "text-color": "#ffffff",
+            "bg-blend": false,
+            "img-bleed-right": true,
+            "text_shadow": false,
+            "content_bg": true,
+            "content_bg_color": "#202020",
+            "heading_": "STRONG ENOUGH TO STAND ON",
+            "text": "<p>Built with <strong>100% aluminum <\/strong>for it's<em> <br\/>light weight <\/em>&<em> resistance to corrosion<\/em>, <br\/><br\/>...and boy, are they <strong>STRONG<\/strong>!<br\/><br\/>Go ahead... climb up there and <em>see for YOURSELF!<br\/><br\/><\/em><\/p><p><em>(Then take a picture & send it to us!)<\/em><br\/><br\/><\/p>",
+            "heading_2": "",
+            "text_2": "<p><em><strong>CUSTOMIZABLE ACCENT PANELS<\/strong><\/em><br\/>Take advantage of our in-house <strong>3-stage powder coat <\/strong>to match your ride with <em>hundreds <\/em>of color options available.<br\/><br\/><\/p>",
+            "layout": "text_first"
+          }
+        },
+        "ba8214b0-bcbd-4d2e-bd7c-f240730a02ab": {
+          "type": "two-over-four-layer",
+          "settings": {
+            "two_over_four_css_classes": "p-5",
+            "background": "shopify:\/\/shop_images\/mountain-magic-hour.jpg",
+            "bg-blend": false,
+            "main_heading_": "LIGHT UP THE NIGHT",
+            "main_heading_css": "text-white text-9xl raj font-bold text-center w-full",
+            "top_panel_1_css": "text-white text-3xl raj pb-10 text-center lg:text-left",
+            "top_panel_1_heading_css": "text-white raj font-regular text-4xl pb-8 text-center lg:text-left",
+            "top_panel_1_heading_": "Experience a full 360-degrees° of super bright LED's for an INCREDIBLE amount of light!",
+            "top_panel_1_text": "<p>• (1) 40\" quad-row LED, <br\/>• (6) 3\" quad-row LEDs, <br\/>• (2) 20” quad-row LEDs, & <br\/>• Color Optix Speaker Lights <br\/><\/p>",
+            "top_panel_2_css": "text-white text-3xl raj pb-10",
+            "top_panel_2_heading_css": "text-white text-8xl teko text-center",
+            "top_panel_2_heading_": "",
+            "top_panel_2_image": "shopify:\/\/shop_images\/color_optix.png",
+            "top_panel_2_text": "Color Optix™ is included with the M1 Series Speakers, featuring light controller App for Apple & Android",
+            "middle_panel_css": "text-white teko font-regular text-8xl text-center",
+            "middle_panel_text": "Don't hate! ILLUMINATE!",
+            "bottom_panel_1_css": "text-white text-3xl raj",
+            "bottom_panel_1_image": "shopify:\/\/shop_images\/40-inch_451cded5-9c54-419a-9e9b-1969945200f0.png",
+            "bottom_panel_1_text": "(1) 40\" Quad-row Ultra Bright LED Lightbar",
+            "bottom_panel_2_css": "text-white text-3xl raj",
+            "bottom_panel_2_image": "shopify:\/\/shop_images\/20-inch_2-up_c3e612a6-063a-4915-962a-174755ac12b9.png",
+            "bottom_panel_2_text": "(2) 20\" Quad-row Ultra Bright LED Lightbars",
+            "bottom_panel_3_css": "text-white text-3xl raj",
+            "bottom_panel_3_image": "shopify:\/\/shop_images\/3-inch_6-up_e37d75d5-3460-4b4e-a44c-a3f1c30627f9.png",
+            "bottom_panel_3_text": "(6) 3 Quad-row Ultra Bright LED Cube Lights",
+            "bottom_panel_4_css": "text-white text-3xl raj",
+            "bottom_panel_4_text": ""
+          }
+        },
+        "46d2e84e-cd84-47d7-9b2e-213933a2b646": {
+          "type": "two-over-four-layer",
+          "settings": {
+            "two_over_four_css_classes": "text-white bg-gray-900",
+            "background": "shopify:\/\/shop_images\/gradient_bg_overlay.png",
+            "bg-blend": true,
+            "main_heading_": "WE BRING THE THUMP!",
+            "main_heading_css": "text-white text-9xl raj font-bold text-center w-full",
+            "top_panel_1_css": "text-5xl rajdhani font-normal center pb-20",
+            "top_panel_1_heading_css": "text-white text-9xl raj font-bold text-center w-full",
+            "top_panel_1_heading_": "",
+            "top_panel_1_image": "shopify:\/\/shop_images\/RF_diamond-2.png",
+            "top_panel_1_text": "<p>Our Partnership with Rockford Fosgate ensures that you'll get that time-tested quality sound they've proven over the years.<\/p>",
+            "top_panel_2_css": "text-3xl pb-20",
+            "top_panel_2_heading_css": "",
+            "top_panel_2_heading_": "",
+            "top_panel_2_image": "shopify:\/\/shop_images\/pmx-2_1.png",
+            "top_panel_2_text": "Punch Marine Compact AM\/FM\/WB Bluetooth Media Receiver",
+            "middle_panel_css": "p-8 text-5xl",
+            "middle_panel_image": "shopify:\/\/shop_images\/RF-L5_rockford_text_line.png",
+            "middle_panel_text": "",
+            "bottom_panel_1_css": "text-3xl rajdhani font-normal center",
+            "bottom_panel_1_image": "shopify:\/\/shop_images\/m2d2-10sub_2-up.png",
+            "bottom_panel_1_text": "(2) M1 10\" DVC 2Ω Color Optix™ Sealed Enclosure Marine Subwoofers",
+            "bottom_panel_2_css": "text-3xl rajdhani font-normal center",
+            "bottom_panel_2_image": "shopify:\/\/shop_images\/m2_8b-4-up_5512c613-99e8-405b-8c30-b82ac24fce1b.png",
+            "bottom_panel_2_text": "(4) M1 Color Optix™ Marine 2-Way Speakers",
+            "bottom_panel_3_css": "text-3xl rajdhani font-normal center",
+            "bottom_panel_3_image": "shopify:\/\/shop_images\/m2-65b_4-up-alt.png",
+            "bottom_panel_3_text": "(4) M1 Color Optix™ Marine 2-Way Speakers",
+            "bottom_panel_4_css": "text-3xl rajdhani font-normal center",
+            "bottom_panel_4_image": "shopify:\/\/shop_images\/rockford_amp.png",
+            "bottom_panel_4_text": "(1) TM1000X5ad Power Marine 1,000 Watt Class-ad 5-Channel Amplifiers"
+          }
+        }
+      },
+      "block_order": [
+        "77b53d45-3648-48eb-bc3c-467650c616d1",
+        "1633c36e-a2e8-40e8-b767-003c74e5a2a9",
+        "d98cc891-7f5f-46a9-9722-494230d3d23b",
+        "ba8214b0-bcbd-4d2e-bd7c-f240730a02ab",
+        "46d2e84e-cd84-47d7-9b2e-213933a2b646"
+      ],
+      "settings": {
+      }
+    },
+    "product-related-products": {
+      "type": "product-related-products",
+      "settings": {
+        "heading": "Related Products",
+        "navigation_amount": 3,
+        "navigation_color": ""
+      }
+    },
+    "product-description": {
+      "type": "product-description",
+      "settings": {
+      }
+    },
+    "16443477568ab54dfc": {
+      "type": "collage",
+      "blocks": {
+        "16443477562cb8e8b1-0": {
+          "type": "video",
+          "settings": {
+            "cover_image": "shopify:\/\/shop_images\/audio_roofs_video_thumbnail_937fb6c7-d3b2-437c-9ba3-d9bd203fbecd.jpg",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=QetWq4D2KwE",
+            "description": "Describe the video",
+            "image_padding": false
+          }
+        }
+      },
+      "block_order": [
+        "16443477562cb8e8b1-0"
+      ],
+      "settings": {
+        "heading": "Audio Roofs by Thumper Fab Video",
+        "desktop_layout": "left",
+        "mobile_layout": "collage"
+      }
+    },
+    "product-features": {
+      "type": "product-features",
+      "settings": {
+      }
+    },
+    "product-info-carousel": {
+      "type": "product-info-carousel",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "product-fitment": {
+      "type": "product-fitment",
+      "settings": {
+      }
+    },
+    "product-docs": {
+      "type": "product-docs",
+      "settings": {
+      }
+    },
+    "product-reviews": {
+      "type": "product-reviews",
+      "settings": {
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": false
+      }
+    },
+    "cage-options": {
+      "type": "cage-options",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "seths-sandbox": {
+      "type": "seths-sandbox",
+      "disabled": true,
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "multi",
+    "1646860434b2ffc544",
+    "lifestyle-images",
+    "product-stack",
+    "product-related-products",
+    "product-description",
+    "16443477568ab54dfc",
+    "product-features",
+    "product-info-carousel",
+    "product-fitment",
+    "product-docs",
+    "product-reviews",
+    "product-recommendations",
+    "cage-options",
+    "seths-sandbox"
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "d4286f1e-a57d-4d6a-8cdb-a699c854ce99": {
+          "type": "tf_variant_picker",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "d4286f1e-a57d-4d6a-8cdb-a699c854ce99",
+        "buy_buttons"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "hide_variants": false,
+        "enable_video_looping": false
+      }
+    },
+    "lifestyle-images": {
+      "type": "lifestyle-images",
+      "settings": {
+      }
+    },
+    "product-stack": {
+      "type": "product-stack",
+      "blocks": {
+        "bccc382e-42dc-4586-b1ad-96f6ece5ba0c": {
+          "type": "image-with-text-layer",
+          "settings": {
+            "image_with_text_css_classes": "pt-8",
+            "background": "shopify:\/\/shop_images\/gradient_bg_overlay.png",
+            "image": "shopify:\/\/shop_images\/L2_stack-1.png",
+            "bg-color": "#fa6435",
+            "text-color": "#ffffff",
+            "bg-blend": true,
+            "img-bleed-right": false,
+            "text_shadow": false,
+            "content_bg": false,
+            "content_bg_color": "#000000",
+            "heading_": "The Level 2 Audio Roof",
+            "text": "<p>Blow away the competition with some real <em>THUMP<\/em> from <strong>Rockford Fosgate<\/strong>!<\/p><p><strong><br\/>• 360°Surround LED Package<\/strong><\/p><p><br\/><strong>• 2-speaker Rockford Fosgate Audio<\/strong> <strong>Package<\/strong><\/p>",
+            "heading_2": "",
+            "text_2": "<p><em><br\/>Provides an excellent seal for the <\/em><em><strong>Polaris Ranger CREW Northstar.<\/strong><\/em><\/p>",
+            "layout": "image_first"
+          }
+        },
+        "d2dbbf8f-fa20-4dbf-978e-0f08c13cfacc": {
+          "type": "image-with-text-layer",
+          "settings": {
+            "image_with_text_css_classes": "",
+            "background": "shopify:\/\/shop_images\/cargo_rack.jpg",
+            "bg-color": "#a7a6a6",
+            "text-color": "#ffffff",
+            "bg-blend": true,
+            "img-bleed-right": false,
+            "text_shadow": true,
+            "content_bg": true,
+            "content_bg_color": "#000000",
+            "heading_": "STRONG ENOUGH TO STAND ON",
+            "text": "<p><strong>•<\/strong> <strong>Integrated Cargo Rack<\/strong><br\/><br\/><strong>•<\/strong> <strong>100% Aluminum <\/strong>for it's<em> <br\/>light weight <\/em>&<em> resistance to corrosion<\/em><br\/><br\/>Go ahead... climb up there & <em>see for YOURSELF! <br\/><br\/>(Then take a picture & send it to us!)<\/em><\/p><p><br\/><\/p>",
+            "heading_2": "",
+            "text_2": "<p><em><strong>CUSTOMIZABLE ACCENT PANELS<\/strong><\/em><br\/>Take advantage of our in-house <strong>3-stage powder coat <\/strong>to match your ride with <em>hundreds <\/em>of color options available.<br\/><\/p>",
+            "layout": "image_first"
+          }
+        },
+        "4443c1b8-1e29-42d3-8274-d176d232cf59": {
+          "type": "image-with-text-layer",
+          "settings": {
+            "image_with_text_css_classes": "Tailwind here...",
+            "background": "shopify:\/\/shop_images\/mountain-magic-hour.jpg",
+            "image": "shopify:\/\/shop_images\/L4_lighting_group.png",
+            "bg-color": "#ffffff",
+            "text-color": "#ffffff",
+            "bg-blend": false,
+            "img-bleed-right": false,
+            "text_shadow": true,
+            "content_bg": true,
+            "content_bg_color": "#000000",
+            "heading_": "LIGHT UP THE NIGHT",
+            "text": "<p>Experience a <em>full<\/em> <em><strong>360-degrees° <\/strong><\/em>of <em>super<\/em> bright LED's! <br\/><br\/>Includes<strong> (1)<\/strong> <strong>40\" quad-row LED <\/strong>& <strong>(3) 3\"<\/strong> <strong>quad-row LEDs <\/strong>for an <strong>INCREDIBLE <\/strong>amount of light!<br\/><br\/><\/p>",
+            "heading_2": "Don't hate! ILLUMINATE",
+            "text_2": "",
+            "layout": "text_first"
+          }
+        },
+        "46d2e84e-cd84-47d7-9b2e-213933a2b646": {
+          "type": "two-over-four-layer",
+          "settings": {
+            "two_over_four_css_classes": "text-white px-20",
+            "background": "shopify:\/\/shop_images\/gradient_bg_overlay.png",
+            "bg-blend": false,
+            "main_heading_": "",
+            "main_heading_css": "",
+            "top_panel_1_css": "text-3xl sm:text-3xl md:text-4xl text-shadow tracking-wider rajdhani",
+            "top_panel_1_heading_css": "text-8xl sm:text-8xl md:text-8xl raj pb-12 font-semibold text-center sm:text-center md:text-left",
+            "top_panel_1_heading_": "WE BRING THE THUMP!",
+            "top_panel_1_text": "<p>Our Partnership with Rockford Fosgate ensures that you'll get that time-tested quality sound they've proven over the years.<\/p>",
+            "top_panel_2_css": "text-2xl  text-shadow",
+            "top_panel_2_heading_css": "text-2xl sm:text-2xl tracking-wider rajdhani text-center",
+            "top_panel_2_heading_": "",
+            "top_panel_2_image": "shopify:\/\/shop_images\/RF_diamond-2.png",
+            "top_panel_2_text": "",
+            "middle_panel_css": "w-full pt-12 pb-2",
+            "middle_panel_image": "shopify:\/\/shop_images\/L2_rockford_text_line.png",
+            "middle_panel_text": "",
+            "bottom_panel_1_css": "w-full md:w-1\/3 text-2xl sm:text-2xl tracking-wider rajdhani text-center",
+            "bottom_panel_1_image": "shopify:\/\/shop_images\/PMX-1.png",
+            "bottom_panel_1_text": "Punch Marine Ultra Compact Bluetooth Digital Media Receiver PMX-1",
+            "bottom_panel_2_css": "w-full md:w-1\/3 text-2xl sm:text-2xl tracking-wider rajdhani text-center place-self-end",
+            "bottom_panel_2_image": "shopify:\/\/shop_images\/dual_6x9_7d835cd4-d767-4cad-8370-254b521ca13a.png",
+            "bottom_panel_2_text": "(2) Prime 6\"x9\" 3-Way Full-Range Speaker R169X3",
+            "bottom_panel_3_css": "w-full md:w-1\/3 text-2xl sm:text-2xl tracking-wider rajdhani text-center place-self-end",
+            "bottom_panel_3_text": "",
+            "bottom_panel_4_css": "text-2xl sm:text-2xl tracking-wider rajdhani text-center place-self-end",
+            "bottom_panel_4_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "bccc382e-42dc-4586-b1ad-96f6ece5ba0c",
+        "d2dbbf8f-fa20-4dbf-978e-0f08c13cfacc",
+        "4443c1b8-1e29-42d3-8274-d176d232cf59",
+        "46d2e84e-cd84-47d7-9b2e-213933a2b646"
+      ],
+      "settings": {
+      }
+    },
+    "product-related-products": {
+      "type": "product-related-products",
+      "settings": {
+        "heading": "LEVEL UP YOUR ROOF",
+        "navigation_amount": 3,
+        "navigation_color": ""
+      }
+    },
+    "product-description": {
+      "type": "product-description",
+      "settings": {
+      }
+    },
+    "product-features": {
+      "type": "product-features",
+      "settings": {
+      }
+    },
+    "product-info-carousel": {
+      "type": "product-info-carousel",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "product-fitment": {
+      "type": "product-fitment",
+      "settings": {
+      }
+    },
+    "product-docs": {
+      "type": "product-docs",
+      "settings": {
+      }
+    },
+    "product-reviews": {
+      "type": "product-reviews",
+      "settings": {
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": false
+      }
+    },
+    "cage-options": {
+      "type": "cage-options",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "seths-sandbox": {
+      "type": "seths-sandbox",
+      "disabled": true,
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "lifestyle-images",
+    "product-stack",
+    "product-related-products",
+    "product-description",
+    "product-features",
+    "product-info-carousel",
+    "product-fitment",
+    "product-docs",
+    "product-reviews",
+    "product-recommendations",
+    "cage-options",
+    "seths-sandbox"
+  ]
+}

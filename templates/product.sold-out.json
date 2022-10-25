@@ -1,0 +1,172 @@
+{
+  "sections": {
+    "multi": {
+      "type": "sold-out-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "938be346-a719-40da-80b3-7eee3956bb19": {
+          "type": "sold_out",
+          "settings": {
+            "sold-out-image": "shopify:\/\/shop_images\/sold_out_bummer.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "938be346-a719-40da-80b3-7eee3956bb19"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "hide_variants": false,
+        "enable_video_looping": false
+      }
+    },
+    "product-videos": {
+      "type": "product-video",
+      "settings": {
+      }
+    },
+    "lifestyle-images": {
+      "type": "lifestyle-images",
+      "settings": {
+      }
+    },
+    "product-description": {
+      "type": "product-description",
+      "settings": {
+      }
+    },
+    "product-features": {
+      "type": "product-features",
+      "settings": {
+      }
+    },
+    "product-fitment": {
+      "type": "product-fitment",
+      "settings": {
+      }
+    },
+    "product-docs": {
+      "type": "product-docs",
+      "settings": {
+      }
+    },
+    "product-stack": {
+      "type": "product-stack",
+      "disabled": true,
+      "blocks": {
+        "77b53d45-3648-48eb-bc3c-467650c616d1": {
+          "type": "empty-stack-layer",
+          "disabled": true,
+          "settings": {
+            "empty_layer_css_classes": "Css Classes"
+          }
+        },
+        "46d2e84e-cd84-47d7-9b2e-213933a2b646": {
+          "type": "two-over-four-layer",
+          "settings": {
+            "two_over_four_css_classes": "text-white",
+            "background": "shopify:\/\/shop_images\/gradient_bg_overlay.png",
+            "bg-blend": false,
+            "main_heading_": "",
+            "main_heading_css": "",
+            "top_panel_1_css": "text-4xl font-bold text-shadow tracking-wider rajdhani",
+            "top_panel_1_heading_css": "",
+            "top_panel_1_heading_": "",
+            "top_panel_1_image": "shopify:\/\/shop_images\/receiver_L5_51754565-3390-4597-b9e1-b57675ffc41f.png",
+            "top_panel_1_text": "<p>Featuring: REALLY Complicated Buttons<\/p>",
+            "top_panel_2_css": "text-5xl font-bold pr-20 text-shadow",
+            "top_panel_2_heading_css": "text-8xl",
+            "top_panel_2_heading_": "Test",
+            "top_panel_2_text": "THIS PRODUCT HAS THE MOST COMPLICATED BUTTONS ON THE MARKET, GUARANTEED, OR WE WILL SEND YOU A LIFETIME SUPPLY OF FORBIDDEN FAB",
+            "middle_panel_css": "p-8",
+            "middle_panel_image": "shopify:\/\/shop_images\/rockford_tagline.png",
+            "middle_panel_text": "",
+            "bottom_panel_1_css": "text-4xl font-bold tracking-wider rajdhani",
+            "bottom_panel_1_image": "shopify:\/\/shop_images\/10in_sub.png",
+            "bottom_panel_1_text": "Bottom Panel 1",
+            "bottom_panel_2_css": "text-4xl font-bold tracking-wider rajdhani",
+            "bottom_panel_2_image": "shopify:\/\/shop_images\/8in_speaker.png",
+            "bottom_panel_2_text": "Bottom Panel 2",
+            "bottom_panel_3_css": "text-4xl font-bold tracking-wider rajdhani",
+            "bottom_panel_3_image": "shopify:\/\/shop_images\/6in_speaker.png",
+            "bottom_panel_3_text": "Bottom Panel 3",
+            "bottom_panel_4_css": "text-4xl font-bold tracking-wider rajdhani",
+            "bottom_panel_4_image": "shopify:\/\/shop_images\/rockford_amp.png",
+            "bottom_panel_4_text": "Bottom Panel 4"
+          }
+        }
+      },
+      "block_order": [
+        "77b53d45-3648-48eb-bc3c-467650c616d1",
+        "46d2e84e-cd84-47d7-9b2e-213933a2b646"
+      ],
+      "settings": {
+      }
+    },
+    "product-reviews": {
+      "type": "product-reviews",
+      "settings": {
+      }
+    },
+    "product-related-products": {
+      "type": "product-related-products",
+      "settings": {
+        "heading": "Related Products",
+        "navigation_amount": 3,
+        "navigation_color": ""
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": true
+      }
+    },
+    "cage-options": {
+      "type": "cage-options",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "seths-sandbox": {
+      "type": "seths-sandbox",
+      "disabled": true,
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "multi",
+    "product-videos",
+    "lifestyle-images",
+    "product-description",
+    "product-features",
+    "product-fitment",
+    "product-docs",
+    "product-stack",
+    "product-reviews",
+    "product-related-products",
+    "product-recommendations",
+    "cage-options",
+    "seths-sandbox"
+  ]
+}
