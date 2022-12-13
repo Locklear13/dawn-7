@@ -1,13 +1,13 @@
 <style>
   #product-docs .product-docs-title, product-description-title {
 		background-color: transparent!important;
-    	font-family: "teko";
+    	font-family: "Rajdhani";
         -webkit-text-size-adjust: 100%;
       	-webkit-font-smoothing: antialiased;
         color: #ccc!important;    
     }
 	.product-docs-content {
-      	font-family: 'Teko', san-serif;
+      	font-family: 'Rajdhani', san-serif;
       	font-weight: normal;
       	line-height: 1.6;
       	font-size: 100%;
@@ -18,7 +18,7 @@
    }
     .product-docs-content a {
       color:#fff;
-      font-family: 'Teko', san-serif;
+      font-family: 'Rajdhani', san-serif;
     }
   .product-docs-section {
     background-color:#242424;
@@ -32,6 +32,13 @@
   .download-docs:hover {
   	text-decoration: none;
   }
+  .install-title {
+    font-family: 'Rajdhani';
+    padding: 12px 15px;
+    margin: 25px 0px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 5px #000;
+  }
 </style>
 {% if product.metafields.global.manual != blank %}
 
@@ -39,10 +46,10 @@
   	<div class="product-section-title product-description-title italic w-7/8 md:w-5/6 text-7xl font-bold px-8 pt-12 text-center" style="color:#ccc!important;">
 		PRODUCT INSTALLATION
 	</div>
-    <div class="product-docs-content pb-6 sm:py-8 lg:py-12 text-center m-auto">
-      <div class="flex inline-flex gap-8 px-4 md:px-8 mx-auto">
+    <div class="product-docs-content pb-12 sm:py-8 lg:py-12 text-center m-auto">
+      <div class="raj font-semibold flex inline-flex gap-8 px-4 md:px-8 mx-auto">
         {% if product.metafields.media.installation-video != blank %}
-        <div class="insta-block rounded-xl p-5 md:p-8 w-auto m-5 h-full shadow-lg place-self-center" style="width:auto;">
+        <div class="insta-block rounded-xl p-12 md:p-16 w-auto m-5 h-full shadow-lg place-self-center" style="width:auto;">
           <div>
             <a href="{{ product.metafields.media.installation-video }}" style="text-align:-webkit-center;">
               <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/file-video-icon_100x100.png?v=1640198933" loading="lazy"/>
@@ -50,10 +57,10 @@
           </div>
           <div class="flex-col">
             <a href="{{ product.metafields.media.installation-video }}">
-              <div class="text-gray-700 text-2xl md:text-3xl pt-5 pb-10 font-semibold rajdhani">{{ product.title }} Installation Video</div>
+              <div class="install-title raj text-white text-3xl md:text-4xl p-10 font-semibold">{{ product.title }} Installation Video</div>
             </a>        
           <div>
-          	<a href="{{ product.metafields.media.installation-video }}" target="_blank" class="no-wrap bg-blue-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-3xl rajdhani font-semibold text-center rounded-lg outline-none transition duration-100 p-4 uppercase">Watch Video</a>
+          	<a href="{{ product.metafields.media.installation-video }}" target="_blank" class="no-wrap bg-blue-500 shadow-md hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-3xl rajdhani font-semibold text-center rounded-lg outline-none transition duration-100 p-4 uppercase">Watch Video</a>
           </div>
          </div>
 			<!--<div class="relative overflow-hidden pr-5 pl-5" style="width:800px; height:420px;">
@@ -63,17 +70,17 @@
         {% endif %}
   
         {% if product.metafields.global.manual != blank %}
-        <div class="insta-block rounded-xl p-5 md:p-8 m-5 h-full shadow-lg place-self-center">
+        <div class="insta-block rounded-xl p-12 md:p-16 m-5 h-full shadow-lg place-self-center">
           <div>
             <a href="{{ product.metafields.global.manual | file_url }}">
               <img src="https://cdn.shopify.com/s/files/1/0258/5424/6963/files/PDF_icon_large_868fc778-38bc-4657-9cee-6b48a48b8f34_100x100.png?v=1593114919%20style=" loading="lazy"/>
             </a>
           </div>
-          <div class="text-gray-700 text-2xl md:text-3xl pt-5 pb-10 font-semibold rajdhani">
-          	{{ product.title }} Product Manual <span class="text-gray-600">v.0122</span>
+          <div class="install-title raj text-white text-3xl md:text-4xl p-10 font-semibold">
+          	{{ product.title }} Product Manual
           </div>
 		  <div>         
-          	<a href="{{ product.metafields.global.manual | file_url }}" target="_blank" class="bg-blue-500 hover:bg-indigo-600 active:bg-indigo-700 no-wrap focus-visible:ring ring-indigo-300 text-white text-3xl rajdhani font-semibold text-center rounded-lg outline-none transition duration-100 p-4 uppercase">Download Manual</a>
+          	<a href="{{ product.metafields.global.manual | file_url }}" target="_blank" class="bg-blue-500 shadow-md hover:bg-indigo-600 active:bg-indigo-700 no-wrap focus-visible:ring ring-indigo-300 text-white text-3xl rajdhani font-semibold text-center rounded-lg outline-none transition duration-100 p-4 uppercase">Download Manual</a>
        	  </div>
         </div>
         {% endif %}

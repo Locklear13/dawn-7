@@ -50,7 +50,7 @@
 </style>
 
 {%- liquid
-  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign sort_by = search.sort_by | default: search.default_sort_by  
   assign terms = search.terms | escape
   assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
 -%}
@@ -58,9 +58,9 @@
 <div class="template-search spaced-section{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %}">
   <div class="template-search__header page-width center">
     {%- if search.performed -%}
-      <h1 class="h2">{{ 'templates.search.title' | t }}</h1>
+      <h1><span class="sm:text-2xl md:text-3xl lg:text-4xl pt-2">{{ 'templates.search.title' | t }}</span></h1> 
     {%- else -%}
-      <h1 class="h2">{{ 'general.search.search' | t }}</h1>
+      <h1><span class="sm:text-2xl md:text-3xl lg:text-4xl">{{ 'general.search.search' | t }}</span></h1> 
     {%- endif -%}
     <div class="template-search__search">
       {%- if settings.predictive_search_enabled -%}
@@ -140,7 +140,7 @@
       {%- if search.results.size == 0 and search.filters != empty -%}
         <div class="template-search__results collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
           <div class="loading-overlay gradient"></div>
-          <div class="title-wrapper center">
+          <div class="title-wrapper center"> 
             <h2 class="title title--primary">
               {{ 'sections.collection_template.empty' | t }}<br>
               {{ 'sections.collection_template.use_fewer_filters_html' | t: link: search_url, class: "underlined-link link" }}
@@ -153,6 +153,8 @@
             <div class="loading-overlay gradient w-full"></div>
             <div class="grid grid-cols-2 md:grid-cols-4 product-grid w-full" role="list">
               {%- for item in search.results -%}
+                {% assign display_name = product.metafields.global.display_name.value %}
+        {% unless product.vendor == 'no-display' or product.tags contains 'no-display'or product.url contains "pages" or display_name contains "Steel" or display_name contains "Aluminum" or display_name contains "Sunroof" or display_name contains "Options" %}
                 <div class=" w-5/6 grid__item  mx-auto items-center flex justifdy-center{% unless item.object_type == 'product' %} grid__item--small{% endunless %}">
                   {%- case item.object_type -%}
                     {%- when 'product' -%}
@@ -162,18 +164,17 @@
                         product_card_product: item,
                         media_size: section.settings.image_ratio,
                         show_secondary_image: section.settings.show_secondary_image,
-                        add_image_padding: section.settings.add_image_padding,
                         show_vendor: section.settings.show_vendor,
                         show_image_outline: section.settings.show_image_outline,
                         show_rating: section.settings.show_rating
                       %}
                       {% endunless %}
-                    {%- when 'article' -%}
+               {% comment %}     {%- when 'article' -%}
                       <a href="{{ item.url }}" class="card-wrapper">
                         <div class="card card--search card--soft{% unless item.image %} card--text-only{% endunless %}">
                           <div class="card__inner">
                             {%- if item.image -%}
-                              <div class="media media--cropped">
+                              <div class="media">
                                 <img
                                   srcset="{%- if item.image.src.width >= 165 -%}{{ item.image.src | img_url: '165x' }} 165w,{%- endif -%}
                                     {%- if item.image.src.width >= 360 -%}{{ item.image.src | img_url: '360x' }} 360w,{%- endif -%}
@@ -219,8 +220,10 @@
                           </div>
                         </div>
                       </a>
+                    {% endcomment %}
                   {%- endcase -%}
                 </div>
+                  {% endunless %}
               {%- endfor -%}
             </div>
             {%- if paginate.pages > 1 -%}

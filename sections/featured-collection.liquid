@@ -23,9 +23,9 @@
 
 <div class="collection mx-5 sm:mx-5 md:mx-20 lg:mx-20">
   <div class="title-wrapper-with-link{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} title-wrapper--self-padded-tablet-down{% endif %} justify-center">
-    <h2 class="text-4xl md:text-5xl lg:text-6xl raj-semi uppercase text-center" style="padding:1rem 2.5rem; text-align:-webkit-center;">{{ section.settings.title | escape }}</h2>
+    <h2 class="text-5xl md:text-6xl lg:text-8xl raj-semi uppercase text-center" style="padding:1rem 2.5rem; text-align:-webkit-center;">{{ section.settings.title | escape }}</h2>
     {%- if section.settings.show_view_all and section.settings.swipe_on_mobile and more_in_collection -%}
-      <a href="{{ section.settings.collection.url }}" class="link underlined-link large-up-hide raj-semi">{{ 'sections.featured_collection.view_all' | t }}</a>
+      <a href="{{ section.settings.collection.url }}" class="button link underlined-link raj-semi">{{ 'sections.featured_collection.view_all' | t }}</a>
     {%- endif -%}
   </div>
   <slider-component class="slider-mobile-gutter">
@@ -101,7 +101,7 @@
       "id": "products_per_page",
       "min": 5,
       "max": 45,
-      "step": 5,
+      "step": 1,
       "default": 25,
       "label": "Products per page"
     },

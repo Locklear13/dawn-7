@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<style>
+  .table {
+    max-width:1024px; 
+  }
+  ul {
+    list-style-type: disc;
+    margin: 0 0 0 2rem;
+  }
+  #affliate_info div .h2 {
+    margin: 0 0 20px 0!important;
+  }
+   #affliate_info p {
+     margin: unset;
+   }
+</style>
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+<div id="affliate_info" class="p-10 w-full sm:w-full md:w-5/6 m-auto">
+ {% comment %}<h1 class="text-6xl raj font-semibold pb-5" style="text-align:-webkit-center;">
+    {{ page.title | escape }}
+  </h1> {% endcomment %}
+  <div class="w-full text-3xl w-3/4">
+    {{ page.content }}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "spaced-section"
+}
+{% endschema %}

@@ -80,26 +80,25 @@
       <!--******************************************************************/-->                          
       {% if associatedProduct1 != blank %}
       <div id="tfAssociatedProduct1-wrapper" class="assoc-wrap">
-        <div id="associatedProduct1Title" class="ass-tit text-3xl bold">
-          {%- if associatedProduct1.metafields.global.display_name != blank -%}
-          	{{ associatedProduct1.metafields.global.display_name | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
-          {%- else -%}
-          	{{ associatedProduct1.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
-          {%- endif -%}
-        </div>
+            <div id="associatedProduct1Title" class="ass-tit text-3xl bold">
+              {%- if associatedProduct1.metafields.global.display_name != blank -%}
+              	{{ associatedProduct1.metafields.global.display_name | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+              {%- else -%}
+              	{{ associatedProduct1.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
+              {%- endif -%}
+            </div>
         {% case product.metafields.associated_products.associated-prod-1-type.value %}
 <!-- ASSOCIATED PRODUCT 1 DROPDOWN -->
         	{% when 'DROPDOWN' %}
-            <div class="select-container flex">
-                    
-              <div class="flex inline-flex">
-                <div class="assoc-img">
-              	<img height="100" width="100" src="{{ associatedProduct1.featured_image | img_url: '100x', format: 'pjpg' }}" />
-                </div> 
-              </div>
-       
-              <select is="ms-dropdown"  id="associatedProduct1-select" placeholder="Select {{ associatedProduct1.title }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto" onChange="tfAssociatedChange();">
-                 {% if product.metafields.associated_products.associated-1-req != true %}
+          
+            <div class="select-container flex">  
+                <div class="flex inline-flex">
+                   <div class="assoc-img" {% if associatedProduct1.title contains 'Powder' %}style="display:none;"{% endif %} >
+                     <img height="100" width="100" src="{{ associatedProduct1.featured_image | img_url: '512x', format: 'pjpg' }}" />
+                   </div> 
+                 </div>
+             <select is="ms-dropdown" id="associatedProduct2-select" placeholder="Select {{ associatedProduct2.title }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto" onClick="tfAssociatedChange();" onChange="tfAssociatedChange();">
+              {% if product.metafields.associated_products.associated-1-req != true %}
                   <option value="false" data-price="0" data-vid="" data-image="">
                   SELECT AN OPTION
                   </option>
@@ -107,7 +106,7 @@
                 {% if associatedProduct1.has_only_default_variant %}
                 <option
                         value="{{ associatedProduct1.id }}" 
-                        class="associatedOption associatedProduct1Option {% if associatedProduct1.title contains "Lo-Brow" %}loBrow{% endif %} {% if associatedProduct1.title contains "Hi-Brow" %}hiBrow{% endif %}" 
+                        class="associatedOption associatedProduct1Option" 
                         data-price="{{ associatedProduct1.price }}" 
                         data-sku="{{ associatedProduct1.sku }}" 
                         data-variantId="{{ associatedProduct1.id }}" 
@@ -118,7 +117,7 @@
                         >{{ associatedProduct1.title }} {{ associatedProduct1.price | money | strip_html }}</option>
                 {% else %}
                 {%- for variant in associatedProduct1.variants -%}
-                <option class="associatedOption associatedProduct1Option {% if variant.title contains "Lo-Brow" %}loBrow{% endif %}{% if variant.title contains "Hi-Brow" %}hiBrow{% endif %}" 
+                <option class="associatedOption associatedProduct1Option" 
                         value="{{ variant.id }}" 
                         data-variant_title="{{ variant.title | escape }}" 
                         data-product_title="{{ associatedProduct1.title | escape }}" 
@@ -207,9 +206,9 @@
                               {{ associtedVariant.title }} {{ associtedVariant.price | money | strip_html }}
                             </label>
                         {%- endfor -%}
-                      </fieldset>
+                      </fieldset> 
       
-                     <fieldset class="fieldset js product-form__input radio-wrapper variant-radios-fieldset">
+              {% comment %}       <fieldset class="fieldset js product-form__input radio-wrapper variant-radios-fieldset">
                          {% for option in associatedProduct1.options_with_values %}
                         <legend class="form__label variant-radio-legend w-full p-1 text-2xl bold">{{ option.name }}</legend>                  
                         {% assign associatedVariant = associatedProduct1.selected_or_first_available_variant %}
@@ -248,7 +247,7 @@
                         {%- endfor -%}
                                  {% endfor %}
                       </fieldset>
-    
+    {% endcomment %}
         {% endcase %}
       </div>
       {% endif %}
@@ -271,7 +270,7 @@
               </div> 
             </div>
             <select is="ms-dropdown" id="associatedProduct2-select" placeholder="Select {{ associatedProduct2.title }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto" onClick="tfAssociatedChange();" onChange="tfAssociatedChange();">
-              {% if product.metafields.associated_products.associated-1-req != true %}
+              {% if product.metafields.associated_products.associated-2-req != true %}
               <option value="false" data-price="0" data-vid="" data-image="" selected="selected">
                 SELECT AN OPTION
               </option>
@@ -286,11 +285,12 @@
                       data-image="{{ associatedProduct2.image | img_url: '512x', format: 'pjpg' }}" 
                       data-product-title="{{ associatedProduct2.title }}" 
                       data-variant_title="" 
+                      onClick="tfAssociatedChange();" 
                       > 
                       {{ associatedProduct2.title }} {{ associatedProduct2.price | money | strip_html }}</option>
               {% else %}
               {%- for variant in associatedProduct2.variants -%}
-              <option class="associatedOption associatedProduct2Option {% if variant.title contains "Lo-Brow" %}loBrow{% endif %}{% if variant.title contains "Hi-Brow" %}hiBrow{% endif %}" 
+              <option class="associatedOption associatedProduct2Option" 
                       value="{{ variant.id }}" 
                       data-variant_title="{{ variant.title | escape }}" 
                       data-product_title="{{ associatedProduct2.title | escape }}" 
@@ -304,7 +304,7 @@
               {%- endfor -%}
               {% endif %}
             </select>
-      </div>
+      </div></div>
       {% endunless %}
       <!--/******************************************************************/-->
       <!--/*                      ASSOCIATED PRODUCT 3                      */-->
@@ -318,11 +318,14 @@
           	{{ associatedProduct3.title | remove: "Rockford Fosgate" | remove: "Polaris" | remove: "Can-Am" | remove: "Honda" | remove: "Tracker" | remove: "Yamaha" | remove: "Warn" | remove: "KFI" | escape }}
           {%- endif -%}
         </div>
-           <div class="assoc-img">
-        	<img height="100" width="100" src="{{ associatedProduct3.featured_image | img_url: '100x', format: 'pjpg' }}" />
-           </div>
-        <select is="ms-dropdown"  id="associatedProduct3-select" placeholder="Select {{ associatedProduct3.title }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto" onClick="tfAssociatedChange();" onChange="tfAssociatedChange();">
-          {% if product.metafields.associated_products.associated-1-req != true %}
+            <div class="select-container flex">  
+           <div class="flex inline-flex">
+              <div class="assoc-img" {% if associatedProduct3.title contains 'Powder' %}style="display:none;"{% endif %} >
+                <img height="100" width="100" src="{{ associatedProduct3.featured_image | img_url: '512x', format: 'pjpg' }}" />
+              </div> 
+            </div>
+       <select is="ms-dropdown" id="associatedProduct3-select" placeholder="Select {{ associatedProduct3.title }}:" class="dropdown w-full form-control-lg text-2xl gap-5" style="overflow-y: auto" onClick="tfAssociatedChange();" onChange="tfAssociatedChange();">
+              {% if product.metafields.associated_products.associated-3-req != true %}
           <option value="false" data-price="0" data-vid="" data-image="" selected="selected">
           SELECT AN OPTION
           </option>

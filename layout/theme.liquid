@@ -30,8 +30,8 @@
     
 
     {%- if page_image -%}
-      <meta property="og:image" content="http:{{ page_image | image_url: 'master' }}">
-      <meta property="og:image:secure_url" content="{{ page_image | image_url: 'master' }}">
+      <meta property="og:image" content="{% if template contains 'product' %}http://cdn.shopify.com/s/files/1/0258/5424/6963/{{ page_image | image_url: 'master' }}{% else %}http://cdn.shopify.com/s/files/1/0258/5424/6963/files/TF_diamond_500.png?v=1647042134{% endif %}">
+      <meta property="og:image:secure_url" content="{% if template contains 'product' %}https://cdn.shopify.com/s/files/1/0258/5424/6963/{{ page_image | image_url: 'master' }}{% else %}https://cdn.shopify.com/s/files/1/0258/5424/6963/files/TF_diamond_500.png?v=1647042134{% endif %}">
       <meta property="og:image:width" content="{{ page_image.width }}">
       <meta property="og:image:height" content="{{ page_image.height }}">
     {%- endif -%}
@@ -84,10 +84,7 @@
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'index.css' | asset_url | stylesheet_tag }}  
-    {% if request.page_type == 'product' %}
-		<link rel="stylesheet" href="{{ 'flickity.css' | asset_url }}" media="print" onload="this.media='all'">
-        <script src="{{ 'flickity.js' | asset_url }}"></script>
-    {% endif %}
+    
       <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
     <style>
       @font-face {
@@ -151,10 +148,14 @@
 <!------------------------------------>
 <!--------- SCRIPT INCLUDES ---------->
 <!------------------------------------>   
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
    	<script src="{{ "customer_area.js" | shopify_asset_url }}" defer="defer"></script>
 	<script src="{{ "shopify_common.js" | shopify_asset_url }}" defer="defer"></script>
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'jquery_3.1.0.min.js' | asset_url }}"></script>
+    {% if request.page_type == 'product' %}
+		<link rel="stylesheet" href="{{ 'flickity.css' | asset_url }}" media="print" onload="this.media='all'">
+        <script src="{{ 'flickity.js' | asset_url }}"></script>
+    {% endif %}
 <!-- CONTENT FOR HEADER -->
     {{ content_for_header }}
 <!-- END CONTENT FOR HEADER -->
@@ -237,6 +238,23 @@
     <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     <script src="{{ "option_selection.js" | shopify_asset_url }}" defer="defer"></script>
   	<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    <script>
+      var nodeList = document.querySelectorAll('.js-flickity');
+      
+      for (var i = 0, t = nodeList.length; i < t; i++) {
+          var flkty = Flickity.data(nodeList[i]);
+          if (!flkty) {
+              // Check if element had flickity options specified in data attribute.
+              var flktyData = nodeList[i].getAttribute('data-flickity');
+              if (flktyData) {
+                  var flktyOptions = JSON.parse(flktyData);
+                  new Flickity(nodeList[i], flktyOptions);
+              } else {
+                  new Flickity(nodeList[i]);
+              }
+          }
+      }
+    </script>
 </html>
 
 {% style %}

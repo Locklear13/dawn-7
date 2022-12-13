@@ -43,7 +43,8 @@
   @media screen and (min-width: 750px) {
     .fitment {
       column-count:2;
-      padding: 0 20px 0 20px;
+      padding: 0 20px 0 0px;
+      gap: 2rem;
     }
     
   }
@@ -51,12 +52,21 @@
     .fitment {
       column-count:3;
       padding: 0 20px 0 20px;
+      gap: 4rem;
+    }
+  }
+  @media screen and (min-width: 1070px) {
+    .fitment {
+      column-count:4;
+      padding: 0 20px 0 20px;
+      gap: 4rem;
     }
   }
   @media screen and (min-width: 1280px) {
     .fitment {
-      column-count:4;
+      column-count:5;
       padding: 0 20px 0 20px;
+      gap: 4rem;
     }
   }
   dialog[open] {
@@ -88,7 +98,7 @@
     }
     #product-fitment table {
   	 /*max-width: 400px;*/
-      width:80vw;
+      width:90vw;
   	}
   }
    @media screen and (min-width:950px) {
@@ -97,7 +107,16 @@
     }
     #product-fitment table {
   	 /*max-width: 400px;*/
-      width:50vw;
+      width:80vw;
+  	}
+  }
+    @media screen and (min-width:1070px) {
+    .fit-button {
+      display:flex; 
+    }
+    #product-fitment table {
+  	 /*max-width: 400px;*/
+      width:90vw;
   	}
   }
   .fitment-modal ul li {
@@ -108,7 +127,7 @@
     text-align:-webkit-left!important;
   }
   ::marker {
-    color: #999;
+    color: #555;
   }
 
   table {
@@ -255,7 +274,7 @@
           <!--inside accordion -->        
           <div class="accordion__content flex" style="text-align:-webkit-center;">
             <div class="w-full flex px-2 pt-5 pb-10">
-              <div class="mx-auto product-fitment-content text-md md:text-xl w-full text-black font-semibold text-left shadow-xl">  
+              <div class="mx-auto product-fitment-content text-2xl md:text-2xl w-full text-black font-semibold text-left shadow-xl">  
                 {% if product.metafields.global.tables != blank %}
                 <div style="text-align:-webkit-center;">{{ product.metafields.global.tables }}</div>
                 {% endif %}
@@ -277,8 +296,8 @@
       {% if listofshit.size < 20 %}
         <div class="fitment__accordion pb-12">
           <div class="accordion__content" style="text-align:-webkit-center;">
-            <div class="w-7/8 md:w-5/6 flex px-2 pt-5 pb-10">
-              <div class="mx-auto product-fitment-content text-md md:text-xl w-full text-black font-semibold text-left">
+            <div class="w-7/8 md:w-7/8 lg:w-5/6 flex px-2 pt-5 pb-10">
+              <div class="mx-auto product-fitment-content text-2xl md:text-2xl w-full text-black font-semibold text-left">
                 <ul class="fitment">
                   {% for shit in listofshit %}<li>{{ shit }}</li>{% endfor %}
                 </ul>
@@ -300,8 +319,8 @@
           </summary>
           <!--inside accordion -->        
           <div class="accordion__content" style="text-align:-webkit-center;">
-            <div class="w-7/8 md:w-5/6 flex px-2 pt-5 pb-10">
-              <div class="mx-auto product-fitment-content text-md md:text-xl w-full text-black font-semibold text-left">  
+            <div class="w-7/8 md:w-7/8 lg:w-5/6 flex px-2 pt-5 pb-10">
+              <div class="mx-auto product-fitment-content text-2xl md:text-2xl w-full text-black font-semibold text-left">  
                 {% if product.metafields.global.tables != blank %}
                 <div style="text-align:-webkit-center;">{{ product.metafields.global.tables }}</div>
                 {% endif %}

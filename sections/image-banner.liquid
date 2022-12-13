@@ -40,8 +40,12 @@
   }
   .heading_txt {
     position:relative;
-    color:white;
-    font-family:"Rajdhani";
+    color: #fff;
+    font-family: "Teko";
+    font-weight: 600;
+    font-style: normal;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
   }
   .txt_content {
     position:relative;
@@ -65,22 +69,22 @@
 
 <div id="Banner-{{ section.id }}" class="banner">
   <div class="banner-content flex flex-wrap justify-center h-full">    
-    <div class="txtbox">
+    <div class="txtbox w-5/6 lg:w-1/2 md:w-3/4 sm:w-5/6">
      {%- for block in section.blocks -%}
         {%- case block.type -%}	
               {%- when 'heading' -%}
-                <h2 class="heading_txt text-5xl sm:text-6xl md:text-7xl lg:text-8xl banner__heading text-center pb-1 {% if block.settings.heading_size == 'medium' %}h1{% else %}h0{% endif %}" {{ block.shopify_attributes }}>
+                <h2 class="heading_txt text-8xl sm:text-8xl md:text-16xl lg:text-20xl banner__heading text-center pb-1 mb-5 uppercase" {{ block.shopify_attributes }}>
                   <span><a style="color:#fff;" href="{{ block.settings.button_link_1 }}">{{ block.settings.heading-txt | strip }}</a></span>
                 </h2>
       			<hr class="divider"/>
               {%- when 'text' -%}
-                <div class="txt_content banner__text text-center mb-5 pt-5 pb-5 text-3xl sm:text-3xl md:text-4xl lg:text-5xl {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+              <!--  <div class="txt_content banner__text text-center mb-5 pt-5 pb-5 text-5xl sm:text-4xl md:text-5xl lg:text-6xl {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
                   <span><a style="color:#fff;" href="{{ block.settings.button_link_1 }}">{{ block.settings.text | strip }}</a></span>
-                </div>
+                </div>-->
               {%- when 'buttons' -%}
                 <div class="text-center banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %} buts" {{ block.shopify_attributes }}>
                   {%- if block.settings.button_label_1 != blank -%}
-                    <a{% if block.settings.button_link_1 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_1 }}"{% endif %} class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}" style="opacity:1; background-color:red!important;">{{ block.settings.button_label_1 | escape }}</a>
+                    <a{% if block.settings.button_link_1 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_1 }}"{% endif %} class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}" style="opacity:1; background-color:red;">{{ block.settings.button_label_1 | escape }}</a>
                   {%- endif -%}
                   {%- if block.settings.button_label_2 != blank -%}
                     <a{% if block.settings.button_link_2 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_2 }}"{% endif %} class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">{{ block.settings.button_label_2 | escape }}</a>
@@ -90,7 +94,6 @@
       {%- endfor -%}
       </div>
     
-    <a class="w-full" href="/collections/roofs">
       <img class="banner-image w-full" 
            srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x', format: 'pjpg' }} 375w,{%- endif -%}
                    {%- if section.settings.image.width >= 550 -%}{{ section.settings.image | img_url: '550x', format: 'pjpg' }} 550w,{%- endif -%}
@@ -108,7 +111,6 @@
            width="{{ section.settings.image.width }}"
            height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}" 
            {% if section.settings.image_2 != blank %}class="banner__media-image-half"{% endif %} />
-    </a>
 </div>
 
 {% schema %}

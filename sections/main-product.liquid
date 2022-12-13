@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{ 'component-loading-overlay.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'section-main-product.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-accordion.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'"> 
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -102,7 +102,7 @@ function swapFlickity(optionClass) {
     background-color: transparent !important;
   }
   .dpo-container {
-    display: none !important;
+    display: block;
     margin: 0.7rem 0rem 0.2rem 0;
     padding: 0rem 1.5rem 0.8rem 12px !important;
     border-left: 3px solid #0fa0ea;
@@ -115,6 +115,7 @@ function swapFlickity(optionClass) {
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
   }
   .dpo-container img {
+    display: unset;
     margin: 0 !important;
   }
   .product-custom-option {
@@ -232,6 +233,13 @@ function swapFlickity(optionClass) {
   }
   .bigIMG {
     place-content:center;
+  }
+  .bigIMG-hover-zoom--point-zoom:hover img {
+     height:auto;
+     display:block;
+     z-index:999;
+     cursor: zoom;
+     transform: scale(150%);    
   }
   .product__image-slider {
     text-align:-webkit-center;
@@ -356,14 +364,6 @@ function swapFlickity(optionClass) {
       display:inline-block;
     } 
   }
-  .bigIMG-hover-zoom--point-zoom:hover img {
-    cursor: zoom-in;
-    transform:scale(5);
-    -ms-transform:scale(5); /* IE 9 */
-    -moz-transform:scale(5); /* Firefox */
-    -webkit-transform:scale(5); /* Safari and Chrome */
-    -o-transform:scale(5); /* Opera */
-  }
   .cage-option {
     padding:0.5rem 1rem!important; 
     font-size:1.5rem!important;
@@ -407,7 +407,7 @@ function swapFlickity(optionClass) {
       #ProductInfo-Wrapper { margin-top:0; }
     }
     @media only screen and (max-width: 950px) {
-      #ProductInfo-Wrapper { margin-top:-100px; }
+      #ProductInfo-Wrapper { margin-top:-0px; }
     }
 </style>
 <!-- END DETECT BRAND IN URL -->
@@ -423,7 +423,7 @@ function swapFlickity(optionClass) {
     <div class="flex-col lg:flex-row md:flex-row sm:flex-col flex flex-shrink justify-center mt-10 md:mt-10 lg:mt-10">
 <!-- IMAGE VIEWER -->
 <!-- LARGE IMAGE FLICKITY -->
-      <div id="product-gallery" class="w-full lg:w-3/7 md:w-3/5 sm:w-full media-section">
+      <div id="product-gallery" class="w-full lg:w-1/2 md:w-1/2 sm:w-full media-section">
             <div id="bigIMG" class="carousel product__image-slider" role="document" aria-label="{{ 'products.modal.label' | t }}" tabindex="0" >
               {%- liquid
                 assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
@@ -433,19 +433,19 @@ function swapFlickity(optionClass) {
                 endif
               -%}
                 {%- for media in product.media -%}
-                    {% unless media.alt contains "variant" or media.alt contains "lifestyle" %}
-                        <div id="product-image-{{ forLoop.index }}" class="carousel-cell bigIMG">
+                    {% unless media.alt contains "lifestyle" %}
+                        <div id="product-image-{{ forLoop.index }}" class="carousel-cell bigIMG bigIMG-hover-zoom--point-zoom">
                             {% if media.media_type == "video" %}
-                                {{ media | media_tag: image_size: "720x", autoplay: true, loop: loop, controls: true, preload:"none", autoplay: true, height: "100%", width: "100%" }}
+                                {{ media | media_tag: image_size: "2048x", autoplay: true, loop: loop, controls: true, preload:"none", autoplay: true, height: "100%", width: "100%" }}
                             {% else %}                               
-      							 <img srcset="{%- if media.width >= 165 -%}{{ media | image_url: width: 165 }} 165w,{%- endif -%}
-                                              {%- if media.width >= 360 -%}{{ media | image_url: width: 360 }} 360w,{%- endif -%}
-                                              {%- if media.width >= 535 -%}{{ media | image_url: width: 535 }} 535w,{%- endif -%}
-                                              {%- if media.width >= 750 -%}{{ media | image_url: width: 750 }} 750w,{%- endif -%}
-                                              {%- if media.width >= 1070 -%}{{ media | image_url: width: 1070 }} 1070w,{%- endif -%}
-                                              {%- if media.width >= 1500 -%}{{ media | image_url: width: 1500 }} 1500w,{%- endif -%}
-                                              {{ media | image_url }} {{ media.width }}w"
-                                      src="{{ media | image_url: width: 720 }}"
+      							 <img srcset="{%- if media.width >= 165 -%}{{ media | img_url: '165x', format: 'pjpg' }} 165w,{%- endif -%}
+                                              {%- if media.width >= 360 -%}{{ media | img_url: '360x', format: 'pjpg' }} 360w,{%- endif -%}
+                                              {%- if media.width >= 535 -%}{{ media | img_url: '535x', format: 'pjpg' }} 535w,{%- endif -%}
+                                              {%- if media.width >= 750 -%}{{ media | img_url: '750x', format: 'pjpg' }} 750w,{%- endif -%}
+                                              {%- if media.width >= 1070 -%}{{ media | img_url: '1070x', format: 'pjpg' }} 1070w,{%- endif -%}
+                                              {%- if media.width >= 1500 -%}{{ media | img_url: '1500x', format: 'pjpg' }} 1500w,{%- endif -%}
+                                              {{ media | img_url }} {{ media.width }}w"
+                                      src="{{ media | img_url: '1070x', format: 'pjpg' }}"
                                       sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
                                       alt="{{ media.title | escape }}"
                                       width="{{ media.width }}"
@@ -499,7 +499,7 @@ function swapFlickity(optionClass) {
           {% endif %} <!-- if product.images != null -->
       </div> <!-- end media section -->
 <!-- PRODUCT INFORMATION -->
-    <div id="ProductInfo-{{ section.id }}" class="product-information-section sm:w-full md:w-2/5 lg:w-4/7 mt-0 mx-0 lg:mx-10 justify-center mt-5">
+    <div id="ProductInfo-{{ section.id }}" class="product-information-section sm:w-full md:w-1/2 lg:w-1/2 mt-0 mx-0 lg:mx-10 justify-center mt-5">
 		<div id="ProductInfo-Wrapper" class="ml-1 md:mt-8 lg:mt-10">
         	{%- assign product_form_id = 'product-form-' | append: section.id -%}
         	{%- for block in section.blocks -%}
@@ -614,9 +614,11 @@ function swapFlickity(optionClass) {
           				<span></span>
 <!-- VARIANT PICKER -->
           {%- when 'variant_picker' -%}
-			<div>
-            {%- unless product.has_only_default_variant -%}
+          <div>
+              {% unless product.metafields.associated_products.not_intended_for_sale %}
               <div id="all-variants-container" class="mb-5">
+            {%- unless product.has_only_default_variant -%}
+              
               {%- if block.settings.picker_type == 'button' -%}
                 <!-- VARIANT RADIOS -->
                 <variant-radios class="no-js-hidden variant-radios" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
@@ -680,8 +682,9 @@ function swapFlickity(optionClass) {
                   </script>
                 </variant-selects>
               {%- endif -%}
-          	</div>
+       
             {%- endunless -%}
+            </div>
             <noscript class="product-form__noscript-wrapper-{{ section.id }}">
               <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
                 <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
@@ -707,15 +710,15 @@ function swapFlickity(optionClass) {
                 </div>
               </div>
             </noscript>
+          {% endunless %}
             <div {{ block.shopify_attributes }}>
+          
               {%- form 'product', product, id: 'product-form-installment', class: 'installment caption-large' -%}
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
               {{ form | payment_terms }}
               {%- endform -%}
             </div>
           </div> <!-- end all-variants-container -->
-                     {% render 'color-modal' %}
-                  {% render 'custom-colors-snippet' %}
                   {%- when 'associated_product' -%}
                   {% render 'associated-product' %}
 <!-- QUANTITY SELECTOR -->
@@ -812,15 +815,16 @@ function swapFlickity(optionClass) {
                             {%- else -%}
                                         <script>                                            
                                           	document.getElementById("affirm-as-low-as").style.display = "block";
-                                          	document.getElementById("all-variants-container").style.display = "none";  
+                                          	document.getElementById("pickup-availability-container").style.display = "none";  
                                             document.getElementById("price-wrapper").style.display = "none";
                                       	</script>
                                   		<h2 class="text-3xl">THIS PRODUCT IS AN OPTION FOR THE:</h2>
-                                        {% assign realProduct = all_products[product.metafields.associated_products.not_intended_for_sale] | within: collection %}
-                                  <span class="text-gray-400"><a href="./{{ realProduct.handle }}">{{ realProduct.title }}</a></span> Package. It is not sold separately. 
+                                        {% assign realProduct = all_products[product.metafields.associated_products.not_intended_for_sale] %}
+                                  <span class="text-gray-400 text-2xl"><a href="./{{ realProduct.handle }}">{{ realProduct.title }}</a> Package. It is not sold separately. </span>
                             {%- endif -%}
                           </product-form>
 <!-- PICKUP AVAILABLILITY MODAL -->
+                          {% unless product.metafields.associated_products.not_intended_for_sale %}
                             {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
                             {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}                          	
                               <div class="bg-gray-200 shadow-lg w-full flex-col flex inline-block mt-5 gap-5 pb-8 pt-8 px-8 justify-left pickup-availability-container">
@@ -853,6 +857,7 @@ function swapFlickity(optionClass) {
                               <!-- end product info {{ section.id }} -->
                               <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
                         </div>   <!-- buy-buttons-container -->
+                      {% endunless %}
                </div>                           
                {%- endcase -%}
                {%- endfor -%}

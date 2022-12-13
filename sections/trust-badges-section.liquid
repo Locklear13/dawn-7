@@ -9,10 +9,18 @@
     font-family: "teko";
     padding-bottom: 2rem;
   }
+  .trustbadges-list__item.center .trustbadges-card__image-wrapper:not(.trustbadges-card__image-wrapper--full-width), .trustbadges-list__item:only-child {
+    /*margin: 2rem 2rem;*/
+    max-width: 120px; 
+  }
+  .trustbadges-card img {
+    max-width: 120px;
+    min-width: 100px;
+  }
 </style>
 
 <section class="w-full h-full shadow-2xl bg-gray-700">
-<div class="w-7/8 lg:w-7/8 md:w-full sm:w-full m-auto px-5 pt-10 pb-16 shadow-lg">
+<div class="w-7/8 lg:w-7/8 md:w-full sm:w-full  px-5 pt-10 pb-16 shadow-lg">
   <div class="p-0 w-full">
     <div class="title-wrapper-with-link place-content-center" style="border-bottom:0px dotted #036597; margin:0rem 0 0rem;">
       <h2 class="product-section-title trust-title w-full text-7xl text-white font-bold px-8 pt-12">
@@ -20,7 +28,7 @@
       </h2>
     </div>
     <slider-component class="pb-0">
-      <div class="grid flex grid-cols-1 sm:grid-cols-1 md:grid-cols-4 slider w-full mx-auto gap-4"
+      <div class="grid flex grid-cols-1 sm:grid-cols-2 md:grid-cols-4 slider w-full  gap-4"
         id="Slider-{{ section.id }}"
         role="list"
       >
@@ -35,12 +43,12 @@
         {%- for block in section.blocks -%}
           <div class="p-2 trustbadges-list__item block max-h-max {% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}">
             <a class="trust-link" href="{{ block.settings.trust-link }}">
-              <div class="trustbadges-card h-full rounded-xl flex flex-row justify-center p-2 sm:p-2 md:p-5 lg:p-7 pt-5" style=" border-bottom:0px dotted #036597; background-color:transparent;">
+              <div class="trustbadges-card h-full rounded-xl flex inline-flex xs:inline-flex sm:inline-flex  md:block  lg:flex-row p-2 sm:p-2 md:p-5 lg:p-7 pt-5" style="border-bottom:0px dotted #036597; background-color:transparent;">
                 {%- if block.settings.image != blank -%}
                   {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                     {% assign spaced_image = true %}
                   {% endif %}
-                  <div class="trustbadges-card__image-wrapper pb-5" style="min-width:60px;">
+                  <div class="trustbadges-card__image-wrapper pb-0 mx-5 sm:mx-5 md:mx-auto" style="min-width: 80px;">
                     <div class="media media--transparent media--{{ section.settings.image_ratio }}"
                       {% if section.settings.image_ratio == 'adapt' %}
                         style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
@@ -63,12 +71,12 @@
                     </div>
                   </div>
                 {%- endif -%}
-                <div class="text-center">
+                <div class="text-center self-end">
                   {%- if block.settings.title != blank -%}
-                    <h3 class="text-4xl text-white text-left pl-5">{{ block.settings.title | escape }}</h3>
+                    <h3 class="text-4xl text-white text-left pl-5 pt-5">{{ block.settings.title | escape }}</h3>
                   {%- endif -%}
                   {%- if block.settings.text != blank -%}
-                    <div class="text-lg sm:text-lg md:text-lg lg:text-xl text-left ml-0 text-white pb-5 pl-4 raj">{{ block.settings.text }}</div>
+                    <div class="text-xl sm:text-xl md:text-2xl lg:text-3xl text-left ml-0 text-white pb-5 pl-4 raj">{{ block.settings.text }}</div>
                   {%- endif -%}
                 </div>
               </div>

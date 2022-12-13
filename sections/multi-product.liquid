@@ -72,7 +72,7 @@ var doneBeenSubmitted = false;
 
 </script>
 <script src="{{ 'thumper-product.js' | asset_url }}"></script>
-<style>
+{% style %}
   .itoris-dynamicoptions-swatch_html {
     font-weight:semibold;
     font-family:"Rajdhani";
@@ -355,12 +355,12 @@ var doneBeenSubmitted = false;
     } 
   }
   .bigIMG-hover-zoom--point-zoom:hover img {
-    cursor: zoom-in;
-    transform:scale(5);
-    -ms-transform:scale(5); /* IE 9 */
-    -moz-transform:scale(5); /* Firefox */
-    -webkit-transform:scale(5); /* Safari and Chrome */
-    -o-transform:scale(5); /* Opera */
+     height:auto;
+     display:block;
+     z-index:999;
+     cursor: zoom;
+     transform: scale(150%);
+    
   }
   .cage-option {
     padding:0.5rem 1rem!important; 
@@ -444,23 +444,20 @@ var doneBeenSubmitted = false;
   .product-popup-modal__opener {
     height: 20px;
    }
-.product-popup-modal__content { 
-  background-color:#fff; 
-  border: 2px solid #555; 
-}
-  .product-popup-modal__content { 
+.product-popup-modal__content:not(button) { 
   background-color:#fff; 
   border: 2px solid #555; 
 }
 .product-popup-modal__button {
-  background-color: #fff;
+  
   border: 2px solid #0fa0ea;
   border-radius: 5px;
   margin: 1rem 1rem 0 0;
   padding: 0.5rem 2rem;
 }
-</style>
+{% endstyle %}
 
+<!-- END DETECT BRAND IN URL -->
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
 {%- assign productPictures = product.media | where: "media_type", "image" -%}
 {%- if first_3d_model -%}
@@ -473,7 +470,7 @@ var doneBeenSubmitted = false;
     <div class="flex-col lg:flex-row md:flex-row sm:flex-col flex flex-shrink justify-center mt-5 lg:mt-10 md:mt-10 sm:mt-5">
 <!-- IMAGE VIEWER -->
 <!-- LARGE IMAGE FLICKITY -->
-      <div id="product-gallery" class="w-full lg:w-3/7 md:w-3/5 sm:w-full media-section">
+      <div id="product-gallery" class="w-full lg:w-1/2 md:w-1/2 sm:w-full media-section">
              <div id="bigIMG" class="carousel product__image-slider" role="document" aria-label="{{ 'products.modal.label' | t }}" tabindex="0" >
               {%- liquid
                 assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
@@ -484,9 +481,9 @@ var doneBeenSubmitted = false;
               -%}
                 {%- for media in product.media -%}
                     {% unless media.alt contains "lifestyle" %}
-                        <div id="product-image-{{ forLoop.index }}" class="carousel-cell bigIMG">
+                        <div id="product-image-{{ forLoop.index }}" class="carousel-cell bigIMG bigIMG-hover-zoom--point-zoom">
                             {% if media.media_type == "video" %}
-                                {{ media | media_tag: image_size: "720x", autoplay: true, loop: loop, controls: true, preload:"none", autoplay: true, height: "100%", width: "100%" }}
+                                {{ media | media_tag: image_size: "2048x", autoplay: true, loop: loop, controls: true, preload:"none", autoplay: true, height: "100%", width: "100%" }}
                             {% else %}                               
       							 <img srcset="{%- if media.width >= 165 -%}{{ media | img_url: '165x', format: 'pjpg' }} 165w,{%- endif -%}
                                               {%- if media.width >= 360 -%}{{ media | img_url: '360x', format: 'pjpg' }} 360w,{%- endif -%}
@@ -495,7 +492,7 @@ var doneBeenSubmitted = false;
                                               {%- if media.width >= 1070 -%}{{ media | img_url: '1070x', format: 'pjpg' }} 1070w,{%- endif -%}
                                               {%- if media.width >= 1500 -%}{{ media | img_url: '1500x', format: 'pjpg' }} 1500w,{%- endif -%}
                                               {{ media | img_url }} {{ media.width }}w"
-                                      src="{{ media | img_url: '720x', format: 'pjpg' }}"
+                                      src="{{ media | img_url: '1070x', format: 'pjpg' }}"
                                       sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
                                       alt="{{ media.title | escape }}"
                                       width="{{ media.width }}"
@@ -543,7 +540,7 @@ var doneBeenSubmitted = false;
       </div> <!-- end media section -->
     
 <!-- PRODUCT INFORMATION -->
-    <div id="ProductInfo-{{ section.id }}" class="product-information-section sm:w-full md:w-2/5 lg:w-4/7 mt-0 mx-0 lg:mx-10 justify-center mt-5">
+    <div id="ProductInfo-{{ section.id }}" class="product-information-section sm:w-full md:w-1/2 lg:w-1/2 mt-0 mx-0 lg:mx-10 justify-center mt-5">
 		<div id="ProductInfo-Wrapper" class="ml-1 md:mt-8 lg:mt-10">
         	{%- assign product_form_id = 'product-form-' | append: section.id -%}
         	{%- for block in section.blocks -%}
@@ -723,11 +720,7 @@ var doneBeenSubmitted = false;
                                     onClick="tfAssociatedChange();"      
                                   >
                                     {%- for value in option.values -%}
-                                      <option 
-                                        class="VSO-DROPDOWN-INPUT" 
-                                        value="{{ value | escape }}" 
-                                        {% if option.selected_value == value %}checked{% endif %}
-                                      >
+                                      <option class="VSO-DROPDOWN-INPUT" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
                                         {{ value }}
                                       </option>
                                     {%- endfor -%}
@@ -771,7 +764,7 @@ var doneBeenSubmitted = false;
                                  value="{{ value | escape }}"
                                  form="{{ product_form_id }}"
                                  aria-expanded="false"
-                                 onClick="tfAssociatedChange(); {% if value contains "Lo-Brow" %}showHide('loBrow:hiBrow');{% endif %}{% if value contains "Hi-Brow" %}showHide('hiBrow:loBrow');{% endif %}"
+                                 onClick="tfAssociatedChange();"
                                  {% if option.selected_value == value %}checked{% endif %}
                                  class="variant-radios-input"
                                  >
@@ -1070,6 +1063,22 @@ var doneBeenSubmitted = false;
       pageDots: false,
       prevNextButtons: false
     });
+
+    var nodeList = document.querySelectorAll('.js-flickity');
+
+    for (var i = 0, t = nodeList.length; i < t; i++) {
+        var flkty = Flickity.data(nodeList[i]);
+        if (!flkty) {
+            // Check if element had flickity options specified in data attribute.
+            var flktyData = nodeList[i].getAttribute('data-flickity');
+            if (flktyData) {
+                var flktyOptions = JSON.parse(flktyData);
+                new Flickity(nodeList[i], flktyOptions);
+            } else {
+                new Flickity(nodeList[i]);
+            }
+        }
+    }
   </script>
 
 

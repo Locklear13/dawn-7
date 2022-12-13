@@ -73,6 +73,7 @@
     },
     "product-info-carousel": {
       "type": "product-info-carousel",
+      "disabled": true,
       "settings": {
       }
     },

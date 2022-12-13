@@ -295,6 +295,13 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "8683486541037420230": {
+        "type": "shopify:\/\/apps\/exit-popups-upsells-by-ampry\/blocks\/app-embed\/fad54489-e562-4bf7-85d7-8aa5290f7162",
+        "disabled": false,
+        "settings": {
+          "ampryPixelCode": "8ddc43c1-d2e7-4ac1-8bfb-38fc09ddf481"
+        }
       }
     }
   },

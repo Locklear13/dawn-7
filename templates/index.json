@@ -72,7 +72,7 @@
       "settings": {
         "title": "New Products at Thumper Fab",
         "collection": "new-products",
-        "products_per_page": 25,
+        "products_per_page": 16,
         "columns_full": 5,
         "columns_medium": 4,
         "collection_url": "shopify:\/\/collections\/all",
@@ -173,6 +173,7 @@
       "blocks": {
         "dbacfa40-1d6b-4e7e-b7b0-58c1f09ee481": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "rockford-fosgate",
             "image_padding": false,
@@ -184,7 +185,7 @@
         "dbacfa40-1d6b-4e7e-b7b0-58c1f09ee481"
       ],
       "settings": {
-        "heading": "PRODUCTS FEATURING ROCKFORD FOSGATE AUDIO",
+        "heading": "",
         "desktop_layout": "left",
         "mobile_layout": "collage"
       }

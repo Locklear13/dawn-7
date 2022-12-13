@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "07092c81-2dc9-4148-91e5-6659f3fd9198": {
+      "type": "image-banner",
+      "blocks": {
+        "template--14811571224627__07092c81-2dc9-4148-91e5-6659f3fd9198-1666799799396e25b4-0": {
+          "type": "heading",
+          "settings": {
+            "heading-txt": "<p>Affiliate Program<\/p>",
+            "heading_size": "large"
+          }
+        },
+        "template--14811571224627__07092c81-2dc9-4148-91e5-6659f3fd9198-1666799799396e25b4-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Drive traffic from your website or social program to <a href=\"http:\/\/www.thumperfab.com\/\" title=\"Thumper Fab\">ThumperFab.com<\/a> & make money!  You'll earn a commission on every purchase made by customers you refer.<\/p>"
+          }
+        },
+        "template--14811571224627__07092c81-2dc9-4148-91e5-6659f3fd9198-1666799799396e25b4-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "APPLY NOW",
+            "button_link_1": "https:\/\/www.avantlink.com\/signup\/publisher-united-states\/?merchant=25173",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--14811571224627__07092c81-2dc9-4148-91e5-6659f3fd9198-1666799799396e25b4-0",
+        "template--14811571224627__07092c81-2dc9-4148-91e5-6659f3fd9198-1666799799396e25b4-1",
+        "template--14811571224627__07092c81-2dc9-4148-91e5-6659f3fd9198-1666799799396e25b4-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Defender_in_mud-2.jpg",
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_text_box_position": "center",
+        "show_text_box": true,
+        "image_overlay_opacity": 0,
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "page-affiliate-program": {
+      "type": "page-affiliate-program",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "07092c81-2dc9-4148-91e5-6659f3fd9198",
+    "page-affiliate-program"
+  ]
+}
