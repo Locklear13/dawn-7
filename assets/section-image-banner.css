@@ -273,6 +273,10 @@
   margin-top: 1.5rem;
 }
 
+.text-center banner__buttons buts {
+  background-color:#0fa0ea!important;
+}
+
 @media screen and (min-width: 750px) {
   .banner__box > * + .banner__text {
     margin-top: 2rem;

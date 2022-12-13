@@ -1,23 +1,4 @@
 /************************************/
-/* showHide function                */
-/* accepts "class1:class2"          */
-/* sets display block to class 1    */
-/* sets display none to class 2     */
-/************************************/
-function showHide(showHideString) {
-  var showMe = "." + showHideString.split(":")[0];
-  var hideMe = "." + showHideString.split(":")[1];
-  var showUs = document.querySelectorAll(showMe);
-  var hideUs = document.querySelectorAll(hideMe);
-  showUs.forEach(function (e) {
-    e.style.display = 'block';
-  });
-  hideUs.forEach(function (e) {
-    e.style.display = 'none';
-  });
-};
-
-/************************************/
 /* indexMatchingText function       */
 /* returns the index of text within */
 /* ele selector object              */
@@ -143,7 +124,7 @@ function tfupdatePrice(whereComeFrom) {
 		});
     }    
     if (completeSKU == "") { // if no associated products are selected
-    	  tfupdateSKU(currentSKU);
+    	tfupdateSKU(currentSKU);
     } else {                 // if associated products are selected
       	tfupdateSKU(currentSKU + completeSKU);
     }

@@ -1,7 +1,15 @@
+.facets .disclosure-has-popup[open] > summary + * {
+    z-index: 2;
+    border: 2px solid #999;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 .facets-container {
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
+  margin: 0 2.5rem 2rem 2.5rem;
 }
 
 .active-facets-mobile {
@@ -43,7 +51,7 @@
 .facet-filters__label {
   display: block;
   color: var(--color-foreground-85);
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   margin: 0 2rem 0 0;
 }
 
@@ -51,7 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   cursor: pointer;
   height: 4.5rem;
   padding: 0 1.5rem;
@@ -66,12 +74,12 @@
 }
 
 .facet-filters__field {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
   font-family:"Rajdhani";
-  font-size: 1.4rem;
+  font-size: 2.4rem;
 }
 
 .facet-filters__field .select {
@@ -84,7 +92,7 @@
 
 .facet-filters__sort {
   border: 0;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   height: auto;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
   margin: 0;
@@ -162,13 +170,19 @@
   grid-row: 1;
   display: flex;
   flex-wrap: wrap;
+  margin: 0 0 .5rem 2rem;
+  border-bottom: 1px solid #ccc;
 }
 
 .facets__heading {
   display: block;
   color: rgba(var(--color-foreground), 0.85);
-  font-size: 1.4rem;
-  margin: -1.5rem 2rem 0 0;
+  /*margin: -1.5rem 2rem 0 0;*/
+  margin: .5rem 2.5rem 0 0rem; 
+  font-size: 2.5rem;
+  font-family: "Teko";
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .facets__reset {
@@ -181,7 +195,7 @@
 
 .facets__summary {
   color: rgba(var(--color-foreground), 0.75);
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   margin-bottom: 1.5rem;
   padding: 0 1.75rem 0 0;
   font-family:"Rajdhani";
@@ -218,7 +232,7 @@
 }
 
 .facets__display {
-  background-color: rgb(var(--color-background));
+  background-color: #FFF;
   position: absolute;
   border: 1px solid rgba(var(--color-foreground), 0.2);
   top: calc(100% + 0.5rem);
@@ -233,15 +247,17 @@
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
-  font-size: 1.4rem;
   position: sticky;
   top: 0;
-  background-color: rgb(var(--color-background));
   z-index: 1;
+  font-size: 2.5rem; 
+  background-color: #ccc;
 }
 
 .facets__list {
   padding: 0.5rem 2rem;
+  background-color: #efefef; 
+  color: #333;
 }
 
 .facets__item {
@@ -258,7 +274,7 @@
   padding: 1rem 2rem 1rem 0;
   flex-grow: 1;
   position: relative;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   display: flex;
   word-break: break-word;
   text-transform: Capitalize;
@@ -297,7 +313,7 @@
 @media screen and (forced-colors: active) {
   .facet-checkbox > svg {
     background-color: inherit;
-    border: 0.1rem solid rgb(var(--color-background));
+    border: 2px solid #333);
   }
 
   .facet-checkbox > input[type='checkbox']:checked ~ .icon-checkmark {
@@ -335,6 +351,7 @@
 
 button.facets__button {
   min-height: 0;
+  background-color: #0fa0ea;
   margin: 0 0 0 0.5rem;
   box-shadow: none;
   padding-top: 1.4rem;
@@ -352,7 +369,7 @@ button.facets__button {
   width: 100%;
   grid-column: 1 / -1;
   grid-row: 2;
-  margin-top: -0.5rem;
+  margin: -0.5rem 0 0 2rem;
 }
 
 .active-facets__button {
@@ -365,10 +382,11 @@ button.facets__button {
 }
 
 span.active-facets__button-inner {
-  color: rgb(var(--color-foreground));
+  color: #fff;
+  background-color: #0fa0ea;
   box-shadow: 0 0 0 0.1rem rgb(var(--color-foreground));
   border-radius: 2.6rem;
-  font-size: 1rem;
+  font-size: 2rem;
   min-height: 0;
   min-width: 0;
   padding: 0.5rem 1rem;
@@ -384,7 +402,7 @@ span.active-facets__button-inner {
 }
 
 .active-facets__button-wrapper * {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 @media screen and (min-width: 990px) {
@@ -394,7 +412,7 @@ span.active-facets__button-inner {
 
   .active-facets__button-wrapper *,
   span.active-facets__button-inner {
-    font-size: 1.2rem;
+    font-size: 2.2rem;
   }
 }
 
@@ -496,7 +514,7 @@ a.active-facets__button.focused .active-facets__button-inner,
   right: 0;
   bottom: 0;
   z-index: 100;
-  background-color: rgba(var(--color-foreground), 0.5);
+  background-color: #FFF;
   pointer-events: none;
 }
 
@@ -515,10 +533,11 @@ a.active-facets__button.focused .active-facets__button-inner,
 }
 
 .mobile-facets__inner {
-  background-color: rgb(var(--color-background));
+  background-color: #FFF;
   width: calc(100% - 5rem);
-  margin-left: auto;
-  height: 100%;
+  /*margin-left: auto;*/
+  margin: 2rem 2rem 0;
+  /*height: 100%;*/
   overflow-y: auto;
   pointer-events: all;
   transition: transform var(--duration-short) ease;
@@ -536,7 +555,7 @@ a.active-facets__button.focused .active-facets__button-inner,
 }
 
 .mobile-facets__header {
-  background-color: rgb(var(--color-background));
+  background-color: #FFF;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
   padding: 1rem 2.5rem;
   text-align: center;
@@ -556,13 +575,13 @@ a.active-facets__button.focused .active-facets__button-inner,
 }
 
 .mobile-facets__heading {
-  font-size: calc(var(--font-heading-scale) * 1.4rem);
+  font-size: 2.4rem);
   margin: 0;
 }
 
 .mobile-facets__count {
-  color: rgba(var(--color-foreground), 0.7);
-  font-size: 1.5rem;
+  color: #333;
+  font-size: 2.5rem;
   margin: 0;
   flex-grow: 1;
 }
@@ -643,7 +662,7 @@ details.menu-opening .mobile-facets__close svg {
   align-items: center;
   background-color: transparent;
   display: flex;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   font: inherit;
   letter-spacing: inherit;
   margin-top: 1.5rem;
@@ -668,6 +687,7 @@ details.menu-opening .mobile-facets__close svg {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  background-color: #FFF;
 }
 
 .mobile-facets__details[open] .icon-caret {
@@ -676,6 +696,7 @@ details.menu-opening .mobile-facets__close svg {
 
 .no-js .mobile-facets__details {
   border-bottom: 1px solid rgba(var(--color-foreground), 0.04);
+  font-size: 2rem;
 }
 
 .mobile-facets__highlight {
@@ -697,10 +718,11 @@ details.menu-opening .mobile-facets__close svg {
 
 .mobile-facets__summary {
   padding: 1.3rem 2.5rem;
+  font-size: 2rem;
 }
 
 .mobile-facets__summary svg {
-  margin-left: auto;
+  margin-left: auto;  
 }
 
 .mobile-facets__summary > div,
@@ -715,7 +737,7 @@ details.menu-opening .mobile-facets__close svg {
   width: 100%;
   bottom: 0;
   left: 0;
-  background-color: rgb(var(--color-background));
+  background-color: #FFF;
   z-index: 3;
   transform: translateX(100%);
   visibility: hidden;
@@ -801,6 +823,7 @@ input.mobile-facets__checkbox {
   display: flex;
   z-index: 2;
   margin-top: auto;
+  font-size: 2rem;
 }
 
 .mobile-facets__footer > * + * {
@@ -826,6 +849,7 @@ input.mobile-facets__checkbox {
 
 .mobile-facets__sort .select {
   width: auto;
+  margin-top: -30px;
 }
 
 .no-js .mobile-facets__sort .select {
@@ -852,7 +876,7 @@ input.mobile-facets__checkbox {
 }
 
 .product-count__text {
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
   margin: 0;
 }
